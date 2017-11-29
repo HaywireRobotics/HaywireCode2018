@@ -16,6 +16,7 @@
 #include <ADXRS450_Gyro.h>
 
 class Robot: public frc::IterativeRobot {
+	frc::Joystick stickSomething { 3 };
 	frc::Joystick stickLeft { 0 };
 	frc::Joystick stickRight { 1 };
 	frc::Joystick stickRoller { 2 };
