@@ -9,6 +9,7 @@
 #include "Commands/MyAutoCommand.h"
 #include "Commands/PushPiston.h"
 #include "Subsystems/PneumaticsSubsystem.h"
+#include <CameraServer.h>
 
 class Robot: public frc::TimedRobot {
 public:
@@ -24,6 +25,7 @@ public:
 	void AutonomousPeriodic() override;
 	void TeleopInit() override;
 	void TeleopPeriodic() override;
+	void TestInit() override;
 	void TestPeriodic() override;
 private:
 	frc::Command* m_autonomousCommand = nullptr;

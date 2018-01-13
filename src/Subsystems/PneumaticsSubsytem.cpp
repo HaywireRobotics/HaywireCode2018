@@ -12,8 +12,9 @@
 #include "../RobotMap.h"
 
 PneumaticsSubsystem::PneumaticsSubsystem() : frc::Subsystem("PneumaticsSubsystem") {
-	compressor = new Compressor(CompressorPort);
-	compressor->SetClosedLoopControl(true);
+	/*compressor = new Compressor(CompressorPort);
+	compressor->ClearAllPCMStickyFaults();
+	compressor->SetClosedLoopControl(true);*/
 
 	openSole1 = new Solenoid(Solenoid1OpenPort);
 	closeSole1 = new Solenoid(Solenoid1ClosePort);

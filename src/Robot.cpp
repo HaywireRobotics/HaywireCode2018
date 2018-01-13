@@ -14,6 +14,7 @@ std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_uniq
 		m_chooser.AddObject("My Auto", &m_myAuto);
 		m_chooser.AddObject("Push Piston", &m_pushPiston);
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+		frc::CameraServer::GetInstance()->StartAutomaticCapture();
 	}
 
 	/**
@@ -60,7 +61,7 @@ std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_uniq
 		if (m_autonomousCommand != nullptr) {
 			m_autonomousCommand->Start();
 		}
-		AddSequential(m_pushPiston);
+//		AddSequential(m_pushPiston);
 	}
 
 	void Robot::AutonomousPeriodic() {
@@ -80,7 +81,13 @@ std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_uniq
 
 	void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
-	void Robot::TestPeriodic() {}
+	void Robot::TestInit() {
+
+	}
+
+	void Robot::TestPeriodic() {
+		lw->Run();
+	}
 
 	// Have it null by default so that if testing teleop it
 	// doesn't have undefined behavior and potentially crash.

@@ -20,7 +20,7 @@ public:
 	void SetSole1Stop();
 
 
-	frc::Compressor *compressor;
+//	frc::Compressor *compressor;
 
 	frc::Solenoid *openSole1;
 	frc::Solenoid *closeSole1;
