@@ -7,24 +7,14 @@
 
 #pragma once
 
-#include <Commands/Subsystem.h>
-#include <Compressor.h>
-#include <Solenoid.h>
+#include <Commands/Command.h>
 
-class PneumaticsSubsystem : public frc::Subsystem {
+class PushPiston : public frc::Command {
 public:
-	PneumaticsSubsystem();
-	void InitDefaultCommand() override;
-	void SetSole1Open();
-	void SetSole1Close();
-	void SetSole1Stop();
-
-
-	frc::Compressor *compressor;
-
-	frc::Solenoid *openSole1;
-	frc::Solenoid *closeSole1;
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
-private:
+	PushPiston();
+	void Initialize() override;
+	void Execute() override;
+	bool IsFinished() override;
+	void End() override;
+	void Interrupted() override;
 };

@@ -5,21 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include <Commands/Command.h>
-#include <Commands/Scheduler.h>
-#include <LiveWindow/LiveWindow.h>
-#include <SmartDashboard/SendableChooser.h>
-#include <SmartDashboard/SmartDashboard.h>
-#include <TimedRobot.h>
+#include <Robot.h>
 
-#include "Commands/ExampleCommand.h"
-#include "Commands/MyAutoCommand.h"
+std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
 
-class Robot : public frc::TimedRobot {
-public:
-	void RobotInit() override {
+	void Robot::RobotInit() {
 		m_chooser.AddDefault("Default Auto", &m_defaultAuto);
 		m_chooser.AddObject("My Auto", &m_myAuto);
+		m_chooser.AddObject("Push Piston", &m_pushPiston);
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 	}
 
@@ -30,9 +23,9 @@ public:
 	 * when
 	 * the robot is disabled.
 	 */
-	void DisabledInit() override {}
+	void Robot::DisabledInit() {}
 
-	void DisabledPeriodic() override {
+	void Robot::DisabledPeriodic() {
 		frc::Scheduler::GetInstance()->Run();
 	}
 
@@ -50,12 +43,15 @@ public:
 	 * comparisons
 	 * to the if-else structure below with additional strings & commands.
 	 */
-	void AutonomousInit() override {
+	void Robot::AutonomousInit() {
 		std::string autoSelected = frc::SmartDashboard::GetString(
 				"Auto Selector", "Default");
 		if (autoSelected == "My Auto") {
 			m_autonomousCommand = &m_myAuto;
-		} else {
+		} else if (autoSelected == "PushPiston") {
+			m_autonomousCommand = &m_pushPiston;
+		}
+		else {
 			m_autonomousCommand = &m_defaultAuto;
 		}
 
@@ -66,11 +62,11 @@ public:
 		}
 	}
 
-	void AutonomousPeriodic() override {
+	void Robot::AutonomousPeriodic() {
 		frc::Scheduler::GetInstance()->Run();
 	}
 
-	void TeleopInit() override {
+	void Robot::TeleopInit() {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -81,17 +77,13 @@ public:
 		}
 	}
 
-	void TeleopPeriodic() override { frc::Scheduler::GetInstance()->Run(); }
+	void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
-	void TestPeriodic() override {}
+	void Robot::TestPeriodic() {}
 
-private:
 	// Have it null by default so that if testing teleop it
 	// doesn't have undefined behavior and potentially crash.
-	frc::Command* m_autonomousCommand = nullptr;
-	ExampleCommand m_defaultAuto;
-	MyAutoCommand m_myAuto;
-	frc::SendableChooser<frc::Command*> m_chooser;
-};
+
+
 
 START_ROBOT_CLASS(Robot)

@@ -6,11 +6,17 @@
 /*----------------------------------------------------------------------------*/
 
 #include "PneumaticsSubsystem.h"
+#include <Compressor.h>
+#include <Solenoid.h>
 
 #include "../RobotMap.h"
 
-PneumaticsSubsystem::PneumaticsSubsystem()
-    : frc::Subsystem("PneumaticsSubsystem") {}
+PneumaticsSubsystem::PneumaticsSubsystem() : frc::Subsystem("PneumaticsSubsystem") {
+	compressor = new Compressor(CompressorPort);
+
+	openSole1 = new Solenoid(Solenoid1OpenPort);
+	closeSole1 = new Solenoid(Solenoid1ClosePort);
+}
 
 void PneumaticsSubsystem::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
@@ -19,3 +25,17 @@ void PneumaticsSubsystem::InitDefaultCommand() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+void PneumaticsSubsystem::SetSole1Open() {
+	openSole1->Set(true);
+	closeSole1->Set(false);
+}
+
+void PneumaticsSubsystem::SetSole1Close() {
+	openSole1->Set(false);
+	closeSole1->Set(true);
+}
+
+void PneumaticsSubsystem::SetSole1Stop() {
+	openSole1->Set(false);
+	closeSole1->Set(false);
+}
