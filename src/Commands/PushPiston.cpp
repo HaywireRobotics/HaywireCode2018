@@ -19,7 +19,11 @@ PushPiston::PushPiston() {
 void PushPiston::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void PushPiston::Execute() {}
+void PushPiston::Execute() {
+	Robot::pneumaticsSubsystem->SetSole1Stop();
+	/*frc::Wait(10.0);
+	Robot::pneumaticsSubsystem->SetSole1Close();*/
+}
 
 // Make this return true when this Command no longer needs to run execute()
 bool PushPiston::IsFinished() {

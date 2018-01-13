@@ -8,6 +8,7 @@
 #pragma once
 
 #include <Commands/Command.h>
+#include <Timer.h>
 
 class PushPiston : public frc::Command {
 public:

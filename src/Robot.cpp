@@ -60,6 +60,7 @@ std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_uniq
 		if (m_autonomousCommand != nullptr) {
 			m_autonomousCommand->Start();
 		}
+		AddSequential(m_pushPiston);
 	}
 
 	void Robot::AutonomousPeriodic() {
