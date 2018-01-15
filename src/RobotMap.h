@@ -7,10 +7,16 @@
 
 #pragma once
 
-const int CompressorPort = 0;
-
+//Pneumatics Constants
 const int Solenoid1OpenPort = 0;
 const int Solenoid1ClosePort = 1;
+
+//Motor Constants
+ const int DriveTrain1 = 0;
+ const int DriveTrain2 = 1;
+ const int DriveTrain3 = 2;
+ const int DriveTrain4 = 3;
+
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
