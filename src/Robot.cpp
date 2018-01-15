@@ -13,7 +13,11 @@ std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_uniq
 	void Robot::RobotInit() {
 		m_chooser.AddDefault("Default Auto", &m_defaultAuto);
 		m_chooser.AddObject("My Auto", &m_myAuto);
-		m_chooser.AddObject("Piston", &m_pushPiston);
+		m_chooser.AddObject("Push Piston", &m_pushPiston);
+
+
+		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
+		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 		frc::CameraServer::GetInstance()->StartAutomaticCapture();
 	}

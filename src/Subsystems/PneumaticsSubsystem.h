@@ -24,6 +24,7 @@ public:
 
 	frc::Solenoid *openSole1;
 	frc::Solenoid *closeSole1;
+	frc::Solenoid *testSole;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 private:

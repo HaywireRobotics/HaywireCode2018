@@ -8,6 +8,7 @@
 #include "Commands/ExampleCommand.h"
 #include "Commands/MyAutoCommand.h"
 #include "Commands/PushPiston.h"
+#include "Commands/PullPiston.h"
 #include "Subsystems/PneumaticsSubsystem.h"
 #include <CameraServer.h>
 
