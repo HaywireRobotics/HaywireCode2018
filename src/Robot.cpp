@@ -9,7 +9,7 @@
 
 
 std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
-
+std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>();
 	void Robot::RobotInit() {
 		m_chooser.AddDefault("Default Auto", &m_defaultAuto);
 		m_chooser.AddObject("My Auto", &m_myAuto);
@@ -91,7 +91,7 @@ std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_uniq
 	}
 
 	void Robot::TestPeriodic() {
-		lw->Run();
+		//lw->Run();
 	}
 
 	// Have it null by default so that if testing teleop it

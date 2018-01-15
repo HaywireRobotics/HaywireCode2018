@@ -10,6 +10,7 @@
 #include "Commands/PushPiston.h"
 #include "Commands/PullPiston.h"
 #include "Subsystems/PneumaticsSubsystem.h"
+#include "Subsystems/DriveTrainSubsystem.h"
 #include <CameraServer.h>
 
 
@@ -19,6 +20,7 @@ class Robot: public frc::TimedRobot {
 public:
 //	static std::unique_ptr<OI>oi;
 	static std::shared_ptr<PneumaticsSubsystem> pneumaticsSubsystem;
+	static std::shared_ptr<DriveTrainSubsystem> driveTrainSubsystem;
 	frc::Joystick joystick0{0};
 	frc::Joystick joystick1{1};
 	frc::Joystick joystick2{2};
