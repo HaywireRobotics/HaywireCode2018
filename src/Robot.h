@@ -4,20 +4,24 @@
 #include <SmartDashboard/SendableChooser.h>
 #include <SmartDashboard/SmartDashboard.h>
 #include <TimedRobot.h>
-
+#include <Joystick.h>
 #include "Commands/ExampleCommand.h"
 #include "Commands/MyAutoCommand.h"
 #include "Commands/PushPiston.h"
 #include "Subsystems/PneumaticsSubsystem.h"
 #include <CameraServer.h>
 
+
+
+
 class Robot: public frc::TimedRobot {
 public:
 //	static std::unique_ptr<OI>oi;
 	static std::shared_ptr<PneumaticsSubsystem> pneumaticsSubsystem;
-
+	frc::Joystick joystick0{0};
+	frc::Joystick joystick1{1};
+	frc::Joystick joystick2{2};
 	frc::LiveWindow* lw = frc::LiveWindow::GetInstance();
-
 	void RobotInit() override;
 	void DisabledInit() override;
 	void DisabledPeriodic() override;
