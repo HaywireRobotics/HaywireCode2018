@@ -8,6 +8,9 @@
 #pragma once
 
 #include <Commands/Subsystem.h>
+#include <VictorSP.h>
+
+#include "../RobotMap.h"
 
 class DriveTrainSubsystem : public frc::Subsystem {
 public:
