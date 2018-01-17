@@ -6,11 +6,16 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
+#include "WPILib.h"
 
 class OI {
+private:
+	std::shared_ptr<frc::Joystick> joystickManipulator;
+	std::shared_ptr<frc::Joystick> joystickRight;
+	std::shared_ptr<frc::Joystick> joystickLeft;
 public:
 	OI();
-	frc::Joystick joystickRight{0};
-	frc::Joystick joystickLeft{1};
-	frc::Joystick joystickManipulator{2};
+	std::shared_ptr<frc::Joystick> getJoystickRight();
+	std::shared_ptr<frc::Joystick> getJoystickLeft();
+	std::shared_ptr<frc::Joystick> getJoystickManipulator();
 };

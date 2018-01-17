@@ -16,7 +16,7 @@ void TeleopCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void TeleopCommand::Execute() {
-	Robot::driveTrainSubsystem->takeJoystickInputs(Robot::OI->joystickright, Robot.OI.joystickLeft);
+	Robot::driveTrainSubsystem->takeJoystickInputs(OI->getJoystickRight(),OI->getJoystickLeft());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -26,7 +26,7 @@ bool TeleopCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void TeleopCommand::End() {
-
+	Robot::driveTrainSubsystem->stopRobot();
 }
 
 // Called when another command which requires one or more of the same
