@@ -9,13 +9,16 @@
 
 #include <Commands/Subsystem.h>
 #include <VictorSP.h>
-
 #include "../RobotMap.h"
+#include <RobotDrive.h>
+#include <Joystick.h>
 
 class DriveTrainSubsystem : public frc::Subsystem {
 public:
 	DriveTrainSubsystem();
 	void InitDefaultCommand() override;
+	void takeJoystickInputs(Joystick left, Joystick right);
+	void stopRobot();
 	void TankDrive(float left, float right);
 
 private:
@@ -23,6 +26,7 @@ private:
 	frc::VictorSP DriveTrainLeft1 { DriveTrain2 };
 	frc::VictorSP DriveTrainRight0 { DriveTrain3 };
 	frc::VictorSP DriveTrainRight1 { DriveTrain4 };
+	frc::RobotDrive myRobot{DriveTrainLeft0, DriveTrainRight0};
 	void MoveLeft(float speed);
 	void MoveRight(float speed);
 };

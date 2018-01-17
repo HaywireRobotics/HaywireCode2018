@@ -9,9 +9,9 @@
 
 #include "../RobotMap.h"
 
+
 DriveTrainSubsystem::DriveTrainSubsystem()
     : frc::Subsystem("DriveTrainSubsystem") {
-
 }
 
 void DriveTrainSubsystem::InitDefaultCommand() {
@@ -24,6 +24,13 @@ void DriveTrainSubsystem::TankDrive(float left, float right) {
 	this->MoveRight(right);
 }
 
+void DriveTrainSubsystem::takeJoystickInputs(Joystick left, Joystick right) {
+	myRobot.TankDrive(left,right);
+}
+
+void DriveTrainSubsystem::stopRobot() {
+	myRobot.Drive(0,0);
+}
 //Private
 void DriveTrainSubsystem::MoveLeft(float speed) {
 	this->DriveTrainLeft0.Set(speed);

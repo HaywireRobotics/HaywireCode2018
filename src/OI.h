@@ -10,4 +10,7 @@
 class OI {
 public:
 	OI();
+	frc::Joystick joystickRight{0};
+	frc::Joystick joystickLeft{1};
+	frc::Joystick joystickManipulator{2};
 };

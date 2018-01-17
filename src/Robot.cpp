@@ -10,6 +10,7 @@
 
 std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
 std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>();
+
 	void Robot::RobotInit() {
 		m_chooser.AddDefault("Default Auto", &m_defaultAuto);
 		m_chooser.AddObject("My Auto", &m_myAuto);
@@ -84,7 +85,9 @@ std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_uniq
 		}
 	}
 
-	void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
+	void Robot::TeleopPeriodic() {
+		frc::Scheduler::GetInstance()->Run();
+	}
 
 	void Robot::TestInit() {
 

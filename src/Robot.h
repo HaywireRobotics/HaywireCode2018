@@ -12,7 +12,7 @@
 #include "Subsystems/PneumaticsSubsystem.h"
 #include "Subsystems/DriveTrainSubsystem.h"
 #include <CameraServer.h>
-
+#include <OI.h>
 
 
 
@@ -21,9 +21,6 @@ public:
 //	static std::unique_ptr<OI>oi;
 	static std::shared_ptr<PneumaticsSubsystem> pneumaticsSubsystem;
 	static std::shared_ptr<DriveTrainSubsystem> driveTrainSubsystem;
-	frc::Joystick joystick0{0};
-	frc::Joystick joystick1{1};
-	frc::Joystick joystick2{2};
 	frc::LiveWindow* lw = frc::LiveWindow::GetInstance();
 	void RobotInit() override;
 	void DisabledInit() override;
