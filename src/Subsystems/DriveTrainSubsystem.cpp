@@ -17,6 +17,7 @@ DriveTrainSubsystem::DriveTrainSubsystem()
 void DriveTrainSubsystem::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new TeleopCommand());
 }
 //Public
 void DriveTrainSubsystem::TankDrive(float left, float right) {
@@ -24,7 +25,7 @@ void DriveTrainSubsystem::TankDrive(float left, float right) {
 	this->MoveRight(right);
 }
 
-void DriveTrainSubsystem::takeJoystickInputs(Joystick left, Joystick right) {
+void DriveTrainSubsystem::takeJoystickInputs(Joystick *left, Joystick *right) {
 	myRobot.TankDrive(left,right);
 }
 
