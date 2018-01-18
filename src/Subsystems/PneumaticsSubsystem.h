@@ -9,7 +9,7 @@
 
 #include <Commands/Subsystem.h>
 #include <Compressor.h>
-#include <Solenoid.h>
+#include <DoubleSolenoid.h>
 
 class PneumaticsSubsystem : public frc::Subsystem {
 public:
@@ -21,10 +21,7 @@ public:
 
 
 //	frc::Compressor *compressor;
-
-	frc::Solenoid *openSole1;
-	frc::Solenoid *closeSole1;
-	frc::Solenoid *testSole;
+	frc::DoubleSolenoid *Sole1;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 private:

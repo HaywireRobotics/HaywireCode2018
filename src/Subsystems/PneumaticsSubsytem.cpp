@@ -7,7 +7,7 @@
 
 #include "PneumaticsSubsystem.h"
 #include <Compressor.h>
-#include <Solenoid.h>
+#include <DoubleSolenoid.h>
 
 #include "../RobotMap.h"
 
@@ -16,8 +16,7 @@ PneumaticsSubsystem::PneumaticsSubsystem() : frc::Subsystem("PneumaticsSubsystem
 	compressor->ClearAllPCMStickyFaults();
 	compressor->SetClosedLoopControl(true);*/
 
-	openSole1 = new Solenoid(Solenoid1OpenPort);
-	closeSole1 = new Solenoid(Solenoid1ClosePort);
+	Sole1 = new DoubleSolenoid(Solenoid1OpenPort,Solenoid1ClosePort);
 }
 
 void PneumaticsSubsystem::InitDefaultCommand() {
@@ -28,16 +27,13 @@ void PneumaticsSubsystem::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void PneumaticsSubsystem::SetSole1Open() {
-	openSole1->Set(true);
-	closeSole1->Set(false);
+	Sole1->Set(frc::DoubleSolenoid::kForward);
 }
 
 void PneumaticsSubsystem::SetSole1Close() {
-	openSole1->Set(false);
-	closeSole1->Set(true);
+	Sole1->Set(frc::DoubleSolenoid::kReverse);
 }
 
 void PneumaticsSubsystem::SetSole1Stop() {
-	openSole1->Set(false);
-	closeSole1->Set(false);
+	Sole1->Set(frc::DoubleSolenoid::kOff);
 }
