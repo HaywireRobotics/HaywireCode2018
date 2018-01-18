@@ -26,7 +26,7 @@ void DriveTrainSubsystem::TankDrive(float left, float right) {
 }
 
 void DriveTrainSubsystem::takeJoystickInputs(Joystick left, Joystick right) {
-	this->TankDrive(left,right);
+	myRobot.TankDrive(left,right);
 }
 
 void DriveTrainSubsystem::stopRobot() {
