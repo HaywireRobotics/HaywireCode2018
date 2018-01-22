@@ -89,8 +89,6 @@ std::unique_ptr<OI> Robot::oi;
 		frc::Scheduler::GetInstance()->Run();
 	}
 
-		frc::Scheduler::GetInstance()->Run(); }
-
 	void Robot::TestInit() {
 
 	}

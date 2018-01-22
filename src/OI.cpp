@@ -17,6 +17,9 @@ OI::OI()
 	 joystickManipulator.reset(new frc::Joystick(2));
 	 joystickRight.reset(new frc::Joystick(1));
 	 joystickLeft.reset(new frc::Joystick(0));
+
+	 //btnPushPiston.reset(new frc::JoystickButton(joystickManipulator,1));
+	 btnPushPiston = new frc::JoystickButton(joystickManipulator.get(), 1);
 }
 
 	std::shared_ptr<frc::Joystick> OI::getJoystickRight()

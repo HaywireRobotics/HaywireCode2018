@@ -16,6 +16,8 @@
 #include <ADXRS450_Gyro.h>
 #include <AnalogInput.h>
 #include <DigitalInput.h>
+//#include <DifferentialDrive.h>
+#include <SpeedControllerGroup.h>
 
 class DriveTrainSubsystem : public frc::Subsystem {
 public:
@@ -31,9 +33,11 @@ public:
 private:
 	frc::VictorSP DriveTrainLeft0 { DriveTrain1 };
 	frc::VictorSP DriveTrainLeft1 { DriveTrain2 };
+	frc::SpeedControllerGroup LeftGroup {DriveTrainLeft0, DriveTrainLeft1};
 	frc::VictorSP DriveTrainRight0 { DriveTrain3 };
 	frc::VictorSP DriveTrainRight1 { DriveTrain4 };
-	frc::RobotDrive myRobot{DriveTrainLeft0, DriveTrainLeft1, DriveTrainRight0, DriveTrainRight1};
+	frc::SpeedControllerGroup RightGroup {DriveTrainRight0, DriveTrainRight1};
+	frc::DifferentialDrive myRobot{LeftGroup, RightGroup};
 	void MoveLeft(float speed);
 	void MoveRight(float speed);
 };
