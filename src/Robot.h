@@ -32,6 +32,7 @@ public:
 	void TeleopPeriodic() override;
 	void TestInit() override;
 	void TestPeriodic() override;
+	OI oi;
 private:
 	frc::Command* m_autonomousCommand = nullptr;
 	ExampleCommand m_defaultAuto;
