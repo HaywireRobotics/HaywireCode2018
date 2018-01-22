@@ -18,8 +18,8 @@ OI::OI()
 	 joystickRight.reset(new frc::Joystick(1));
 	 joystickLeft.reset(new frc::Joystick(0));
 
-	 //btnPushPiston.reset(new frc::JoystickButton(joystickManipulator,1));
 	 btnPushPiston = new frc::JoystickButton(joystickManipulator.get(), 1);
+	 btnPullPiston = new frc::JoystickButton(joystickManipulator.get(), 2);
 }
 
 	std::shared_ptr<frc::Joystick> OI::getJoystickRight()
@@ -35,4 +35,12 @@ OI::OI()
 	 std::shared_ptr<frc::Joystick> OI::getJoystickManipulator()
 	 {
 	    return joystickManipulator;
+	 }
+
+	 JoystickButton* OI::getbtnPushPiston() {
+		 return btnPushPiston;
+	 }
+
+	 JoystickButton* OI::getbtnPullPiston() {
+		 return btnPullPiston;
 	 }
