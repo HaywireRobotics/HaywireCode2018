@@ -16,7 +16,7 @@
 #include <ADXRS450_Gyro.h>
 #include <AnalogInput.h>
 #include <DigitalInput.h>
-//#include <DifferentialDrive.h>
+#include <Drive/DifferentialDrive.h>
 #include <SpeedControllerGroup.h>
 
 class DriveTrainSubsystem : public frc::Subsystem {
