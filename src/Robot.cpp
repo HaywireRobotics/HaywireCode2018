@@ -1,207 +1,107 @@
-#include <iostream>
-#include <memory>
-#include <string>
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
 
-#include <IterativeRobot.h>
-#include <LiveWindow/LiveWindow.h>
-#include <SmartDashboard/SendableChooser.h>
-#include <SmartDashboard/SmartDashboard.h>
-#include <Timer.h>
-#include <Spark.h>
-#include <Talon.h>
-#include <VictorSP.h>
-#include <CameraServer.h>
-#include <RobotDrive.h>
-#include <Joystick.h>
-#include <ADXRS450_Gyro.h>
+#include "Robot.h"
 
-class Robot: public frc::IterativeRobot {
-	frc::Joystick stickSomething { 3 };
-	frc::Joystick stickLeft { 0 };
-	frc::Joystick stickRight { 1 };
-	frc::Joystick stickRoller { 2 };
-	frc::Spark roller { 8 };
-	frc::Talon gear { 7 };
-	frc::VictorSP victorRF { 0 };
-	frc::VictorSP victorRB { 1 };
-	frc::VictorSP victorLF { 2 };
-	frc::VictorSP victorLB { 3 };
-	frc::RobotDrive myRobot { victorRF, victorRB, victorLF, victorLB }; // robot drive system
-	frc::ADXRS450_Gyro gyro { frc::SPI::Port::kOnboardCS0 };
+std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
+std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>();
+std::unique_ptr<OI> Robot::oi;
 
+	void Robot::RobotInit() {
+		m_chooser.AddDefault("Default Auto", &m_defaultAuto);
+		m_chooser.AddObject("My Auto", &m_myAuto);
+		m_chooser.AddObject("Push Piston", &m_pushPiston);
 
-public:
-	std::shared_ptr<NetworkTable> table;
-	void RobotInit() {
-		table = NetworkTable::GetTable("GRIP/myContoursReport");
+		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
+		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
+		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 		frc::CameraServer::GetInstance()->StartAutomaticCapture();
-		//chooser.AddDefault(autoNameDefault, autoNameDefault);
-		//chooser.AddObject(autoNameCustom, autoNameCustom);
-		//frc::SmartDashboard::PutData("Auto Modes", &chooser);
-		myRobot.SetExpiration(0.1);
+		oi.reset(new OI());
 	}
 
-	/*
-	 * This autonomous (along with the chooser code above) shows how to select
+	/**
+	 * This function is called once each time the robot enters Disabled
+	 * mode.
+	 * You can use it to reset any subsystem information you want to clear
+	 * when
+	 * the robot is disabled.
+	 */
+	void Robot::DisabledInit() {}
+
+	void Robot::DisabledPeriodic() {
+		frc::Scheduler::GetInstance()->Run();
+	}
+
+	/**
+	 * This autonomous (along with the chooser code above) shows how to
+	 * select
 	 * between different autonomous modes using the dashboard. The sendable
 	 * chooser code works with the Java SmartDashboard. If you prefer the
 	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * GetString line to get the auto name from the text box below the Gyro.
+	 * GetString code to get the auto name from the text box below the Gyro.
 	 *
-	 * You can add additional auto modes by adding additional comparisons to the
-	 * if-else structure below with additional strings. If using the
-	 * SendableChooser make sure to add them to the chooser code above as well.
+	 * You can add additional auto modes by adding additional commands to
+	 * the
+	 * chooser code above (like the commented example) or additional
+	 * comparisons
+	 * to the if-else structure below with additional strings & commands.
 	 */
-	void AutonomousInit() override {
-		//autoSelected = chooser.GetSelected();
-		std::string autoSelected = SmartDashboard::GetString("Auto Selector",
-				autoNameDefault);
-		std::cout << "Auto selected: " << autoSelected << std::endl;
-		static const float kP = 0.03;
-
-
-		if (autoSelected == autoNameCustom)
-		{
-			// Custom Auto goes here
-			std::cout << "Running custom Autonomous" << std::endl;
-			myRobot.SetSafetyEnabled(false);
-			float angle = gyro.GetAngle(); // get heading
-			myRobot.Drive(-0.5, -angle * kP); // turn to correct heading
-			frc::Wait(0.5);                // for 2 seconds
-			myRobot.Drive(0.0, 0.0);  // stop robot
+	void Robot::AutonomousInit() {
+		std::string autoSelected = frc::SmartDashboard::GetString(
+				"Auto Selector", "Default");
+		if (autoSelected == "My Auto") {
+			m_autonomousCommand = &m_myAuto;
+		} else if (autoSelected == "PushPiston") {
+			m_autonomousCommand = &m_pushPiston;
+		}
+		else {
+			m_autonomousCommand = &m_defaultAuto;
 		}
 
-		else if(SmartDashboard::GetNumber("DB/Slider 2",0)==1)
-		{
-			myRobot.SetSafetyEnabled(false);
-			float angle = gyro.GetAngle(); // get heading
-			myRobot.Drive(-0.5, -angle * kP); // turn to correct heading
-			frc::Wait(5.0);                // for 2 seconds
-			myRobot.Drive(0.0, 0.0);  // stop robot
-		}
+		m_autonomousCommand = m_chooser.GetSelected();
 
-		else
-		{
-			// Default Auto goes here
-			std::cout << "Running default Autonomous" << std::endl;
-			myRobot.SetSafetyEnabled(false);
-			float angle = gyro.GetAngle(); // get heading
-			myRobot.Drive(-0.5, -angle * kP); // turn to correct heading
-			frc::Wait(2.0);                // for 2 seconds
-			myRobot.Drive(0.0, 0.0);  // stop robot
+		if (m_autonomousCommand != nullptr) {
+			m_autonomousCommand->Start();
+		}
+//		AddSequential(m_pushPiston);
+	}
+
+	void Robot::AutonomousPeriodic() {
+		frc::Scheduler::GetInstance()->Run();
+	}
+
+	void Robot::TeleopInit() {
+		// This makes sure that the autonomous stops running when
+		// teleop starts running. If you want the autonomous to
+		// continue until interrupted by another command, remove
+		// this line or comment it out.
+		if (m_autonomousCommand != nullptr) {
+			m_autonomousCommand->Cancel();
+			m_autonomousCommand = nullptr;
 		}
 	}
 
-	void AutonomousPeriodic()
-	{
-		if (autoSelected == autoNameCustom)
-		{
-			// Custom Auto goes here
-		}
-		else
-		{
-
-		}
+	void Robot::TeleopPeriodic() {
+		frc::Scheduler::GetInstance()->Run();
 	}
 
-	void TeleopInit()
-	{
-		myRobot.SetSafetyEnabled(true);
+		frc::Scheduler::GetInstance()->Run(); }
+
+	void Robot::TestInit() {
+
 	}
 
-	void TeleopPeriodic()
-	{
-		float rolStickY = 0.0;
-		float rollerspeed = 0.0;
-	    float gearspeed = 0.0;
-	    float rolStickX = 0.0;
-		rolStickY=stickRoller.GetY();
-		rolStickX=stickRoller.GetX();
-
-		std::vector<double> arr = table->GetNumberArray("area",
-				llvm::ArrayRef<double>());
-
-		std::vector<double> centerX = table->GetNumberArray("centerX",llvm::ArrayRef<double>());
-
-
-
-		/*for (unsigned int i = 0; i < arr.size(); i++)
-		 {
-		 std::cout << arr[i] << " ";
-		 }
-		 std::cout << std::endl;
-		 */
-
-		gyro.GetAngle();
-
-
-
-		if(centerX.size())//if there is a value in array centerX
-		{
-			//display value in position 0 of array centerX
-			PrintStringToDashboard("DB/String 1", "Center X: ", centerX[0]);
-		}
-		else//if there is no value
-		{
-			//display negative one instead
-			PrintStringToDashboard("DB/String 1", "Center X: ", -1);
-		}
-
-		//display size of array Areas
-		PrintStringToDashboard("DB/String 0", "Areas: ", arr.size());
-
-
-
-		// drive with tank drive (use right stick)
-		myRobot.TankDrive(stickLeft, stickRight);
-
-		// wait for a motor update time
-
-		if (stickRoller.GetRawButton(2))
-		{
-			gearspeed = 0.3;
-		}
-		else if((rolStickY > 0.05) || (rolStickY < -0.05))
-		{
-
-			if (rolStickY < 0)
-			{
-				rollerspeed=rolStickY*0.4;
-			}
-
-			else
-			{
-				rollerspeed=rolStickY*0.8;
-		    }
-
-		}
-		else
-		{
-			rollerspeed = 0;
-		}
-
-		roller.Set(rollerspeed);
-		gear.Set(gearspeed);
+	void Robot::TestPeriodic() {
+		//lw->Run();
 	}
 
-	void TestPeriodic() {
-		lw->Run();
-	}
+	// Have it null by default so that if testing teleop it
+	// doesn't have undefined behavior and potentially crash.
 
-	void PrintStringToDashboard(std::string field, std::string label, float numValue)
-	{
-				std::stringstream oStream;
-				oStream<<numValue;
-				std::string bufferString = label + oStream.str();
-				SmartDashboard::PutString(field, bufferString);
-	}
 
-private:
-	frc::LiveWindow* lw = LiveWindow::GetInstance();
-	frc::SendableChooser<std::string> chooser;
-	const std::string autoNameDefault = "Default";
-	const std::string autoNameCustom = "My Auto";
-	std::string autoSelected;
-};
 
 START_ROBOT_CLASS(Robot)
