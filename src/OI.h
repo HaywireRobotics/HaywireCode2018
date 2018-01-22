@@ -7,7 +7,6 @@
 
 #pragma once
 #include <WPILib.h>
-
 #include <Joystick.h>
 
 class OI {
@@ -15,6 +14,9 @@ private:
 	std::shared_ptr<frc::Joystick> joystickManipulator;
 	std::shared_ptr<frc::Joystick> joystickRight;
 	std::shared_ptr<frc::Joystick> joystickLeft;
+
+	//JoystickButton* btnPushPiston = new JoystickButton(joystickManipulator,1);
+	//JoystickButton* btnPullPiston = new JoystickButton(joystickManipulator,2);
 public:
 	OI();
 	std::shared_ptr<frc::Joystick> getJoystickRight();

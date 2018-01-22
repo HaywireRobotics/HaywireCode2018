@@ -13,6 +13,9 @@
 #include <RobotDrive.h>
 #include <Joystick.h>
 #include "../Commands/TeleopCommand.h"
+#include <ADXRS450_Gyro.h>
+#include <AnalogInput.h>
+#include <DigitalInput.h>
 
 class DriveTrainSubsystem : public frc::Subsystem {
 public:
@@ -21,6 +24,9 @@ public:
 	void takeJoystickInputs(Joystick *left, Joystick *right);
 	void stopRobot();
 	void TankDrive(float left, float right);
+	frc::ADXRS450_Gyro gyro { frc::SPI::Port::kOnboardCS0 };
+	frc::AnalogInput *range;
+	frc::DigitalInput *inMagneticSwitch;
 
 private:
 	frc::VictorSP DriveTrainLeft0 { DriveTrain1 };

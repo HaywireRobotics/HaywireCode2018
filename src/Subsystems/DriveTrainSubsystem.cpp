@@ -12,6 +12,8 @@
 
 DriveTrainSubsystem::DriveTrainSubsystem()
     : frc::Subsystem("DriveTrainSubsystem") {
+	range = new frc::AnalogInput(0);
+	inMagneticSwitch = new frc::DigitalInput(0);
 }
 
 void DriveTrainSubsystem::InitDefaultCommand() {
@@ -42,3 +44,9 @@ void DriveTrainSubsystem::MoveRight(float speed) {
 	this->DriveTrainRight0.Set(speed);
 	this->DriveTrainRight1.Set(speed);
 }
+
+
+
+
+
+
