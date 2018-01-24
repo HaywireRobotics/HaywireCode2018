@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
-
+//using namespace <PneumaticsSubsystem>;
 std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
 std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>();
 std::unique_ptr<OI> Robot::oi;
@@ -72,6 +72,7 @@ std::unique_ptr<OI> Robot::oi;
 
 	void Robot::AutonomousPeriodic() {
 		frc::Scheduler::GetInstance()->Run();
+
 	}
 
 	void Robot::TeleopInit() {
@@ -86,6 +87,7 @@ std::unique_ptr<OI> Robot::oi;
 	}
 
 	void Robot::TeleopPeriodic() {
+		frc::SmartDashboard::PutNumber(llvm::StringRef("Compressor Current"), Robot::pneumaticsSubsystem.get()->compressor->GetCompressorCurrent());
 		frc::Scheduler::GetInstance()->Run();
 	}
 

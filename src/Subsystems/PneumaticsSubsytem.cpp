@@ -17,6 +17,7 @@ PneumaticsSubsystem::PneumaticsSubsystem() : frc::Subsystem("PneumaticsSubsystem
 	compressor->SetClosedLoopControl(true);*/
 
 	Sole1 = new DoubleSolenoid(Solenoid1OpenPort,Solenoid1ClosePort);
+	compressor = new Compressor(0);
 }
 
 void PneumaticsSubsystem::InitDefaultCommand() {

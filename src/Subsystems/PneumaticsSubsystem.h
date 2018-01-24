@@ -22,6 +22,8 @@ public:
 
 //	frc::Compressor *compressor;
 	frc::DoubleSolenoid *Sole1;
+	//frc::Compressor *compressor;
+	frc::Compressor *compressor;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 private:
