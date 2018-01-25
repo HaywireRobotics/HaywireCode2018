@@ -22,13 +22,14 @@ public:
 	bool HasSwitchSet();
 	void InitCounter();
 
+	frc::Counter *counter;
+
 private:
 	frc::Spark Elevator0 { ElevatorPort0 };
 	frc::Spark Elevator1 { ElevatorPort1 };
 	void SetElevatorSpeed(float speed);
 
 	frc::DigitalInput *limitSwitch;
-	frc::Counter *counter;
 };
 
 #endif  // ElevatorSubsystem_H

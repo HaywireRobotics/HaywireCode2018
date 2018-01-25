@@ -88,6 +88,7 @@ std::unique_ptr<OI> Robot::oi;
 	}
 
 	void Robot::TeleopPeriodic() {
+		frc::SmartDashboard::PutNumber(llvm::StringRef("Counter Amount"), Robot::elevatorSubsystem.get()->counter->Get());
 		frc::Scheduler::GetInstance()->Run();
 	}
 

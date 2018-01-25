@@ -19,10 +19,12 @@ void ElevatorSubsystem::ElevateDown(float speed) {
 
 void ElevatorSubsystem::StopElevate() {
 	this->SetElevatorSpeed(0.0);
+	std::cout << "StopElevate";
 }
 
 void ElevatorSubsystem::ElevatorSet(float speed) {
-	this->SetElevatorSpeed(speed);
+	this->Elevator0.Set(speed);
+	this->Elevator1.Set(speed);
 }
 
 void ElevatorSubsystem::InitCounter() {
