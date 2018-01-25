@@ -20,7 +20,7 @@ void TeleopCommand::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void TeleopCommand::Execute() {
 	Robot::driveTrainSubsystem->takeJoystickInputs((Robot::oi->getJoystickRight().get()),(Robot::oi->getJoystickLeft().get()));
-	Robot::elevatorSubsystem.get()->ElevateUp(Robot::oi->getJoystickManipulator().get()->GetY());
+	Robot::elevatorSubsystem.get()->ElevatorSet(Robot::oi->getJoystickManipulator().get()->GetY());
 	//Joystick Buttons
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMExtendPistonNum)) {
 		Robot::pneumaticsSubsystem.get()->SetSole1Open();

@@ -9,6 +9,7 @@
 #include "Commands/MyAutoCommand.h"
 #include "Commands/PushPiston.h"
 #include "Commands/PullPiston.h"
+#include "Commands/SwitchHeightCommand.h"
 #include "Subsystems/PneumaticsSubsystem.h"
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"
