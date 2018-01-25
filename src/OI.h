@@ -15,8 +15,8 @@ private:
 	std::shared_ptr<frc::Joystick> joystickRight;
 	std::shared_ptr<frc::Joystick> joystickLeft;
 
-	//JoystickButton* btnPushPiston = new JoystickButton(joystickManipulator,1);
-	//JoystickButton* btnPullPiston = new JoystickButton(joystickManipulator,2);
+	//JoystickButton* btnPushPiston;
+	//JoystickButton* btnPullPiston;
 public:
 	OI();
 	std::shared_ptr<frc::Joystick> getJoystickRight();

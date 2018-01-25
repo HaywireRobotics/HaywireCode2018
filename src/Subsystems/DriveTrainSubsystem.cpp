@@ -28,11 +28,11 @@ void DriveTrainSubsystem::TankDrive(float left, float right) {
 }
 
 void DriveTrainSubsystem::takeJoystickInputs(Joystick *left, Joystick *right) {
-	myRobot.TankDrive(left,right);
+	myRobot.TankDrive(left->GetY(),right->GetY(),false);
 }
 
 void DriveTrainSubsystem::stopRobot() {
-	myRobot.Drive(0,0);
+	myRobot.TankDrive(0,0);
 }
 //Private
 void DriveTrainSubsystem::MoveLeft(float speed) {
