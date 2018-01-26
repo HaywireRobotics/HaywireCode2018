@@ -12,8 +12,8 @@ const int Solenoid1OpenPort = 0;
 const int Solenoid1ClosePort = 1;
 
 //Motor Constants
- const int DriveTrain1 = 0;
- const int DriveTrain2 = 1;
+ const int DriveTrain1 = 4;
+ const int DriveTrain2 = 5;
  const int DriveTrain3 = 2;
  const int DriveTrain4 = 3;
 
@@ -28,3 +28,5 @@ const int Solenoid1ClosePort = 1;
 //Button Mappings
  const int JMExtendPistonNum = 1;
  const int JMRetractPistonNum = 2;
+
+// const int J

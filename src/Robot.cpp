@@ -19,6 +19,7 @@ std::unique_ptr<OI> Robot::oi;
 
 		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
 		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
+		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 		frc::CameraServer::GetInstance()->StartAutomaticCapture();
 		oi.reset(new OI());
