@@ -54,7 +54,7 @@ std::unique_ptr<OI> Robot::oi;
 	 */
 	void Robot::AutonomousInit() {
 		std::string autoSelected = frc::SmartDashboard::GetString(
-				"Auto Selector", "Default");
+				"Auto Select;or", "Default");
 		if (autoSelected == "My Auto") {
 			m_autonomousCommand = &m_myAuto;
 		} else if (autoSelected == "PushPiston") {
