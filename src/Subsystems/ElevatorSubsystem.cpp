@@ -1,9 +1,13 @@
 #include "ElevatorSubsystem.h"
 #include "../RobotMap.h"
+#include <DigitalInput.h>
+#include <Counter.h>
+#include <iostream>
 
 ElevatorSubsystem::ElevatorSubsystem() : Subsystem("ElevatorSubsystem") {
 	limitSwitch = new frc::DigitalInput(1);
 	counter = new frc::Counter(limitSwitch);
+	movingToPosition = false;
 }
 
 void ElevatorSubsystem::InitDefaultCommand() {}
@@ -19,7 +23,6 @@ void ElevatorSubsystem::ElevateDown(float speed) {
 
 void ElevatorSubsystem::StopElevate() {
 	this->SetElevatorSpeed(0.0);
-	std::cout << "StopElevate";
 }
 
 void ElevatorSubsystem::ElevatorSet(float speed) {

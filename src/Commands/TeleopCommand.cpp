@@ -10,6 +10,7 @@ TeleopCommand::TeleopCommand() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(Robot::driveTrainSubsystem.get());
+	Requires(Robot::elevatorSubsystem.get());
 }
 
 // Called just before this Command runs the first time
@@ -20,7 +21,9 @@ void TeleopCommand::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void TeleopCommand::Execute() {
 	Robot::driveTrainSubsystem->takeJoystickInputs((Robot::oi->getJoystickRight().get()),(Robot::oi->getJoystickLeft().get()));
-	Robot::elevatorSubsystem.get()->ElevatorSet(Robot::oi->getJoystickManipulator().get()->GetY());
+	if (Robot::elevatorSubsystem.get()->movingToPosition == false) {
+		Robot::elevatorSubsystem.get()->ElevatorSet(Robot::oi->getJoystickManipulator().get()->GetY());
+	}
 	//Joystick Buttons
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMExtendPistonNum)) {
 		Robot::pneumaticsSubsystem.get()->SetSole1Open();
