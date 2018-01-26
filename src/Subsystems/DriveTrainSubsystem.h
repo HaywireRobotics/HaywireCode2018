@@ -24,7 +24,6 @@ public:
 	DriveTrainSubsystem();
 	void InitDefaultCommand() override;
 	void takeJoystickInputs(Joystick *left, Joystick *right);
-	void driveForward(double speed);
 	void stopRobot();
 	void TankDrive(float left, float right);
 	frc::ADXRS450_Gyro gyro { frc::SPI::Port::kOnboardCS0 };
