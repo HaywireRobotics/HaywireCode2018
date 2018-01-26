@@ -24,7 +24,6 @@ public:
 
 	frc::Counter *counter;
 
-	bool movingToPosition;
 private:
 	frc::Spark Elevator0 { ElevatorPort0 };
 	frc::Spark Elevator1 { ElevatorPort1 };
