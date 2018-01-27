@@ -1,4 +1,5 @@
 #include "DriveForward.h"
+#include "../Robot.h"
 
 DriveForward::DriveForward(double seconds) {
 	// Use Requires() here to declare subsystem dependencies

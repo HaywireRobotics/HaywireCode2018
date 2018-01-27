@@ -1,9 +1,8 @@
 #ifndef autoDriveAcrossLine_H
 #define autoDriveAcrossLine_H
 
-#include "Commands/CommandGroup.h"
-#include "../Commands/DriveForward.h"
-#include "../Robot.h"
+#include <Commands/CommandGroup.h>
+
 
 class autoDriveAcrossLine : public frc::CommandGroup {
 public:

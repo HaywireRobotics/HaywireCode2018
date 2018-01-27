@@ -1,4 +1,5 @@
 #include "autoDriveAcrossLine.h"
+#include "../Commands/DriveForward.h"
 
 autoDriveAcrossLine::autoDriveAcrossLine() {
 
