@@ -44,6 +44,7 @@ private:
 	ExampleCommand m_defaultAuto;
 	MyAutoCommand m_myAuto;
 	PushPiston m_pushPiston;
+	autoDriveAcrossLine m_autoDriveAcrossLine;
 	frc::SendableChooser<frc::Command*> m_chooser;
 };
 

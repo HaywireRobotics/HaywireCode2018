@@ -16,6 +16,7 @@ std::unique_ptr<OI> Robot::oi;
 		m_chooser.AddDefault("Default Auto", &m_defaultAuto);
 		m_chooser.AddObject("My Auto", &m_myAuto);
 		m_chooser.AddObject("Push Piston", &m_pushPiston);
+		m_chooser.AddObject("Drive Across Line", &m_autoDriveAcrossLine);
 
 		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
 		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
