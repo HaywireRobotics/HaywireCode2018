@@ -19,6 +19,7 @@ std::unique_ptr<OI> Robot::oi;
 		m_chooser.AddObject("Drive Across Line", &m_autoDriveAcrossLine);
 
 		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
+		frc::SmartDashboard::PutData("DriveForward", new DriveForward(10.0));
 		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);

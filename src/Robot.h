@@ -12,6 +12,7 @@
 #include "Commands/PushPiston.h"
 #include "Commands/PullPiston.h"
 #include "Commands/SwitchHeightCommand.h"
+#include "Commands/DriveForward.h"
 #include "Commands/autoDriveAcrossLine.h"
 #include "Subsystems/PneumaticsSubsystem.h"
 #include "Subsystems/DriveTrainSubsystem.h"
