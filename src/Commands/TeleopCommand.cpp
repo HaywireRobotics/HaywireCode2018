@@ -31,6 +31,14 @@ void TeleopCommand::Execute() {
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMRetractPistonNum)) {
 		Robot::pneumaticsSubsystem.get()->SetSole1Close();
 	}
+
+	//Claw Buttons
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(3)) {
+			Robot::elevatorSubsystem.get()->ElevatorClaw(0.7);
+	}
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(4)) {
+				Robot::elevatorSubsystem.get()->ElevatorClaw(-0.7);
+		}
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -21,6 +21,11 @@ void ElevatorSubsystem::ElevateDown(float speed) {
 	this->SetElevatorSpeed(-1 * speed);
 }
 
+void ElevatorSubsystem::ElevatorClaw(float speed)
+{
+	this->claw.Set(speed);
+}
+
 void ElevatorSubsystem::StopElevate() {
 	this->SetElevatorSpeed(0.0);
 }

@@ -3,6 +3,7 @@
 
 #include <Commands/Subsystem.h>
 #include <Spark.h>
+#include <VictorSP.h>
 #include <DigitalInput.h>
 #include <Counter.h>
 #include "../RobotMap.h"
@@ -19,6 +20,7 @@ public:
 	void ElevateDown(float speed);
 	void StopElevate();
 	void ElevatorSet(float speed);
+	void ElevatorClaw(float speed);
 	bool HasSwitchSet();
 	void InitCounter();
 
@@ -28,6 +30,7 @@ public:
 private:
 	frc::Spark Elevator0 { ElevatorPort0 };
 	frc::Spark Elevator1 { ElevatorPort1 };
+	frc::VictorSP claw { ClawPort4 };
 	void SetElevatorSpeed(float speed);
 
 	frc::DigitalInput *limitSwitch;
