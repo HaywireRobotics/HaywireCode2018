@@ -1,3 +1,5 @@
+#ifndef Robot_h
+#define Robot_h
 #include <Commands/Command.h>
 #include <Commands/Scheduler.h>
 #include <LiveWindow/LiveWindow.h>
@@ -10,6 +12,7 @@
 #include "Commands/PushPiston.h"
 #include "Commands/PullPiston.h"
 #include "Commands/SwitchHeightCommand.h"
+#include "Commands/autoDriveAcrossLine.h"
 #include "Subsystems/PneumaticsSubsystem.h"
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"
@@ -44,3 +47,4 @@ private:
 	frc::SendableChooser<frc::Command*> m_chooser;
 };
 
+#endif
