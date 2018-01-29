@@ -22,9 +22,4 @@ public:
 	std::shared_ptr<frc::Joystick> getJoystickRight();
 	std::shared_ptr<frc::Joystick> getJoystickLeft();
 	std::shared_ptr<frc::Joystick> getJoystickManipulator();
-	JoystickButton* getbtnPushPiston();
-	JoystickButton* getbtnPullPiston();
-
-	JoystickButton* btnPushPiston;
-	JoystickButton* btnPullPiston;
 };

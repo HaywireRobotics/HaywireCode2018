@@ -14,8 +14,6 @@ public:
 	void End();
 	void Interrupted();
 private:
-	PushPiston* PushPistonPtr;
-	PullPiston* PullPistonPtr;
 };
 
 #endif  // TeleopCommand_H
