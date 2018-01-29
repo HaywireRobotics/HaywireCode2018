@@ -29,7 +29,7 @@ void DriveTrainSubsystem::TankDrive(float left, float right) {
 
 void DriveTrainSubsystem::driveForward(double speed)
 {
-	myRobot.TankDrive(speed,speed,false);
+	myRobot.TankDrive(speed,speed);
 }
 void DriveTrainSubsystem::takeJoystickInputs(Joystick *left, Joystick *right)
 {
