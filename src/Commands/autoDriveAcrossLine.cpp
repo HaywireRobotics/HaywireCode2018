@@ -1,9 +1,17 @@
 #include "autoDriveAcrossLine.h"
 #include "../Commands/DriveForward.h"
+#include "../Commands/PushPiston.h"
+#include "../Commands/PullPiston.h"
+#include <Timer.h>
 
 autoDriveAcrossLine::autoDriveAcrossLine() {
 
-	AddSequential(new DriveForward(3000.0));
+	//AddSequential(new DriveForward(10.0));
+	AddSequential(new PushPiston());
+    AddSequential(new PullPiston());
+	//AddSequential(new PullPiston());
+
+
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

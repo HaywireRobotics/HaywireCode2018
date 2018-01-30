@@ -14,6 +14,7 @@
 #include "Commands/SwitchHeightCommand.h"
 #include "Commands/DriveForward.h"
 #include "Commands/autoDriveAcrossLine.h"
+#include "Commands/autoGetPowerSwitchCL.h"
 #include "Subsystems/PneumaticsSubsystem.h"
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"
@@ -24,7 +25,6 @@
 
 class Robot: public frc::TimedRobot {
 public:
-//	static std::unique_ptr<OI>oi;
 	static std::shared_ptr<PneumaticsSubsystem> pneumaticsSubsystem;
 	static std::shared_ptr<DriveTrainSubsystem> driveTrainSubsystem;
 	static std::shared_ptr<ElevatorSubsystem> elevatorSubsystem;
@@ -45,7 +45,9 @@ private:
 	ExampleCommand m_defaultAuto;
 	MyAutoCommand m_myAuto;
 	PushPiston m_pushPiston;
+	PullPiston m_pullPiston;
 	autoDriveAcrossLine m_autoDriveAcrossLine;
+	autoGetPowerSwitchCL m_autoGetPowerSwitchCL;
 	frc::SendableChooser<frc::Command*> m_chooser;
 };
 

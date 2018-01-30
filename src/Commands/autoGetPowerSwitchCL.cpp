@@ -3,8 +3,10 @@
 #include "../Commands/SwitchHeightCommand.h"
 
 autoGetPowerSwitchCL::autoGetPowerSwitchCL() {
+
 	AddSequential(new DriveForward(4.0));
-	AddSequential(new SwitchHeightCommand());
+	//AddSequential(new SwitchHeightCommand());
+
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
