@@ -9,15 +9,21 @@
 
 std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
 std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>();
+std::shared_ptr<ElevatorSubsystem> Robot::elevatorSubsystem = std::make_unique<ElevatorSubsystem>();
 std::unique_ptr<OI> Robot::oi;
 
 	void Robot::RobotInit() {
-		m_chooser.AddDefault("Default Auto", &m_defaultAuto);
+		m_chooser.AddDefault("Drive Across Line", &m_autoDriveAcrossLine);
 		m_chooser.AddObject("My Auto", &m_myAuto);
 		m_chooser.AddObject("Push Piston", &m_pushPiston);
+		m_chooser.AddObject("Drive Across Line", &m_autoDriveAcrossLine);
+		m_chooser.AddObject("Score switch points CL", &m_autoGetPowerSwitchCL);
+
 
 		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
 		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
+		frc::SmartDashboard::PutData("DriveForward", new DriveForward(10.0));
+		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 		frc::CameraServer::GetInstance()->StartAutomaticCapture();
 		oi.reset(new OI());
@@ -51,16 +57,16 @@ std::unique_ptr<OI> Robot::oi;
 	 * to the if-else structure below with additional strings & commands.
 	 */
 	void Robot::AutonomousInit() {
-		std::string autoSelected = frc::SmartDashboard::GetString(
-				"Auto Selector", "Default");
-		if (autoSelected == "My Auto") {
-			m_autonomousCommand = &m_myAuto;
-		} else if (autoSelected == "PushPiston") {
-			m_autonomousCommand = &m_pushPiston;
-		}
-		else {
-			m_autonomousCommand = &m_defaultAuto;
-		}
+//		std::string autoSelected = frc::SmartDashboard::GetString(
+//				"Auto Select;or", "Default");
+//		if (autoSelected == "My Auto") {
+//			m_autonomousCommand = &m_myAuto;
+//		} else if (autoSelected == "PushPiston") {
+//			m_autonomousCommand = &m_pushPiston;
+//		}
+//		else {
+//			m_autonomousCommand = &m_defaultAuto;
+//		}
 
 		m_autonomousCommand = m_chooser.GetSelected();
 
@@ -86,10 +92,9 @@ std::unique_ptr<OI> Robot::oi;
 	}
 
 	void Robot::TeleopPeriodic() {
+		frc::SmartDashboard::PutNumber(llvm::StringRef("Counter Amount"), Robot::elevatorSubsystem.get()->counter->Get());
 		frc::Scheduler::GetInstance()->Run();
 	}
-
-		frc::Scheduler::GetInstance()->Run(); }
 
 	void Robot::TestInit() {
 

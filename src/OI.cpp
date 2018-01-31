@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "OI.h"
+#include "RobotMap.h"
 #include "Commands/TeleopCommand.h"
 #include <WPILib.h>
 
@@ -14,9 +15,9 @@ OI::OI()
 {
 	// Process operator interface input here.
 
-	 joystickManipulator.reset(new frc::Joystick(2));
-	 joystickRight.reset(new frc::Joystick(1));
-	 joystickLeft.reset(new frc::Joystick(0));
+	 joystickManipulator.reset(new frc::Joystick(JoystickManipulatorPort));
+	 joystickRight.reset(new frc::Joystick(JoystickRightPort));
+	 joystickLeft.reset(new frc::Joystick(JoystickLeftPort));
 }
 
 	std::shared_ptr<frc::Joystick> OI::getJoystickRight()
