@@ -39,6 +39,8 @@ void DriveTrainSubsystem::stopRobot()
 {
 	myRobot.TankDrive(0,0,false);
 }
+
+
 //Private
 void DriveTrainSubsystem::MoveLeft(float speed) {
 	this->DriveTrainLeft0.Set(speed);

@@ -1,12 +1,11 @@
 #ifndef Robot_h
 #define Robot_h
-#include <Commands/Command.h>
-#include <Commands/Scheduler.h>
+#include <TimedRobot.h>
 #include <LiveWindow/LiveWindow.h>
 #include <SmartDashboard/SendableChooser.h>
 #include <SmartDashboard/SmartDashboard.h>
-#include <TimedRobot.h>
-#include <Joystick.h>
+#include <Commands/Command.h>
+#include <Commands/Scheduler.h>
 #include "Commands/ExampleCommand.h"
 #include "Commands/MyAutoCommand.h"
 #include "Commands/PushPiston.h"
@@ -18,7 +17,6 @@
 #include "Subsystems/PneumaticsSubsystem.h"
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"
-#include <CameraServer.h>
 #include "OI.h"
 
 

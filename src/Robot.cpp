@@ -6,6 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
+#include <CameraServer.h>
+#include <Joystick.h>
 
 std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
 std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>();

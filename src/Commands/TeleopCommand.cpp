@@ -20,25 +20,33 @@ void TeleopCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void TeleopCommand::Execute() {
+
 	Robot::driveTrainSubsystem->takeJoystickInputs((Robot::oi->getJoystickRight().get()),(Robot::oi->getJoystickLeft().get()));
-	if (Robot::elevatorSubsystem.get()->movingToPosition == false) {
+
+	if (Robot::elevatorSubsystem.get()->movingToPosition == false)
+	{
 		Robot::elevatorSubsystem.get()->ElevatorSet(Robot::oi->getJoystickManipulator().get()->GetY());
 	}
-	//Joystick Buttons
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMExtendPistonNum)) {
+
+	//Claw Open/Close Buttons
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMExtendPistonNum))
+	{
 		Robot::pneumaticsSubsystem.get()->SetSole1Open();
 	}
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMRetractPistonNum)) {
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMRetractPistonNum))
+	{
 		Robot::pneumaticsSubsystem.get()->SetSole1Close();
 	}
 
-	//Claw Buttons
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(3)) {
+	//Claw Pivot Buttons
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(3))
+	{
 			Robot::elevatorSubsystem.get()->ElevatorClaw(0.7);
 	}
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(4)) {
-				Robot::elevatorSubsystem.get()->ElevatorClaw(-0.7);
-		}
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(4))
+	{
+			Robot::elevatorSubsystem.get()->ElevatorClaw(-0.7);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

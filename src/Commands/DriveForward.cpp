@@ -13,6 +13,7 @@ DriveForward::DriveForward(double seconds) {
 // Called just before this Command runs the first time
 void DriveForward::Initialize() {
 	time->Reset();
+	time->Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
