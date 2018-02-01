@@ -1,10 +1,13 @@
 #include "autoGetPowerSwitchCL.h"
 #include "../Commands/DriveForward.h"
 #include "../Commands/SwitchHeightCommand.h"
+#include "../Robot.h"
 
 autoGetPowerSwitchCL::autoGetPowerSwitchCL() {
 
-	AddSequential(new DriveForward(4.0));
+	if (Robot::gameData == 'L') {
+		AddSequential(new DriveForward(4.0));
+	}
 	//AddSequential(new SwitchHeightCommand());
 
 	// Add Commands here:

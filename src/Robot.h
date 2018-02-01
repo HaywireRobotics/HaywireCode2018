@@ -18,6 +18,8 @@
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"
 #include "OI.h"
+#include "autoChoosers/ChooseSwitch.h"
+#include "autoChoosers/autoChooserBase.h"
 
 
 
@@ -28,6 +30,7 @@ public:
 	static std::shared_ptr<ElevatorSubsystem> elevatorSubsystem;
 	static std::unique_ptr<OI> oi;
 	frc::LiveWindow* lw = frc::LiveWindow::GetInstance();
+	static std::string gameData;
 	void RobotInit() override;
 	void DisabledInit() override;
 	void DisabledPeriodic() override;
@@ -47,6 +50,9 @@ private:
 	autoDriveAcrossLine m_autoDriveAcrossLine;
 	autoGetPowerSwitchCL m_autoGetPowerSwitchCL;
 	frc::SendableChooser<frc::Command*> m_chooser;
+
+	ChooseSwitch w_chooseSwitch;
+	frc::SendableChooser<autoChooserBase> w_chooser;
 };
 
 #endif

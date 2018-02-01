@@ -21,6 +21,7 @@ std::unique_ptr<OI> Robot::oi;
 		m_chooser.AddObject("Drive Across Line", &m_autoDriveAcrossLine);
 		m_chooser.AddObject("Score switch points CL", &m_autoGetPowerSwitchCL);
 
+		w_chooser.AddObject("Switch", w_chooseSwitch);
 
 		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
 		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
@@ -69,7 +70,7 @@ std::unique_ptr<OI> Robot::oi;
 //		else {
 //			m_autonomousCommand = &m_defaultAuto;
 //		}
-
+		this->gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 		m_autonomousCommand = m_chooser.GetSelected();
 
 		if (m_autonomousCommand != nullptr) {
