@@ -8,10 +8,11 @@
 #ifndef SRC_AUTOCHOOSERS_CHOOSESWITCH_H_
 #define SRC_AUTOCHOOSERS_CHOOSESWITCH_H_
 
-class ChooseSwitch : autoChooserBase{
+#include <autoChoosers/autoChooserBase.h>
+
+class ChooseSwitch: public autoChooserBase {
 public:
 	ChooseSwitch();
-	virtual ~ChooseSwitch();
 };
 
 #endif /* SRC_AUTOCHOOSERS_CHOOSESWITCH_H_ */

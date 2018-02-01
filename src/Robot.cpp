@@ -70,7 +70,7 @@ std::unique_ptr<OI> Robot::oi;
 //		else {
 //			m_autonomousCommand = &m_defaultAuto;
 //		}
-		this->gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+		//this->gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 		m_autonomousCommand = m_chooser.GetSelected();
 
 		if (m_autonomousCommand != nullptr) {

@@ -30,7 +30,7 @@ public:
 	static std::shared_ptr<ElevatorSubsystem> elevatorSubsystem;
 	static std::unique_ptr<OI> oi;
 	frc::LiveWindow* lw = frc::LiveWindow::GetInstance();
-	static std::string gameData;
+	//static std::string gameData;
 	void RobotInit() override;
 	void DisabledInit() override;
 	void DisabledPeriodic() override;

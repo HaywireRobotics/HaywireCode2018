@@ -8,9 +8,7 @@
 #include <autoChoosers/ChooseSwitch.h>
 
 ChooseSwitch::ChooseSwitch() {
+	// TODO Auto-generated constructor stub
 
-}
-
-ChooseSwitch::~ChooseSwitch() {
 }
 
