@@ -43,9 +43,12 @@ void TeleopCommand::Execute() {
 	{
 			Robot::elevatorSubsystem.get()->ElevatorClaw(0.7);
 	}
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(4))
+	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(4))
 	{
 			Robot::elevatorSubsystem.get()->ElevatorClaw(-0.7);
+	}
+	else {
+		Robot::elevatorSubsystem.get()->ElevatorClaw(0.0);
 	}
 }
 
