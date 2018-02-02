@@ -41,11 +41,11 @@ void TeleopCommand::Execute() {
 	//Claw Pivot Buttons
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(3))
 	{
-			Robot::elevatorSubsystem.get()->ElevatorClaw(0.7);
+			Robot::elevatorSubsystem.get()->ElevatorClaw(0.5);
 	}
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(4))
 	{
-			Robot::elevatorSubsystem.get()->ElevatorClaw(-0.7);
+			Robot::elevatorSubsystem.get()->ElevatorClaw(-0.5);
 	}
 }
 

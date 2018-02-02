@@ -24,7 +24,7 @@ std::unique_ptr<OI> Robot::oi;
 
 		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
 		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
-		frc::SmartDashboard::PutData("DriveForward", new DriveForward(10.0));
+		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0));
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 		frc::CameraServer::GetInstance()->StartAutomaticCapture();
@@ -70,6 +70,7 @@ std::unique_ptr<OI> Robot::oi;
 //			m_autonomousCommand = &m_defaultAuto;
 //		}
 
+
 		m_autonomousCommand = m_chooser.GetSelected();
 
 		if (m_autonomousCommand != nullptr) {
@@ -85,7 +86,7 @@ std::unique_ptr<OI> Robot::oi;
 	void Robot::TeleopInit() {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
+		// continue until interruted by another command, remove
 		// this line or comment it out.
 		if (m_autonomousCommand != nullptr) {
 			m_autonomousCommand->Cancel();
