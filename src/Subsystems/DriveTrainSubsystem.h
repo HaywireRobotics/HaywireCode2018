@@ -18,6 +18,7 @@
 #include <DigitalInput.h>
 #include <Drive/DifferentialDrive.h>
 #include <SpeedControllerGroup.h>
+#include <PWMVictorSPX.h>
 
 class DriveTrainSubsystem : public frc::Subsystem {
 public:
@@ -32,12 +33,12 @@ public:
 	frc::DigitalInput *inMagneticSwitch;
 
 private:
-	frc::VictorSP DriveTrainLeft0 { DriveTrain1 };
-	frc::VictorSP DriveTrainLeft1 { DriveTrain2 };
+	frc::PWMVictorSPX DriveTrainLeft0 { DriveTrain1 };
+	frc::PWMVictorSPX DriveTrainLeft1 { DriveTrain2 };
 	frc::SpeedControllerGroup LeftGroup {DriveTrainLeft0, DriveTrainLeft1};
 
-	frc::VictorSP DriveTrainRight0 { DriveTrain3 };
-	frc::VictorSP DriveTrainRight1 { DriveTrain4 };
+	frc::PWMVictorSPX DriveTrainRight0 { DriveTrain3 };
+	frc::PWMVictorSPX DriveTrainRight1 { DriveTrain4 };
 	frc::SpeedControllerGroup RightGroup {DriveTrainRight0, DriveTrainRight1};
 
 	frc::DifferentialDrive myRobot{LeftGroup, RightGroup};
