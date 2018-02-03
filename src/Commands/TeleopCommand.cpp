@@ -42,11 +42,11 @@ void TeleopCommand::Execute() {
 	//Cimby System Buttons
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(6))
 	{
-			Robot::climbySubsystem.get()->TapeControl(0.4);
+			Robot::climbySubsystem.get()->TapeControl(0.6);
 	}
 	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(7))
 	{
-			Robot::climbySubsystem.get()->TapeControl(-0.4);
+			Robot::climbySubsystem.get()->TapeControl(-0.5);
 	}
 	else
 	{
@@ -57,7 +57,7 @@ void TeleopCommand::Execute() {
 	{
 			Robot::climbySubsystem.get()->WinchControl(0.7);
 	}
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(9))
+	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(9))
 	{
 				Robot::climbySubsystem.get()->WinchControl(-0.7);
 	}

@@ -6,12 +6,10 @@
 
 autoDriveAcrossLine::autoDriveAcrossLine() {
 
-	//AddSequential(new DriveForward(10.0));
-	AddSequential(new PushPiston());
-    AddSequential(new PullPiston());
-	//AddSequential(new PullPiston());
-
-
+	//So when I run as command button in teleop it this runs perfectly, but when I choose as auto chooser, it skips DriveForward and goes
+	//directly to Pull Piston. Pull/Push piston both work when running in auto group and auto chooser.
+	AddSequential(new DriveForward(2.0));
+	AddSequential(new PullPiston());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

@@ -11,12 +11,11 @@
 
 ClimbySubsystem::ClimbySubsystem()
     : frc::Subsystem("ClimbySubsystem") {
-
 }
 
 void ClimbySubsystem::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new TeleopCommand());
+	//SetDefaultCommand(new TeleopCommand());
 }
 
 void ClimbySubsystem::TapeControl(float speed){

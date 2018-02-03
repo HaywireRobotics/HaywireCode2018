@@ -16,17 +16,19 @@ std::shared_ptr<ClimbySubsystem> Robot::climbySubsystem = std::make_unique<Climb
 std::unique_ptr<OI> Robot::oi;
 
 	void Robot::RobotInit() {
-		m_chooser.AddDefault("Drive Across Line", &m_autoDriveAcrossLine);
-		m_chooser.AddObject("My Auto", &m_myAuto);
+		//m_chooser.AddObject("My Auto", &m_myAuto);
 		m_chooser.AddObject("Push Piston", &m_pushPiston);
+		m_chooser.AddObject("Pull Piston", &m_pullPiston);
 		m_chooser.AddObject("Drive Across Line", &m_autoDriveAcrossLine);
 		m_chooser.AddObject("Score switch points CL", &m_autoGetPowerSwitchCL);
+		//m_chooser.AddDefault("Drive Across Line", &m_autoDriveAcrossLine);
 
 		w_chooser.AddObject("Switch", w_chooseSwitch);
 
 		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
 		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
 		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0));
+		frc::SmartDashboard::PutData("Drive Across Line", new autoDriveAcrossLine());
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 		frc::CameraServer::GetInstance()->StartAutomaticCapture();
@@ -77,7 +79,6 @@ std::unique_ptr<OI> Robot::oi;
 		if (m_autonomousCommand != nullptr) {
 			m_autonomousCommand->Start();
 		}
-//		AddSequential(m_pushPiston);
 	}
 
 	void Robot::AutonomousPeriodic() {
@@ -105,7 +106,6 @@ std::unique_ptr<OI> Robot::oi;
 	}
 
 	void Robot::TestPeriodic() {
-		//lw->Run();
 	}
 
 	// Have it null by default so that if testing teleop it
