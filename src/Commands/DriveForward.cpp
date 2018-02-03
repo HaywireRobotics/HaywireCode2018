@@ -19,7 +19,7 @@ void DriveForward::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void DriveForward::Execute()
 {
-	Robot::driveTrainSubsystem->driveForward(0.5);
+	Robot::driveTrainSubsystem->driveForward(-0.5);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -29,7 +29,7 @@ bool DriveForward::IsFinished() {
 
 // Called once after isFinished returns true
 void DriveForward::End() {
-	//Robot::driveTrainSubsystem->stopRobot();
+	Robot::driveTrainSubsystem->stopRobot();
 }
 
 // Called when another command which require s one or more of the same
