@@ -11,6 +11,7 @@ TeleopCommand::TeleopCommand() {
 	// eg. Requires(Robot::chassis.get());
 	Requires(Robot::driveTrainSubsystem.get());
 	Requires(Robot::elevatorSubsystem.get());
+	Requires(Robot::climbySubsystem.get());
 }
 
 // Called just before this Command runs the first time
@@ -38,6 +39,33 @@ void TeleopCommand::Execute() {
 		Robot::pneumaticsSubsystem.get()->SetSole1Close();
 	}
 
+	//Cimby System Buttons
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(6))
+	{
+			Robot::climbySubsystem.get()->TapeControl(0.4);
+	}
+	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(7))
+	{
+			Robot::climbySubsystem.get()->TapeControl(-0.4);
+	}
+	else
+	{
+		Robot::climbySubsystem.get()->TapeControl(0.0);
+	}
+
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(8))
+	{
+			Robot::climbySubsystem.get()->WinchControl(0.7);
+	}
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(9))
+	{
+				Robot::climbySubsystem.get()->WinchControl(-0.7);
+	}
+	else
+	{
+		Robot::climbySubsystem.get()->WinchControl(0.0);
+	}
+
 	//Claw Pivot Buttons
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(3))
 	{
@@ -50,6 +78,8 @@ void TeleopCommand::Execute() {
 	else {
 		Robot::elevatorSubsystem.get()->ElevatorClaw(0.0);
 	}
+
+
 }
 
 // Make this return true when this Command no longer needs to run execute()

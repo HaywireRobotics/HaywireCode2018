@@ -17,6 +17,7 @@
 #include "Subsystems/PneumaticsSubsystem.h"
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"
+#include "Subsystems/ClimbySubsystem.h"
 #include "OI.h"
 #include "autoChoosers/ChooseSwitch.h"
 #include "autoChoosers/autoChooserBase.h"
@@ -28,6 +29,7 @@ public:
 	static std::shared_ptr<PneumaticsSubsystem> pneumaticsSubsystem;
 	static std::shared_ptr<DriveTrainSubsystem> driveTrainSubsystem;
 	static std::shared_ptr<ElevatorSubsystem> elevatorSubsystem;
+	static std::shared_ptr<ClimbySubsystem> climbySubsystem;
 	static std::unique_ptr<OI> oi;
 	frc::LiveWindow* lw = frc::LiveWindow::GetInstance();
 	//static std::string gameData;

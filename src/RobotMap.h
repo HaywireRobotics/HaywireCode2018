@@ -22,6 +22,9 @@ const int Solenoid1ClosePort = 1;
 
  const int ClawPort4 = 4;
 
+ const int ClimbyTapePort = 2;
+ const int ClimbyWinchPort = 3;
+
 //Joystick Constants
  const int JoystickRightPort = 1;
  const int JoystickLeftPort = 0;
