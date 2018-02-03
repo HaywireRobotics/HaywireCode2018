@@ -45,13 +45,15 @@ public:
 
 private:
 	frc::Command* m_autonomousCommand = nullptr;
+	frc::CommandGroup* a_autonomousCommand = nullptr;
 	ExampleCommand m_defaultAuto;
 	MyAutoCommand m_myAuto;
 	PushPiston m_pushPiston;
 	PullPiston m_pullPiston;
-	autoDriveAcrossLine m_autoDriveAcrossLine;
-	autoGetPowerSwitchCL m_autoGetPowerSwitchCL;
+	autoDriveAcrossLine a_autoDriveAcrossLine;
+	autoGetPowerSwitchCL a_autoGetPowerSwitchCL;
 	frc::SendableChooser<frc::Command*> m_chooser;
+	frc::SendableChooser<frc::CommandGroup*> a_chooser;
 
 	ChooseSwitch w_chooseSwitch;
 	frc::SendableChooser<autoChooserBase> w_chooser;

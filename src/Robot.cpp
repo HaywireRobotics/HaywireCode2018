@@ -17,11 +17,11 @@ std::unique_ptr<OI> Robot::oi;
 
 	void Robot::RobotInit() {
 		//m_chooser.AddObject("My Auto", &m_myAuto);
+		a_chooser.AddObject("DriveAcrossLine", &a_autoDriveAcrossLine);
+		a_chooser.AddObject("Score switch points CL", &a_autoGetPowerSwitchCL);
+
 		m_chooser.AddObject("Push Piston", &m_pushPiston);
 		m_chooser.AddObject("Pull Piston", &m_pullPiston);
-		m_chooser.AddObject("Drive Across Line", &m_autoDriveAcrossLine);
-		m_chooser.AddObject("Score switch points CL", &m_autoGetPowerSwitchCL);
-		//m_chooser.AddDefault("Drive Across Line", &m_autoDriveAcrossLine);
 
 		w_chooser.AddObject("Switch", w_chooseSwitch);
 
@@ -30,7 +30,8 @@ std::unique_ptr<OI> Robot::oi;
 		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0));
 		frc::SmartDashboard::PutData("Drive Across Line", new autoDriveAcrossLine());
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
-		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+		//frc::SmartDashboard::PutData("Command Modes", &m_chooser);
+		frc::SmartDashboard::PutData("Auto Modes", &a_chooser);
 		frc::CameraServer::GetInstance()->StartAutomaticCapture();
 		oi.reset(new OI());
 	}
@@ -74,10 +75,13 @@ std::unique_ptr<OI> Robot::oi;
 //			m_autonomousCommand = &m_defaultAuto;
 //		}
 		//this->gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-		m_autonomousCommand = m_chooser.GetSelected();
 
-		if (m_autonomousCommand != nullptr) {
-			m_autonomousCommand->Start();
+		//m_autonomousCommand = m_chooser.GetSelected();
+
+		a_autonomousCommand = a_chooser.GetSelected();
+
+		if (a_autonomousCommand != nullptr) {
+			a_autonomousCommand->Start();
 		}
 	}
 
