@@ -14,10 +14,12 @@ private:
 	std::shared_ptr<frc::Joystick> joystickManipulator;
 	std::shared_ptr<frc::Joystick> joystickRight;
 	std::shared_ptr<frc::Joystick> joystickLeft;
+	std::shared_ptr<frc::Joystick> joystickManipulator2;
 
 public:
 	OI();
 	std::shared_ptr<frc::Joystick> getJoystickRight();
 	std::shared_ptr<frc::Joystick> getJoystickLeft();
 	std::shared_ptr<frc::Joystick> getJoystickManipulator();
+	std::shared_ptr<frc::Joystick> getJoystickManipulator2();
 };

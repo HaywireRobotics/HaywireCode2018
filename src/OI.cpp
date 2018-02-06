@@ -18,6 +18,7 @@ OI::OI()
 	 joystickManipulator.reset(new frc::Joystick(JoystickManipulatorPort));
 	 joystickRight.reset(new frc::Joystick(JoystickRightPort));
 	 joystickLeft.reset(new frc::Joystick(JoystickLeftPort));
+	 joystickManipulator2.reset(new frc::Joystick(JoystickManipulator2Port));
 }
 
 	std::shared_ptr<frc::Joystick> OI::getJoystickRight()
@@ -33,4 +34,9 @@ OI::OI()
 	 std::shared_ptr<frc::Joystick> OI::getJoystickManipulator()
 	 {
 	    return joystickManipulator;
+	 }
+
+	 std::shared_ptr<frc::Joystick> OI::getJoystickManipulator2()
+	 {
+		 return joystickManipulator2;
 	 }

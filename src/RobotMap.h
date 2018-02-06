@@ -29,6 +29,7 @@ const int Solenoid1ClosePort = 1;
  const int JoystickRightPort = 1;
  const int JoystickLeftPort = 0;
  const int JoystickManipulatorPort = 2;
+ const int JoystickManipulator2Port = 3;
 
 //Button Mappings
  const int JMExtendPistonNum = 1;

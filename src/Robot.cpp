@@ -23,6 +23,7 @@ std::unique_ptr<OI> Robot::oi;
 		m_chooser.AddObject("Push Piston", &m_pushPiston);
 		m_chooser.AddObject("Pull Piston", &m_pullPiston);
 
+		//w_chooser.AddDefault("Switch", w_chooseSwitch);
 		w_chooser.AddObject("Switch", w_chooseSwitch);
 
 		frc::SmartDashboard::PutData("PushPiston", new PushPiston());

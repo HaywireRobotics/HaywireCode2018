@@ -26,7 +26,7 @@ void TeleopCommand::Execute() {
 
 	if (Robot::elevatorSubsystem.get()->movingToPosition == false)
 	{
-		Robot::elevatorSubsystem.get()->ElevatorSet(Robot::oi->getJoystickManipulator().get()->GetY());
+		Robot::elevatorSubsystem.get()->ElevatorSet(Robot::oi->getJoystickManipulator2().get()->GetY());
 	}
 
 	//Claw Open/Close Buttons
@@ -55,7 +55,7 @@ void TeleopCommand::Execute() {
 
 
 	//Winch Control
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(8))
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(10))
 	{
 			Robot::climbySubsystem.get()->WinchControl(1.0);
 	}
