@@ -39,7 +39,7 @@ void TeleopCommand::Execute() {
 		Robot::pneumaticsSubsystem.get()->SetSole1Close();
 	}
 
-	//Cimby System Buttons
+	//Climb System Buttons
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(6))
 	{
 			Robot::climbySubsystem.get()->TapeControl(0.6);
@@ -53,9 +53,11 @@ void TeleopCommand::Execute() {
 		Robot::climbySubsystem.get()->TapeControl(0.0);
 	}
 
+
+	//Winch Control
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(8))
 	{
-			Robot::climbySubsystem.get()->WinchControl(0.7);
+			Robot::climbySubsystem.get()->WinchControl(1.0);
 	}
 	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(9))
 	{
