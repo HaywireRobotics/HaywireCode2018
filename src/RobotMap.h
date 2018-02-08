@@ -19,6 +19,7 @@ const int Solenoid1ClosePort = 1;
 
  const int ElevatorPort0 = 5;
  const int ElevatorPort1 = 6;
+ const int MagySwitchPort0 = 0;
 
  const int ClawPort4 = 4;
 

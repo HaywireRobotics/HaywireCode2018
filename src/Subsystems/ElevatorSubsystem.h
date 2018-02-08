@@ -33,7 +33,7 @@ private:
 	frc::VictorSP claw { ClawPort4 };
 	void SetElevatorSpeed(float speed);
 
-	frc::DigitalInput *limitSwitch;
+	frc::DigitalInput *magySwitch;
 };
 
 #endif  // ElevatorSubsystem_H

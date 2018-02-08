@@ -5,8 +5,8 @@
 #include <iostream>
 
 ElevatorSubsystem::ElevatorSubsystem() : Subsystem("ElevatorSubsystem") {
-	limitSwitch = new frc::DigitalInput(1);
-	counter = new frc::Counter(limitSwitch);
+	magySwitch = new frc::DigitalInput(MagySwitchPort0);
+	counter = new frc::Counter(magySwitch);
 	movingToPosition = false;
 }
 

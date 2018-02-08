@@ -5,6 +5,8 @@
 #include "../OI.h"
 #include "../Commands/PushPiston.h"
 #include "../Commands/PullPiston.h"
+#include <iostream>
+
 
 TeleopCommand::TeleopCommand() {
 	// Use Requires() here to declare subsystem dependencies
@@ -24,6 +26,7 @@ void TeleopCommand::Execute() {
 
 	Robot::driveTrainSubsystem->takeJoystickInputs((Robot::oi->getJoystickRight().get()),(Robot::oi->getJoystickLeft().get()));
 
+
 	if (Robot::elevatorSubsystem.get()->movingToPosition == false)
 	{
 		Robot::elevatorSubsystem.get()->ElevatorSet(Robot::oi->getJoystickManipulator2().get()->GetY());
@@ -39,10 +42,10 @@ void TeleopCommand::Execute() {
 		Robot::pneumaticsSubsystem.get()->SetSole1Close();
 	}
 
-	//Climb System Buttons
+	//Tape Buttons
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(6))
 	{
-			Robot::climbySubsystem.get()->TapeControl(0.6);
+			Robot::climbySubsystem.get()->TapeControl(0.55);
 	}
 	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(7))
 	{
@@ -61,7 +64,7 @@ void TeleopCommand::Execute() {
 	}
 	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(9))
 	{
-				Robot::climbySubsystem.get()->WinchControl(-0.7);
+				Robot::climbySubsystem.get()->WinchControl(-1.0);
 	}
 	else
 	{
