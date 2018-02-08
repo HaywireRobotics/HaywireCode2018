@@ -1,8 +1,18 @@
+#include <CameraServer.h>
 #include "CameraSubsystem.h"
 #include "../RobotMap.h"
 
 CameraSubsystem::CameraSubsystem() : Subsystem("ExampleSubsystem") {
 
+	this->camera = frc::CameraServer::GetInstance()->StartAutomaticCapture();
+	this->camera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture();
+
+	//table = NetworkTable::GetTable("GRIP/myContoursReport");
+	//table1 = NetworkTable::GetTable("CameraPublisher/USB Camera 0/Property");
+
+	this->camera.SetResolution(320, 240);
+	this->camera.SetFPS(30);
+	this->camera1.SetResolution(320, 240);
 }
 
 void CameraSubsystem::InitDefaultCommand() {
@@ -12,3 +22,13 @@ void CameraSubsystem::InitDefaultCommand() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+
+
+void CameraSubsystem::SetCameraAuto() {
+	this->camera.SetExposureManual(3.0);
+}
+
+void CameraSubsystem::SetCameraTeleop() {
+	this->camera.SetExposureManual(40.0);
+	this->camera.SetExposureAuto();
+}
