@@ -5,7 +5,7 @@
 #include <iostream>
 
 ElevatorSubsystem::ElevatorSubsystem() : Subsystem("ElevatorSubsystem") {
-	magySwitch = new frc::DigitalInput(MagySwitchPort0);
+	magySwitch = new frc::DigitalInput(2);
 	counter = new frc::Counter(magySwitch);
 	movingToPosition = false;
 }

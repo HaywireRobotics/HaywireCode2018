@@ -8,6 +8,7 @@
 #include "Robot.h"
 #include <CameraServer.h>
 #include <Joystick.h>
+#include <iostream>
 
 std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
 std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>();
@@ -79,11 +80,30 @@ std::unique_ptr<OI> Robot::oi;
 
 		//m_autonomousCommand = m_chooser.GetSelected();
 
+		std::string gameData;
+		gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 		a_autonomousCommand = a_chooser.GetSelected();
 
-		if (a_autonomousCommand != nullptr) {
-			a_autonomousCommand->Start();
+		std::string whichOne = a_chooser.GetName();
+
+		if (a_autonomousCommand != nullptr)
+		{
+			if(whichOne == "Score switch points CL")
+			{
+				if(gameData[0] == 'L')
+				{
+						a_autonomousCommand->Start();
+				}
+				else
+				{
+				}
+			}
+
 		}
+
+
+
+
 	}
 
 	void Robot::AutonomousPeriodic() {
