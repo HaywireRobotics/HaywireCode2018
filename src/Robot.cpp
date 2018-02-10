@@ -18,11 +18,10 @@ std::unique_ptr<OI> Robot::oi;
 
 	void Robot::RobotInit() {
 		//m_chooser.AddObject("My Auto", &m_myAuto);
-		a_chooser.AddObject("DriveAcrossLine", &a_autoDriveAcrossLine);
-		a_chooser.AddObject("Score switch points CL", &a_autoGetPowerSwitchCL);
+		a_chooser.AddObject("DriveAcrossLine",0);
+		a_chooser.AddObject("DriveSwitch", 1);
 
-		m_chooser.AddObject("Push Piston", &m_pushPiston);
-		m_chooser.AddObject("Pull Piston", &m_pullPiston);
+
 
 		//w_chooser.AddDefault("Switch", w_chooseSwitch);
 		w_chooser.AddObject("Switch", w_chooseSwitch);
@@ -82,28 +81,21 @@ std::unique_ptr<OI> Robot::oi;
 
 		std::string gameData;
 		gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-		a_autonomousCommand = a_chooser.GetSelected();
+		a_autonomousSelect = a_chooser.GetSelected();
 
-		std::string whichOne = a_chooser.GetName();
-
-		if (a_autonomousCommand != nullptr)
+		switch (a_autonomousSelect)
 		{
-			if(whichOne == "Score switch points CL")
-			{
-				if(gameData[0] == 'L')
-				{
-						a_autonomousCommand->Start();
-				}
-				else
-				{
-				}
-			}
-
+			case 0:
+				a_autonomousCommand = new autoDriveAcrossLine();
+				break;
+			case 1:
+				a_autonomousCommand = new DriveToSwitch(gameData);
+				break;
 		}
-
-
-
-
+		if(a_autonomousCommand != nullptr)
+	    {
+	  		a_autonomousCommand->Start();
+	    }
 	}
 
 	void Robot::AutonomousPeriodic() {
@@ -115,9 +107,9 @@ std::unique_ptr<OI> Robot::oi;
 		// teleop starts running. If you want the autonomous to
 		// continue until interruted by another command, remove
 		// this line or comment it out.
-		if (m_autonomousCommand != nullptr) {
-			m_autonomousCommand->Cancel();
-			m_autonomousCommand = nullptr;
+		if (a_autonomousCommand != nullptr) {
+			a_autonomousCommand->Cancel();
+			a_autonomousCommand = nullptr;
 		}
 	}
 
