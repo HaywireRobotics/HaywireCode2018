@@ -14,6 +14,8 @@ public:
 private:
 	float turnAngle;
 	double speed;
+	bool startLoop;
+	float inputAngle;
 };
 
 #endif  // DriveTurn_H

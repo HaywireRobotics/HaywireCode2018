@@ -6,7 +6,9 @@
 DriveTurn::DriveTurn(int angle) {
 	// Use Requires() here to declare subsystem dependencies
 	Requires(Robot::driveTrainSubsystem.get());
-	turnAngle = Robot::driveTrainSubsystem->GetGyroValue() + angle;
+	this->startLoop = true;
+	turnAngle = Robot::driveTrainSubsystem.get()->GetGyroValue() + angle;
+	this->inputAngle = angle;
 	std::cout << turnAngle << std::endl;
 	this->speed = 0.5;
 }
@@ -18,19 +20,24 @@ void DriveTurn::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveTurn::Execute() {
-	std::cout << "Executing" << std::endl;
+	if(this->startLoop) {
+		this->turnAngle = this->inputAngle + Robot::driveTrainSubsystem.get()->GetGyroValue();
+		this->startLoop = false;
+	}
+	//std::cout << "Executing" << std::endl;
 	Robot::driveTrainSubsystem->TankDrive(this->speed, -1 * this->speed * 2);
-	std::cout << "Finished Execute" << std::endl;
+	//std::cout << "Finished Execute" << std::endl;
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveTurn::IsFinished() {
-	return (Robot::driveTrainSubsystem->GetGyroValue() == this->turnAngle);
+	return (Robot::driveTrainSubsystem.get()->GetGyroValue() >= this->turnAngle);
 }
 
 // Called once after isFinished returns true
 void DriveTurn::End() {
-	Robot::driveTrainSubsystem->stopRobot();
+	Robot::driveTrainSubsystem.get()->stopRobot();
+	this->startLoop = true;
 }
 
 // Called when another command which requires one or more of the same
