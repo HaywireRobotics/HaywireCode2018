@@ -11,6 +11,9 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
+private:
+	float turnAngle;
+	double speed;
 };
 
 #endif  // DriveTurn_H

@@ -31,8 +31,10 @@ std::unique_ptr<OI> Robot::oi;
 		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0));
 		frc::SmartDashboard::PutData("Drive Across Line", new autoDriveAcrossLine());
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
+		frc::SmartDashboard::PutData("Drive Turn", new DriveTurn(100.0));
 		//frc::SmartDashboard::PutData("Command Modes", &m_chooser);
 		frc::SmartDashboard::PutData("Auto Modes", &a_chooser);
+		//frc::SmartDashboard::PutData("Angle", Robot::driveTrainSubsystem->gyro);
 		frc::CameraServer::GetInstance()->StartAutomaticCapture();
 		oi.reset(new OI());
 	}
@@ -115,6 +117,7 @@ std::unique_ptr<OI> Robot::oi;
 
 	void Robot::TeleopPeriodic() {
 		frc::SmartDashboard::PutNumber(llvm::StringRef("Counter Amount"), Robot::elevatorSubsystem.get()->counter->Get());
+		frc::SmartDashboard::PutNumber(llvm::StringRef("Angle"), Robot::driveTrainSubsystem.get()->GetGyroValue());
 		frc::Scheduler::GetInstance()->Run();
 	}
 

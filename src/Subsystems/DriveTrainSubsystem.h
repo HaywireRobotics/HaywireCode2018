@@ -27,7 +27,9 @@ public:
 	void takeJoystickInputs(Joystick *left, Joystick *right);
 	void driveForward(double speed);
 	void stopRobot();
-	void TankDrive(float left, float right);
+	void TankDrive(double left, double right);
+	float GetGyroValue();
+	void ResetGyro();
 	frc::ADXRS450_Gyro gyro { frc::SPI::Port::kOnboardCS0 };
 	frc::AnalogInput *range;
 	frc::DigitalInput *inMagneticSwitch;

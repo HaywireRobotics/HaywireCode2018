@@ -14,6 +14,7 @@
 #include "Commands/SwitchHeightCommand.h"
 #include "Commands/DriveForward.h"
 #include "Commands/autoDriveAcrossLine.h"
+#include "Commands/DriveTurn.h"
 #include "Subsystems/PneumaticsSubsystem.h"
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"

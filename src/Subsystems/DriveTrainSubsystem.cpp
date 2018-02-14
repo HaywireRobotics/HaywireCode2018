@@ -22,9 +22,8 @@ void DriveTrainSubsystem::InitDefaultCommand() {
 	SetDefaultCommand(new TeleopCommand());
 }
 //Public
-void DriveTrainSubsystem::TankDrive(float left, float right) {
-	this->MoveLeft(left);
-	this->MoveRight(right);
+void DriveTrainSubsystem::TankDrive(double left, double right) {
+	myRobot.TankDrive(left, right, false);
 }
 
 void DriveTrainSubsystem::driveForward(double speed)
@@ -38,6 +37,12 @@ void DriveTrainSubsystem::takeJoystickInputs(Joystick *left, Joystick *right)
 void DriveTrainSubsystem::stopRobot()
 {
 	myRobot.TankDrive(0,0,false);
+}
+float DriveTrainSubsystem::GetGyroValue() {
+	return gyro.GetAngle();
+}
+void DriveTrainSubsystem::ResetGyro() {
+	gyro.Reset();
 }
 
 
