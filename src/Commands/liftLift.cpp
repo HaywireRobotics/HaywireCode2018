@@ -6,30 +6,35 @@
 /*----------------------------------------------------------------------------*/
 
 #include "liftLift.h"
+#include "Subsystems/ElevatorSubsystem.h"
+#include "../Robot.h"
+#include <iostream>
 
 liftLift::liftLift() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
+	Requires(Robot::elevatorSubsystem.get());
 }
 
 // Called just before this Command runs the first time
 void liftLift::Initialize() {
-
+	Robot::elevatorSubsystem.get()->InitCounter();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void liftLift::Execute() {
-
+	Robot::elevatorSubsystem.get()->ElevateUp(0.5);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool liftLift::IsFinished() {
-	return false;
+	return Robot::elevatorSubsystem.get()->HasSwitchSet();
 }
 
 // Called once after isFinished returns true
 void liftLift::End() {
-
+	std::cout<<"STUFF STUFF STUFF";
+	Robot::elevatorSubsystem.get()->StopElevate();
 }
 
 // Called when another command which requires one or more of the same
