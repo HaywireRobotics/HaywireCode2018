@@ -1,11 +1,11 @@
-#ifndef DriveTurn_H
-#define DriveTurn_H
+#ifndef DriveRightTurn_H
+#define DriveRightTurn_H
 
 #include "Commands/Command.h"
 
-class DriveTurn : public frc::Command {
+class DriveRightTurn : public frc::Command {
 public:
-	DriveTurn(int);
+	DriveRightTurn(float angle);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -16,6 +16,7 @@ private:
 	double speed;
 	bool startLoop;
 	float inputAngle;
+	float rampSpeed;
 };
 
-#endif  // DriveTurn_H
+#endif  // DriveRightTurn_H
