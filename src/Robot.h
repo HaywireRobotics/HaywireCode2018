@@ -5,6 +5,7 @@
 #include <SmartDashboard/SendableChooser.h>
 #include <SmartDashboard/SmartDashboard.h>
 #include <Commands/Command.h>
+#include <Commands/DriveToSwitch.h>
 #include <Commands/Scheduler.h>
 #include "Commands/ExampleCommand.h"
 #include "Commands/MyAutoCommand.h"
@@ -13,7 +14,8 @@
 #include "Commands/SwitchHeightCommand.h"
 #include "Commands/DriveForward.h"
 #include "Commands/autoDriveAcrossLine.h"
-#include "Commands/autoGetPowerSwitchCL.h"
+#include "Commands/DriveRightTurn.h"
+#include "Commands/DriveLeftTurn.h"
 #include "Subsystems/PneumaticsSubsystem.h"
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"
@@ -44,16 +46,13 @@ public:
 	void TestPeriodic() override;
 
 private:
-	frc::Command* m_autonomousCommand = nullptr;
 	frc::CommandGroup* a_autonomousCommand = nullptr;
+	int a_autonomousSelect = 0;
 	ExampleCommand m_defaultAuto;
 	MyAutoCommand m_myAuto;
 	PushPiston m_pushPiston;
 	PullPiston m_pullPiston;
-	autoDriveAcrossLine a_autoDriveAcrossLine;
-	autoGetPowerSwitchCL a_autoGetPowerSwitchCL;
-	frc::SendableChooser<frc::Command*> m_chooser;
-	frc::SendableChooser<frc::CommandGroup*> a_chooser;
+	frc::SendableChooser<int> a_chooser;
 
 	ChooseSwitch w_chooseSwitch;
 	frc::SendableChooser<autoChooserBase> w_chooser;
