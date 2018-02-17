@@ -27,3 +27,19 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 };
+
+/*                ___
+                 /  /|
+   \            /__/ |
+  __\___________|  | |
+ /   |--|    / /|  | |
+/___-___-___/_/_|__| |
+|           | | |  | |
+| () ()  () | | |  | /|
+|-||-||--||-| | |  |/ |
+| () ()  () | | |  || }--\
+|           | | |  ||}--/
+--------------------/
+  ()     ()     ()
+ */
+

@@ -45,7 +45,9 @@ std::unique_ptr<OI> Robot::oi;
 	 * when
 	 * the robot is disabled.
 	 */
-	void Robot::DisabledInit() {}
+	void Robot::DisabledInit() {
+		//this function is currently useless
+	}
 
 	void Robot::DisabledPeriodic() {
 		frc::Scheduler::GetInstance()->Run();
@@ -139,3 +141,8 @@ std::unique_ptr<OI> Robot::oi;
 
 
 START_ROBOT_CLASS(Robot)
+//
+//This is a useless comment
+//with lots of space
+//
+//
