@@ -10,10 +10,11 @@
 #include "../Robot.h"
 #include <iostream>
 
-liftLift::liftLift() {
+liftLift::liftLift(Height height) {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(Robot::elevatorSubsystem.get());
+	this->passedHeight = height;
 }
 
 // Called just before this Command runs the first time
@@ -33,7 +34,6 @@ bool liftLift::IsFinished() {
 
 // Called once after isFinished returns true
 void liftLift::End() {
-	std::cout<<"STUFF STUFF STUFF";
 	Robot::elevatorSubsystem.get()->StopElevate();
 }
 

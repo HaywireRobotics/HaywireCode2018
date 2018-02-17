@@ -8,14 +8,20 @@
 #pragma once
 
 #include <Commands/Command.h>
+#include "../Enums.h"
 
 class liftLift : public frc::Command {
 public:
-	liftLift();
+//	enum Height { switchHeight, go};
+
+	liftLift(Height height);
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
+
+private:
+	Height passedHeight;
 };
 

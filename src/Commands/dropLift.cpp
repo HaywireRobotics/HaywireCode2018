@@ -33,7 +33,6 @@ bool dropLift::IsFinished() {
 
 // Called once after isFinished returns true
 void dropLift::End() {
-	std::cout<<"STUFF STUFF STUFF";
 	Robot::elevatorSubsystem.get()->StopElevate();
 }
 
