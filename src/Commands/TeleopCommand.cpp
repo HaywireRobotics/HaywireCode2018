@@ -5,6 +5,7 @@
 #include "../OI.h"
 #include "../Commands/PushPiston.h"
 #include "../Commands/PullPiston.h"
+#include "../Enums.h"
 #include <iostream>
 
 
@@ -35,11 +36,25 @@ void TeleopCommand::Execute() {
 	//Claw Open/Close Buttons
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMExtendPistonNum))
 	{
-		Robot::pneumaticsSubsystem.get()->SetSole1Open();
+		switch(Robot::driveTrainSubsystem.get()->GetRobotType()) {
+			case competition:
+				Robot::pneumaticsSubsystem.get()->SetSole1Open();
+				break;
+			case practice:
+				Robot::pneumaticsSubsystem.get()->SetSole1Close();
+				break;
+		}
 	}
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMRetractPistonNum))
+	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMRetractPistonNum))
 	{
-		Robot::pneumaticsSubsystem.get()->SetSole1Close();
+		switch(Robot::driveTrainSubsystem.get()->GetRobotType()) {
+			case competition:
+				Robot::pneumaticsSubsystem.get()->SetSole1Close();
+				break;
+			case practice:
+				Robot::pneumaticsSubsystem.get()->SetSole1Open();
+				break;
+		}
 	}
 
 	//Tape Buttons
@@ -49,7 +64,7 @@ void TeleopCommand::Execute() {
 	}
 	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(7))
 	{
-			Robot::climbySubsystem.get()->TapeControl(-0.5);
+			Robot::climbySubsystem.get()->TapeControl(-0.55);
 	}
 	else
 	{

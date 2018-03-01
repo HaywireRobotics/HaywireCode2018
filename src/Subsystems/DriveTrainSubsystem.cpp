@@ -10,10 +10,11 @@
 #include "../RobotMap.h"
 
 
-DriveTrainSubsystem::DriveTrainSubsystem()
+DriveTrainSubsystem::DriveTrainSubsystem(RobotType roboTypeIn)
     : frc::Subsystem("DriveTrainSubsystem") {
 	range = new frc::AnalogInput(0);
 	inMagneticSwitch = new frc::DigitalInput(0);
+	this->roboType = roboTypeIn;
 }
 
 void DriveTrainSubsystem::InitDefaultCommand() {
@@ -32,7 +33,14 @@ void DriveTrainSubsystem::driveForward(double speed)
 }
 void DriveTrainSubsystem::takeJoystickInputs(Joystick *left, Joystick *right)
 {
-	myRobot.TankDrive(left->GetY(),right->GetY(), false);
+	switch (roboType) {
+		case competition:
+			myRobot.TankDrive(-1 * right->GetY(),-1 * left->GetY(), false);
+			break;
+		case practice:
+			myRobot.TankDrive(left->GetY(), right->GetY(), false);
+			break;
+	}
 }
 void DriveTrainSubsystem::stopRobot()
 {
@@ -43,6 +51,10 @@ float DriveTrainSubsystem::GetGyroValue() {
 }
 void DriveTrainSubsystem::ResetGyro() {
 	gyro.Reset();
+}
+
+RobotType DriveTrainSubsystem::GetRobotType() {
+	return this->roboType;
 }
 
 

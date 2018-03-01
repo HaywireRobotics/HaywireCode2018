@@ -8,7 +8,7 @@
 #ifndef SRC_ENUMS_H_
 #define SRC_ENUMS_H_
 enum Height { switchHeight, go };
-
+enum RobotType { competition, practice };
 
 
 

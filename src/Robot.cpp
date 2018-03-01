@@ -6,12 +6,15 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
+#include "Enums.h"
 #include <CameraServer.h>
 #include <Joystick.h>
 #include <iostream>
 
+RobotType robotType = practice;
+
 std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
-std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>();
+std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>(robotType);
 std::shared_ptr<ElevatorSubsystem> Robot::elevatorSubsystem = std::make_unique<ElevatorSubsystem>();
 std::shared_ptr<ClimbySubsystem> Robot::climbySubsystem = std::make_unique<ClimbySubsystem>();
 std::unique_ptr<OI> Robot::oi;

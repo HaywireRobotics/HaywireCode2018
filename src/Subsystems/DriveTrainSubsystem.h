@@ -10,6 +10,7 @@
 #include <Commands/Subsystem.h>
 #include <VictorSP.h>
 #include "../RobotMap.h"
+#include "../Enums.h"
 #include <RobotDrive.h>
 #include <Joystick.h>
 #include "../Commands/TeleopCommand.h"
@@ -22,7 +23,7 @@
 
 class DriveTrainSubsystem : public frc::Subsystem {
 public:
-	DriveTrainSubsystem();
+	DriveTrainSubsystem(RobotType roboTypeIn);
 	void InitDefaultCommand() override;
 	void takeJoystickInputs(Joystick *left, Joystick *right);
 	void driveForward(double speed);
@@ -30,6 +31,7 @@ public:
 	void TankDrive(double left, double right);
 	float GetGyroValue();
 	void ResetGyro();
+	RobotType GetRobotType();
 	frc::ADXRS450_Gyro gyro { frc::SPI::Port::kOnboardCS0 };
 	frc::AnalogInput *range;
 	frc::DigitalInput *inMagneticSwitch;
@@ -46,4 +48,5 @@ private:
 	frc::DifferentialDrive myRobot{LeftGroup, RightGroup};
 	void MoveLeft(float speed);
 	void MoveRight(float speed);
+	RobotType roboType;
 };
