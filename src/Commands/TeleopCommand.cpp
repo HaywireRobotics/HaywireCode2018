@@ -1,10 +1,10 @@
+#include <Commands/CloseClaw.h>
+#include <Commands/OpenClaw.h>
 #include "TeleopCommand.h"
 #include "../Robot.h"
 #include "../RobotMap.h"
 #include "../Subsystems/DriveTrainSubsystem.h"
 #include "../OI.h"
-#include "../Commands/PushPiston.h"
-#include "../Commands/PullPiston.h"
 #include "../Enums.h"
 #include <iostream>
 
@@ -87,15 +87,11 @@ void TeleopCommand::Execute() {
 		Robot::climbySubsystem.get()->WinchControl(0.0);
 	}
 
+	if (Robot::elevatorSubsystem.get()->movingToPosition == false)
+	{
+			Robot::elevatorSubsystem.get()->ElevatorClaw(Robot::oi->getJoystickManipulator().get()->GetY());
+	}
 	//Claw Pivot Buttons
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(3))
-	{
-			Robot::elevatorSubsystem.get()->ElevatorClaw(0.5);
-	}
-	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(4))
-	{
-			Robot::elevatorSubsystem.get()->ElevatorClaw(-0.5);
-	}
 	else {
 		Robot::elevatorSubsystem.get()->ElevatorClaw(0.0);
 	}

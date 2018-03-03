@@ -16,7 +16,7 @@ void ElevatorToSwitch::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ElevatorToSwitch::Execute() {
-	Robot::elevatorSubsystem.get()->ElevateUp(0.5);
+	Robot::elevatorSubsystem.get()->ElevateUp(0.7);
 }
 
 // Make this return true when this Command no longer needs to run execute()

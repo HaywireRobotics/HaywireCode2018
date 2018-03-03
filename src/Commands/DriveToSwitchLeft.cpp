@@ -1,20 +1,28 @@
-#include <Commands/DriveToSwitch.h>
+#include <Commands/CloseClaw.h>
+#include <Commands/OpenClaw.h>
+#include <Commands/DriveToSwitchLeft.h>
 #include "../Commands/DriveForward.h"
 #include "../Commands/SwitchHeightCommand.h"
 #include "../Commands/ElevatorToSwitch.h"
+#include "../Commands/HoldHold.h"
 
-DriveToSwitch::DriveToSwitch(std::string gameData) {
+DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 
-	AddSequential(new DriveForward(2.0));
+
 	if (gameData[0] == 'L')
 	{
+		AddParallel(new ElevatorToSwitch());
+		AddSequential(new DriveForward(6.0));
+		AddParallel(new HoldHold());
+		AddSequential(new OpenClaw());
 
 	}
 	else if(gameData[0] == 'R')
 	{
 
 	}
-	AddSequential(new ElevatorToSwitch());
+	AddSequential(new DriveForward(-2.0));
+
 
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

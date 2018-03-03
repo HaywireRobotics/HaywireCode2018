@@ -1,9 +1,9 @@
 #ifndef TeleopCommand_H
 #define TeleopCommand_H
 
+#include <Commands/CloseClaw.h>
+#include <Commands/OpenClaw.h>
 #include "Commands/Command.h"
-#include "../Commands/PushPiston.h"
-#include "../Commands/PullPiston.h"
 
 class TeleopCommand : public frc::Command {
 public:

@@ -15,7 +15,9 @@ public:
 	void Interrupted();
 private:
 	Timer *time;
+	double speed;
 	double seconds;
+
 };
 
 #endif  // DriveForward_H

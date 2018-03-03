@@ -1,34 +1,36 @@
-#include "PullPiston.h"
-#include "../Subsystems/PneumaticsSubsystem.h"
+#include "../Commands/DriveForward.h"
+#include "Subsystems/ElevatorSubsystem.h"
 #include "../Robot.h"
+#include "HoldHold.h"
 
-PullPiston::PullPiston() {
+HoldHold::HoldHold() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
+	Requires(Robot::elevatorSubsystem.get());
 }
 
 // Called just before this Command runs the first time
-void PullPiston::Initialize() {
+void HoldHold::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void PullPiston::Execute() {
-	Robot::pneumaticsSubsystem->SetSole1Open();
+void HoldHold::Execute() {
+	Robot::elevatorSubsystem.get()->ElevateUp(0.2);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool PullPiston::IsFinished() {
-	return true;
+bool HoldHold::IsFinished() {
+	return Robot::driveTrainSubsystem->GetDrivingBackward();
 }
 
 // Called once after isFinished returns true
-void PullPiston::End() {
+void HoldHold::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void PullPiston::Interrupted() {
+void HoldHold::Interrupted() {
 
 }

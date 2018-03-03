@@ -34,8 +34,8 @@ std::unique_ptr<OI> Robot::oi;
 		//w_chooser.AddDefault("Switch", w_chooseSwitch);
 		w_chooser.AddObject("Switch", w_chooseSwitch);
 
-		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
-		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
+		frc::SmartDashboard::PutData("PushPiston", new CloseClaw());
+		frc::SmartDashboard::PutData("PullPiston", new OpenClaw());
 		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0));
 		frc::SmartDashboard::PutData("Drive Across Line", new autoDriveAcrossLine());
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
@@ -103,8 +103,8 @@ std::unique_ptr<OI> Robot::oi;
 			case 0:
 				a_autonomousCommand = new autoDriveAcrossLine();
 				break;
-			case 1:
-				a_autonomousCommand = new DriveToSwitch(gameData);
+			case 1 :
+				a_autonomousCommand = new DriveToSwitchLeft(gameData);
 				break;
 			case 2:
 				a_autonomousCommand = new DriveToSwitchRight(gameData);

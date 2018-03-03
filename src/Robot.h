@@ -1,16 +1,16 @@
  #ifndef Robot_h
 #define Robot_h
+#include <Commands/CloseClaw.h>
 #include <TimedRobot.h>
 #include <LiveWindow/LiveWindow.h>
 #include <SmartDashboard/SendableChooser.h>
 #include <SmartDashboard/SmartDashboard.h>
 #include <Commands/Command.h>
-#include <Commands/DriveToSwitch.h>
+#include <Commands/DriveToSwitchLeft.h>
+#include <Commands/OpenClaw.h>
 #include <Commands/Scheduler.h>
 #include "Commands/ExampleCommand.h"
 #include "Commands/MyAutoCommand.h"
-#include "Commands/PushPiston.h"
-#include "Commands/PullPiston.h"
 #include "Commands/SwitchHeightCommand.h"
 #include "Commands/DriveForward.h"
 #include "Commands/autoDriveAcrossLine.h"
@@ -54,8 +54,8 @@ private:
 	int a_autonomousSelect = 0;
 	ExampleCommand m_defaultAuto;
 	MyAutoCommand m_myAuto;
-	PushPiston m_pushPiston;
-	PullPiston m_pullPiston;
+	CloseClaw m_pushPiston;
+	OpenClaw m_pullPiston;
 	frc::SendableChooser<int> a_chooser;
 
 	ChooseSwitch w_chooseSwitch;

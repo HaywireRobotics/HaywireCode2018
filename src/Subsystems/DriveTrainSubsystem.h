@@ -31,10 +31,13 @@ public:
 	void TankDrive(double left, double right);
 	float GetGyroValue();
 	void ResetGyro();
+	void SetDrivingBackward(bool input);
+	bool GetDrivingBackward();
 	RobotType GetRobotType();
 	frc::ADXRS450_Gyro gyro { frc::SPI::Port::kOnboardCS0 };
 	frc::AnalogInput *range;
 	frc::DigitalInput *inMagneticSwitch;
+	bool doneDrivingBackward;
 
 private:
 	frc::PWMVictorSPX DriveTrainLeft0 { DriveTrain1 };

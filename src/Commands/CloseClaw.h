@@ -10,9 +10,9 @@
 #include <Commands/Command.h>
 #include <Timer.h>
 
-class PushPiston : public frc::Command {
+class CloseClaw : public frc::Command {
 public:
-	PushPiston();
+	CloseClaw();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
