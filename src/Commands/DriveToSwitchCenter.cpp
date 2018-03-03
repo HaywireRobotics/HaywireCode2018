@@ -5,12 +5,9 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "DriveToSwitchRight.h"
-#include "../Commands/DriveForward.h"
-#include "../Commands/ElevatorToSwitch.h"
-#include "HoldHold.h"
+#include "DriveToSwitchCenter.h"
 
-DriveToSwitchRight::DriveToSwitchRight(std::string gameData) {
+DriveToSwitchCenter::DriveToSwitchCenter(std::string gameData) {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -27,14 +24,10 @@ DriveToSwitchRight::DriveToSwitchRight(std::string gameData) {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	if(gameData[0] == 'R') {
-		AddParallel(new ElevatorToSwitch());
-		AddSequential(new DriveForward(6.0));
-		AddParallel(new HoldHold());
-		AddSequential(new OpenClaw());
-		AddSequential(new DriveForward(-2.0));
+	if (gameData[0] == 'L') {
+		AddSequential(new DriveRightTurn(90));
 	}
-	else if (gameData[0] == 'L') {
-		AddSequential(new DriveForward(4.0));
+	else if (gameData[0] == 'R') {
+
 	}
 }

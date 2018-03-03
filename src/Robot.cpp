@@ -23,8 +23,9 @@ std::unique_ptr<OI> Robot::oi;
 	void Robot::RobotInit() {
 		//m_chooser.AddObject("My Auto", &m_myAuto);
 		a_chooser.AddObject("DriveAcrossLine", 0);
-		a_chooser.AddObject("DriveSwitch", 1);
+		a_chooser.AddObject("DriveSwitchLeft", 1);
 		a_chooser.AddObject("DriveSwitchRight", 2);
+		a_chooser.AddObject("DriveSwitchCenter", 3);
 /*		a_chooser.AddObject("Center", 1);
 		a_chooser.AddObject("Left", 2);
 		a_chooser.AddObject("Right", 3);*/
@@ -108,6 +109,10 @@ std::unique_ptr<OI> Robot::oi;
 				break;
 			case 2:
 				a_autonomousCommand = new DriveToSwitchRight(gameData);
+				break;
+			case 3:
+				a_autonomousCommand = new DriveToSwitchCenter(gameData);
+				break;
 		}
 		if(a_autonomousCommand != nullptr)
 	    {

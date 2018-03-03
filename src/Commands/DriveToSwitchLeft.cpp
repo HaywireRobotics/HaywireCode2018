@@ -15,13 +15,12 @@ DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 		AddSequential(new DriveForward(6.0));
 		AddParallel(new HoldHold());
 		AddSequential(new OpenClaw());
-
+		AddSequential(new DriveForward(-2.0));
 	}
 	else if(gameData[0] == 'R')
 	{
-
+		AddSequential(new DriveForward(4.0));
 	}
-	AddSequential(new DriveForward(-2.0));
 
 
 	// Add Commands here:
