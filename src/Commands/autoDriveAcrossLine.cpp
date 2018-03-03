@@ -1,7 +1,7 @@
+#include <Commands/CloseClaw.h>
+#include <Commands/OpenClaw.h>
 #include "autoDriveAcrossLine.h"
 #include "../Commands/DriveForward.h"
-#include "../Commands/PushPiston.h"
-#include "../Commands/PullPiston.h"
 #include "../Commands/ElevatorToSwitch.h"
 #include "../Commands/SwitchHeightCommand.h"
 #include <Timer.h>

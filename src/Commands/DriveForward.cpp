@@ -8,6 +8,7 @@ DriveForward::DriveForward(double seconds) {
 	Requires(Robot::driveTrainSubsystem.get());
 	time = new Timer();
 	this->seconds = seconds;
+	speed = -0.5;
 }
 
 // Called just before this Command runs the first time
@@ -19,12 +20,24 @@ void DriveForward::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void DriveForward::Execute()
 {
-	Robot::driveTrainSubsystem->driveForward(-0.5);
+	if(seconds < 0)
+		Robot::driveTrainSubsystem->driveForward(-speed);
+	else
+		Robot::driveTrainSubsystem->driveForward(speed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveForward::IsFinished() {
-	return time->HasPeriodPassed(seconds);
+	if(seconds < 0)
+	{
+		return time->HasPeriodPassed(-seconds);
+		Robot::driveTrainSubsystem->SetDrivingBackward(true);
+	}
+	else
+	{
+		return time->HasPeriodPassed(seconds);
+		Robot::driveTrainSubsystem->SetDrivingBackward(false);
+	}
 }
 
 // Called once after isFinished returns true

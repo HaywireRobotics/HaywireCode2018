@@ -15,6 +15,7 @@ DriveTrainSubsystem::DriveTrainSubsystem(RobotType roboTypeIn)
 	range = new frc::AnalogInput(0);
 	inMagneticSwitch = new frc::DigitalInput(0);
 	this->roboType = roboTypeIn;
+	this->doneDrivingBackward = false;
 }
 
 void DriveTrainSubsystem::InitDefaultCommand() {
@@ -57,6 +58,13 @@ RobotType DriveTrainSubsystem::GetRobotType() {
 	return this->roboType;
 }
 
+void DriveTrainSubsystem::SetDrivingBackward(bool input) {
+	this->doneDrivingBackward = input;
+}
+
+bool DriveTrainSubsystem::GetDrivingBackward() {
+	return this->doneDrivingBackward;
+}
 
 //Private
 void DriveTrainSubsystem::MoveLeft(float speed) {
