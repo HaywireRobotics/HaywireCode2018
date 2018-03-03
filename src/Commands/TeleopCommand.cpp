@@ -27,7 +27,7 @@ void TeleopCommand::Execute() {
 
 	Robot::driveTrainSubsystem->takeJoystickInputs((Robot::oi->getJoystickRight().get()),(Robot::oi->getJoystickLeft().get()));
 
-	std::cout << Robot::cameraSubsytem->GetCenterX()[0] << std::endl;
+	//std::cout << Robot::cameraSubsytem->GetCenterX()[0] << std::endl;
 
 	if (Robot::elevatorSubsystem.get()->movingToPosition == false)
 	{
