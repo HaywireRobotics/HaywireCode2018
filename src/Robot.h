@@ -16,6 +16,7 @@
 #include "Commands/autoDriveAcrossLine.h"
 #include "Commands/DriveRightTurn.h"
 #include "Commands/DriveLeftTurn.h"
+#include "Commands/DriveToSwitchRight.h"
 #include "Subsystems/PneumaticsSubsystem.h"
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"

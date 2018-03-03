@@ -24,13 +24,17 @@ std::unique_ptr<OI> Robot::oi;
 		//m_chooser.AddObject("My Auto", &m_myAuto);
 		a_chooser.AddObject("DriveAcrossLine", 0);
 		a_chooser.AddObject("DriveSwitch", 1);
+		a_chooser.AddObject("DriveSwitchRight", 2);
+/*		a_chooser.AddObject("Center", 1);
+		a_chooser.AddObject("Left", 2);
+		a_chooser.AddObject("Right", 3);*/
 
 
 
 		//w_chooser.AddDefault("Switch", w_chooseSwitch);
 		w_chooser.AddObject("Switch", w_chooseSwitch);
 
-	/*	frc::SmartDashboard::PutData("PushPiston", new PushPiston());
+		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
 		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
 		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0));
 		frc::SmartDashboard::PutData("Drive Across Line", new autoDriveAcrossLine());
@@ -40,7 +44,7 @@ std::unique_ptr<OI> Robot::oi;
 		//frc::SmartDashboard::PutData("Command Modes", &m_chooser);
 		frc::SmartDashboard::PutData("Auto Modes", &a_chooser);
 		//frc::SmartDashboard::PutData("Angle", Robot::driveTrainSubsystem->gyro);
-		frc::CameraServer::GetInstance()->StartAutomaticCapture();*/
+		frc::CameraServer::GetInstance()->StartAutomaticCapture();
 		oi.reset(new OI());
 
 		//cameraVisionTable = NetworkTable::GetTable("CameraVision/");
@@ -102,6 +106,8 @@ std::unique_ptr<OI> Robot::oi;
 			case 1:
 				a_autonomousCommand = new DriveToSwitch(gameData);
 				break;
+			case 2:
+				a_autonomousCommand = new DriveToSwitchRight(gameData);
 		}
 		if(a_autonomousCommand != nullptr)
 	    {
