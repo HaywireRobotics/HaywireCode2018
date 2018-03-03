@@ -27,7 +27,6 @@ void TeleopCommand::Execute() {
 
 	Robot::driveTrainSubsystem->takeJoystickInputs((Robot::oi->getJoystickRight().get()),(Robot::oi->getJoystickLeft().get()));
 
-
 	if (Robot::elevatorSubsystem.get()->movingToPosition == false)
 	{
 		Robot::elevatorSubsystem.get()->ElevatorSet(Robot::oi->getJoystickManipulator2().get()->GetY());

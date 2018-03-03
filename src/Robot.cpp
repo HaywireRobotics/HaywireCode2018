@@ -17,11 +17,12 @@ std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_uniq
 std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>(robotType);
 std::shared_ptr<ElevatorSubsystem> Robot::elevatorSubsystem = std::make_unique<ElevatorSubsystem>();
 std::shared_ptr<ClimbySubsystem> Robot::climbySubsystem = std::make_unique<ClimbySubsystem>();
+std::shared_ptr<CameraSubsystem> Robot::cameraSubsytem = std::make_unique<CameraSubsystem>();
 std::unique_ptr<OI> Robot::oi;
 
 	void Robot::RobotInit() {
 		//m_chooser.AddObject("My Auto", &m_myAuto);
-		a_chooser.AddObject("DriveAcrossLine",0);
+		a_chooser.AddObject("DriveAcrossLine", 0);
 		a_chooser.AddObject("DriveSwitch", 1);
 
 
@@ -29,7 +30,7 @@ std::unique_ptr<OI> Robot::oi;
 		//w_chooser.AddDefault("Switch", w_chooseSwitch);
 		w_chooser.AddObject("Switch", w_chooseSwitch);
 
-		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
+	/*	frc::SmartDashboard::PutData("PushPiston", new PushPiston());
 		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
 		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0));
 		frc::SmartDashboard::PutData("Drive Across Line", new autoDriveAcrossLine());
@@ -39,8 +40,10 @@ std::unique_ptr<OI> Robot::oi;
 		//frc::SmartDashboard::PutData("Command Modes", &m_chooser);
 		frc::SmartDashboard::PutData("Auto Modes", &a_chooser);
 		//frc::SmartDashboard::PutData("Angle", Robot::driveTrainSubsystem->gyro);
-		frc::CameraServer::GetInstance()->StartAutomaticCapture();
+		frc::CameraServer::GetInstance()->StartAutomaticCapture();*/
 		oi.reset(new OI());
+
+		//cameraVisionTable = NetworkTable::GetTable("CameraVision/");
 	}
 
 	/**

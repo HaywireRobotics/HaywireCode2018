@@ -7,8 +7,7 @@ CameraSubsystem::CameraSubsystem() : Subsystem("ExampleSubsystem") {
 	this->camera = frc::CameraServer::GetInstance()->StartAutomaticCapture();
 	this->camera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture();
 
-	//table = NetworkTable::GetTable("GRIP/myContoursReport");
-	//table1 = NetworkTable::GetTable("CameraPublisher/USB Camera 0/Property");
+	table = NetworkTable::GetTable("CameraVision/");
 
 	this->camera.SetResolution(320, 240);
 	this->camera.SetFPS(30);
@@ -31,4 +30,8 @@ void CameraSubsystem::SetCameraAuto() {
 void CameraSubsystem::SetCameraTeleop() {
 	this->camera.SetExposureManual(40.0);
 	this->camera.SetExposureAuto();
+}
+
+void CameraSubsystem::GetNetworkTable() {
+	//return this->table;
 }

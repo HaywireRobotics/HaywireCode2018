@@ -20,6 +20,7 @@
 #include "Subsystems/DriveTrainSubsystem.h"
 #include "Subsystems/ElevatorSubsystem.h"
 #include "Subsystems/ClimbySubsystem.h"
+#include "Subsystems/CameraSubsystem.h"
 #include "OI.h"
 #include "autoChoosers/ChooseSwitch.h"
 #include "autoChoosers/autoChooserBase.h"
@@ -32,7 +33,9 @@ public:
 	static std::shared_ptr<DriveTrainSubsystem> driveTrainSubsystem;
 	static std::shared_ptr<ElevatorSubsystem> elevatorSubsystem;
 	static std::shared_ptr<ClimbySubsystem> climbySubsystem;
+	static std::shared_ptr<CameraSubsystem> cameraSubsytem;
 	static std::unique_ptr<OI> oi;
+//	static std::shared_ptr<NetworkTable> cameraVisionTable;
 	frc::LiveWindow* lw = frc::LiveWindow::GetInstance();
 	//static std::string gameData;
 	void RobotInit() override;
