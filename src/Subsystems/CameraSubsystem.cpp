@@ -35,3 +35,7 @@ void CameraSubsystem::SetCameraTeleop() {
 void CameraSubsystem::GetNetworkTable() {
 	//return this->table;
 }
+
+std::vector<double> CameraSubsystem::GetCenterX() {
+	return table->GetNumberArray("centerX", llvm::ArrayRef<double>()); //std::vector<double> centerX = table->GetNumberArray("centerX", llvm::ArrayRef<double>());
+}

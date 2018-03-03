@@ -18,6 +18,7 @@ public:
 	void SetCameraTeleop();
 	void SetCameraAuto();
 	void GetNetworkTable();
+	std::vector<double> GetCenterX();
 };
 
 #endif  // CameraSubsystem_H
