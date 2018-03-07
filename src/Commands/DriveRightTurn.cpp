@@ -8,9 +8,13 @@ DriveRightTurn::DriveRightTurn(float angle) {
 	Requires(Robot::driveTrainSubsystem.get());
 	this->startLoop = true;
 	turnAngle = Robot::driveTrainSubsystem.get()->GetGyroValue() + angle;
+	this->beforeAngle = 0.0;
 	this->inputAngle = angle;
 	this->speed = 0.2;
 	this->rampSpeed = 0.0;
+	this->oneQuarterAngle = angle/4;
+	this->threeQuarterAngle = oneQuarterAngle * 3;
+	this->currentProgress = 0.0;
 }
 
 // Called just before this Command runs the first time
@@ -25,9 +29,12 @@ void DriveRightTurn::Execute() {
 		this->startLoop = false;
 	}
 
-	this->rampSpeed += 0.05;
+/*	this->rampSpeed += 0.05;
 	this->rampSpeed = std::min(double(this->rampSpeed), this->speed);
-	Robot::driveTrainSubsystem->TankDrive(this->rampSpeed, -1 * this->rampSpeed * 2);
+	Robot::driveTrainSubsystem->TankDrive(this->rampSpeed, -1 * this->rampSpeed * 2);*/
+	if (this->oneQuarterAngle + this->beforeAngle <= Robot::driveTrainSubsystem.get()->GetGyroValue()) {//;
+		//Greater than a quarter
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

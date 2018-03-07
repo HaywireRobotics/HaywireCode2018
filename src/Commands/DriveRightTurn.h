@@ -17,6 +17,10 @@ private:
 	bool startLoop;
 	float inputAngle;
 	float rampSpeed;
+	double oneQuarterAngle;
+	double threeQuarterAngle;
+	double currentProgress;
+	double beforeAngle;
 };
 
 #endif  // DriveRightTurn_H
