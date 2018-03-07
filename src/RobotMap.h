@@ -34,9 +34,15 @@ const int Solenoid1ClosePort = 1;
 
 //Button Mappings
  const int JMExtendPistonNum = 1;
- const int JMRetractPistonNum = 2;
+ const int JMRetractPistonNum = 3;
 
  const int JMClawRotatePos = 4;
- const int JMClawRotateNeg = 3;
+ const int JMClawRotateNeg = 5;
+
+ const int JMTapeOut = 6;
+ const int JMTapeIn = 7;
+
+ const int JMWinchIn = 10;
+ const int JMWinchOut = 9;
 
 // const int J

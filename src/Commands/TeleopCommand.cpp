@@ -25,10 +25,10 @@ void TeleopCommand::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void TeleopCommand::Execute() {
 
+	//Tank Drive
 	Robot::driveTrainSubsystem->takeJoystickInputs((Robot::oi->getJoystickRight().get()),(Robot::oi->getJoystickLeft().get()));
 
-	//std::cout << Robot::cameraSubsytem->GetCenterX()[0] << std::endl;
-
+	//Lifting The Lift
 	if (Robot::elevatorSubsystem.get()->movingToPosition == false)
 	{
 		Robot::elevatorSubsystem.get()->ElevatorSet(Robot::oi->getJoystickManipulator2().get()->GetY());
@@ -59,11 +59,11 @@ void TeleopCommand::Execute() {
 	}
 
 	//Tape Buttons
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(6))
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMTapeOut))
 	{
 			Robot::climbySubsystem.get()->TapeControl(0.55);
 	}
-	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(7))
+	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMTapeIn))
 	{
 			Robot::climbySubsystem.get()->TapeControl(-0.55);
 	}
@@ -74,11 +74,11 @@ void TeleopCommand::Execute() {
 
 
 	//Winch Control
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(10))
+	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMWinchIn))
 	{
 			Robot::climbySubsystem.get()->WinchControl(1.0);
 	}
-	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(9))
+	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMWinchOut))
 	{
 				Robot::climbySubsystem.get()->WinchControl(-1.0);
 	}
@@ -87,15 +87,7 @@ void TeleopCommand::Execute() {
 		Robot::climbySubsystem.get()->WinchControl(0.0);
 	}
 
-/*	if (Robot::elevatorSubsystem.get()->movingToPosition == false)
-	{
-			Robot::elevatorSubsystem.get()->ElevatorClaw(Robot::oi->getJoystickManipulator().get()->GetY());
-	}
-	//Claw Pivot Buttons
-	else {
-		Robot::elevatorSubsystem.get()->ElevatorClaw(0.0);
-	}*/
-
+	//Claw Pivot Controls
 	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMClawRotatePos)) {
 		Robot::elevatorSubsystem.get()->ElevatorClaw(0.4);
 	}
