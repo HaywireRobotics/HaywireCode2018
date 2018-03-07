@@ -42,6 +42,7 @@ std::unique_ptr<OI> Robot::oi;
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
 		frc::SmartDashboard::PutData("Right DriveTurn", new DriveRightTurn(100.0));
 		frc::SmartDashboard::PutData("Left DriveTurn", new DriveLeftTurn(-100.0));
+		frc::SmartDashboard::PutNumber("Range", Robot::driveTrainSubsystem.get()->GetRangeValue());
 		//frc::SmartDashboard::PutData("Command Modes", &m_chooser);
 		frc::SmartDashboard::PutData("Auto Modes", &a_chooser);
 		//frc::SmartDashboard::PutData("Angle", Robot::driveTrainSubsystem->gyro);

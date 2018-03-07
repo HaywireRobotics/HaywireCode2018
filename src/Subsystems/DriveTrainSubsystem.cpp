@@ -12,7 +12,7 @@
 
 DriveTrainSubsystem::DriveTrainSubsystem(RobotType roboTypeIn)
     : frc::Subsystem("DriveTrainSubsystem") {
-	range = new frc::AnalogInput(0);
+	this->range = new frc::AnalogInput(0);
 	inMagneticSwitch = new frc::DigitalInput(0);
 	this->roboType = roboTypeIn;
 	this->doneDrivingBackward = false;
@@ -52,6 +52,9 @@ float DriveTrainSubsystem::GetGyroValue() {
 }
 void DriveTrainSubsystem::ResetGyro() {
 	gyro.Reset();
+}
+double DriveTrainSubsystem::GetRangeValue(){
+	return this->range->GetVoltage()/0.0098;
 }
 
 RobotType DriveTrainSubsystem::GetRobotType() {

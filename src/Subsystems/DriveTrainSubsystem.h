@@ -30,6 +30,7 @@ public:
 	void stopRobot();
 	void TankDrive(double left, double right);
 	float GetGyroValue();
+	double GetRangeValue();
 	void ResetGyro();
 	void SetDrivingBackward(bool input);
 	bool GetDrivingBackward();

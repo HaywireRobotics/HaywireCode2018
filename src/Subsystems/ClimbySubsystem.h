@@ -28,7 +28,8 @@ private:
 	// for methods that implement subsystem capabilities
 };
 
-/*                ___
+/*  ASCII ROBOT
+                  ___
                  /  /|
    \            /__/ |
   __\___________|  | |
