@@ -36,4 +36,7 @@ const int Solenoid1ClosePort = 1;
  const int JMExtendPistonNum = 1;
  const int JMRetractPistonNum = 2;
 
+ const int JMClawRotatePos = 4;
+ const int JMClawRotateNeg = 3;
+
 // const int J

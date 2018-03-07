@@ -9,7 +9,7 @@ DriveRightTurn::DriveRightTurn(float angle) {
 	this->startLoop = true;
 	turnAngle = Robot::driveTrainSubsystem.get()->GetGyroValue() + angle;
 	this->inputAngle = angle;
-	this->speed = 0.5;
+	this->speed = 0.2;
 	this->rampSpeed = 0.0;
 }
 
