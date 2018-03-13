@@ -10,7 +10,7 @@ private:
 	// for methods that implement subsystem capabilities
 	std::shared_ptr<NetworkTable> table;
 	cs::UsbCamera camera;
-	cs::UsbCamera camera1;
+	//cs::UsbCamera camera1;
 
 public:
 	CameraSubsystem();

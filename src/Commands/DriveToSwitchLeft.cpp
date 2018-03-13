@@ -5,6 +5,9 @@
 #include "../Commands/SwitchHeightCommand.h"
 #include "../Commands/ElevatorToSwitch.h"
 #include "../Commands/HoldHold.h"
+#include "../Commands/DriveLeftTurn.h"
+#include "../Commands/DriveRightTurn.h"
+#include "../Commands/DriveForwardDistance.h"
 
 DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 
@@ -12,7 +15,7 @@ DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 	if (gameData[0] == 'L')
 	{
 		AddParallel(new ElevatorToSwitch());
-		AddSequential(new DriveForward(6.0));
+		AddSequential(new DriveForwardDistance(260.0));
 		AddParallel(new HoldHold());
 		AddSequential(new OpenClaw());
 		AddSequential(new DriveForward(-2.0));

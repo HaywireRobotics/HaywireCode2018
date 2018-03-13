@@ -42,7 +42,7 @@ std::unique_ptr<OI> Robot::oi;
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
 		frc::SmartDashboard::PutData("Right DriveTurn", new DriveRightTurn(100.0));
 		frc::SmartDashboard::PutData("Left DriveTurn", new DriveLeftTurn(-100.0));
-		frc::SmartDashboard::PutNumber("Range", Robot::driveTrainSubsystem.get()->GetRangeValue());
+		frc::SmartDashboard::PutData("PDP", new PowerDistributionPanel());
 		//frc::SmartDashboard::PutData("Command Modes", &m_chooser);
 		frc::SmartDashboard::PutData("Auto Modes", &a_chooser);
 		//frc::SmartDashboard::PutData("Angle", Robot::driveTrainSubsystem->gyro);
@@ -139,6 +139,7 @@ std::unique_ptr<OI> Robot::oi;
 	void Robot::TeleopPeriodic() {
 		frc::SmartDashboard::PutNumber(llvm::StringRef("Counter Amount"), Robot::elevatorSubsystem.get()->counter->Get());
 		frc::SmartDashboard::PutNumber(llvm::StringRef("Angle"), Robot::driveTrainSubsystem.get()->GetGyroValue());
+		frc::SmartDashboard::PutNumber("Range", Robot::driveTrainSubsystem.get()->GetRangeValue());
 		frc::Scheduler::GetInstance()->Run();
 	}
 
@@ -153,10 +154,5 @@ std::unique_ptr<OI> Robot::oi;
 	// doesn't have undefined behavior and potentially crash.
 
 
-
+//This is a macro that is used for creating a main function
 START_ROBOT_CLASS(Robot)
-//
-//This is a useless comment
-//with lots of space
-//
-//

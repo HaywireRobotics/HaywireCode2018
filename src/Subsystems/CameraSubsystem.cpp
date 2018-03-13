@@ -5,13 +5,13 @@
 CameraSubsystem::CameraSubsystem() : Subsystem("ExampleSubsystem") {
 
 	this->camera = frc::CameraServer::GetInstance()->StartAutomaticCapture();
-	this->camera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture();
+	//this->camera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture();
 
 	//table = NetworkTable::GetTable("CameraVision/");
 
-	this->camera.SetResolution(320, 240);
+	this->camera.SetResolution(640, 480);
 	this->camera.SetFPS(30);
-	this->camera1.SetResolution(320, 240);
+	//this->camera1.SetResolution(320, 240);
 }
 
 void CameraSubsystem::InitDefaultCommand() {

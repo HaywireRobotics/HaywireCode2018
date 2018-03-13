@@ -10,7 +10,6 @@
 //Pneumatics Constants
 const int Solenoid1OpenPort = 0;
 const int Solenoid1ClosePort = 1;
-
 //Motor Constants
  const int DriveTrain1 = 0;
  const int DriveTrain2 = 1;

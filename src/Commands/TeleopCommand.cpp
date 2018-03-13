@@ -87,9 +87,18 @@ void TeleopCommand::Execute() {
 		Robot::climbySubsystem.get()->WinchControl(0.0);
 	}
 
-	//Claw Pivot Controls
-	if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMClawRotatePos)) {
-		Robot::elevatorSubsystem.get()->ElevatorClaw(0.5);
+	if (Robot::elevatorSubsystem.get()->movingToPosition == false)
+	{
+		double speed = 0;
+		if (Robot::oi->getJoystickManipulator().get()->GetRawButton(5)) {
+
+			speed = -1* Robot::oi->getJoystickManipulator().get()->GetZ();
+		}
+		if (Robot::oi->getJoystickManipulator().get()->GetRawButton(4)) {
+					speed = Robot::oi->getJoystickManipulator().get()->GetZ();
+				}
+			//Robot::elevatorSubsystem.get()->ElevatorClaw(Robot::oi->getJoystickManipulator().get()->GetY());
+		Robot:: elevatorSubsystem.get()->ElevatorClaw(speed);
 	}
 	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMClawRotateNeg)) {
 		Robot::elevatorSubsystem.get()->ElevatorClaw(-0.5);
