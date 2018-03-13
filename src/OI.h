@@ -15,6 +15,8 @@ private:
 	std::shared_ptr<frc::Joystick> joystickRight;
 	std::shared_ptr<frc::Joystick> joystickLeft;
 	std::shared_ptr<frc::Joystick> joystickManipulator2;
+	std::shared_ptr<NetworkTable> table;
+	cs::UsbCamera camera;
 
 public:
 	OI();
@@ -22,4 +24,10 @@ public:
 	std::shared_ptr<frc::Joystick> getJoystickLeft();
 	std::shared_ptr<frc::Joystick> getJoystickManipulator();
 	std::shared_ptr<frc::Joystick> getJoystickManipulator2();
+	//CameraSubsystem();
+	void InitDefaultCommand();
+	void SetCameraTeleop();
+	void SetCameraAuto();
+	void GetNetworkTable();
+	std::vector<double> GetCenterX();
 };

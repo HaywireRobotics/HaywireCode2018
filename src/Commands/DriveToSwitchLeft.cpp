@@ -15,7 +15,7 @@ DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 	if (gameData[0] == 'L')
 	{
 		AddParallel(new ElevatorToSwitch());
-		AddSequential(new DriveForwardDistance(260.0));
+		AddSequential(new DriveForward(260.0));
 		AddParallel(new HoldHold());
 		AddSequential(new OpenClaw());
 		AddSequential(new DriveForward(-2.0));

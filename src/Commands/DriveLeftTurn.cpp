@@ -17,7 +17,7 @@ DriveLeftTurn::DriveLeftTurn(float angle) {
 	this->startLoop = true;
 	turnAngle = Robot::driveTrainSubsystem.get()->GetGyroValue() + angle;
 	this->inputAngle = angle;
-	this->speed = -0.5;
+	this->speed = -0.4;
 	this->rampSpeed = 0.0;
 }
 
@@ -29,7 +29,7 @@ void DriveLeftTurn::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void DriveLeftTurn::Execute() {
 	if(this->startLoop) {
-		this->turnAngle = this->inputAngle + Robot::driveTrainSubsystem.get()->GetGyroValue();
+		this->turnAngle = this->inputAngle*.66 + Robot::driveTrainSubsystem.get()->GetGyroValue();
 		this->rampSpeed = 0.0;
 		this->startLoop = false;
 	}

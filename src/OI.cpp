@@ -19,6 +19,19 @@ OI::OI()
 	 joystickRight.reset(new frc::Joystick(JoystickRightPort));
 	 joystickLeft.reset(new frc::Joystick(JoystickLeftPort));
 	 joystickManipulator2.reset(new frc::Joystick(JoystickManipulator2Port));
+
+	 camera = frc::CameraServer::GetInstance()->StartAutomaticCapture();
+	 	//this->camera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture();
+
+	 	//table = NetworkTable::GetTable("CameraVision/");
+
+	 	camera.SetResolution(640, 480);
+	 	camera.SetFPS(30);
+	 	camera.SetExposureManual(3.0);
+	 	camera.SetExposureManual(40.0);
+		camera.SetExposureAuto();
+
+
 }
 
 	std::shared_ptr<frc::Joystick> OI::getJoystickRight()
@@ -39,4 +52,22 @@ OI::OI()
 	 std::shared_ptr<frc::Joystick> OI::getJoystickManipulator2()
 	 {
 		 return joystickManipulator2;
+	 }
+
+
+	 void OI::SetCameraAuto() {
+	 	camera.SetExposureManual(3.0);
+	 }
+
+	 void OI::SetCameraTeleop() {
+	 	camera.SetExposureManual(40.0);
+	 	camera.SetExposureAuto();
+	 }
+
+	 void OI::GetNetworkTable() {
+	 	//return this->table;
+	 }
+
+	 std::vector<double> OI::GetCenterX() {
+	 	return table->GetNumberArray("centerX", llvm::ArrayRef<double>()); //std::vector<double> centerX = table->GetNumberArray("centerX", llvm::ArrayRef<double>());
 	 }

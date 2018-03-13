@@ -17,7 +17,7 @@ std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_uniq
 std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>(robotType);
 std::shared_ptr<ElevatorSubsystem> Robot::elevatorSubsystem = std::make_unique<ElevatorSubsystem>();
 std::shared_ptr<ClimbySubsystem> Robot::climbySubsystem = std::make_unique<ClimbySubsystem>();
-std::shared_ptr<CameraSubsystem> Robot::cameraSubsytem = std::make_unique<CameraSubsystem>();
+//std::shared_ptr<CameraSubsystem> Robot::cameraSubsytem = std::make_unique<CameraSubsystem>();
 std::unique_ptr<OI> Robot::oi;
 
 	void Robot::RobotInit() {
@@ -40,8 +40,8 @@ std::unique_ptr<OI> Robot::oi;
 		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0));
 		frc::SmartDashboard::PutData("Drive Across Line", new autoDriveAcrossLine());
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
-		frc::SmartDashboard::PutData("Right DriveTurn", new DriveRightTurn(100.0));
-		frc::SmartDashboard::PutData("Left DriveTurn", new DriveLeftTurn(-100.0));
+		frc::SmartDashboard::PutData("Right DriveTurn", new DriveRightTurn(45.0));
+		frc::SmartDashboard::PutData("Left DriveTurn", new DriveLeftTurn(-45.0));
 		frc::SmartDashboard::PutData("PDP", new PowerDistributionPanel());
 		//frc::SmartDashboard::PutData("Command Modes", &m_chooser);
 		frc::SmartDashboard::PutData("Auto Modes", &a_chooser);
