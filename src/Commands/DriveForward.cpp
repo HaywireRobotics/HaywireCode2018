@@ -21,9 +21,9 @@ void DriveForward::Initialize() {
 void DriveForward::Execute()
 {
 	if(seconds < 0)
-		Robot::driveTrainSubsystem->driveForward(-speed);
-	else
 		Robot::driveTrainSubsystem->driveForward(speed);
+	else
+		Robot::driveTrainSubsystem->driveForward(-speed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
