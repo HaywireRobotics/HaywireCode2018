@@ -15,14 +15,14 @@ DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 	if (gameData[0] == 'L')
 	{
 		AddParallel(new ElevatorToSwitch());
-		AddSequential(new DriveForward(260.0));
+		AddSequential(new DriveForward(7.0, 0.5));
 		AddParallel(new HoldHold());
 		AddSequential(new OpenClaw());
-		AddSequential(new DriveForward(-2.0));
+		AddSequential(new DriveForward(-2.0, 0.7));
 	}
 	else if(gameData[0] == 'R')
 	{
-		AddSequential(new DriveForward(4.0));
+		AddSequential(new DriveForward(4.0, 0.5));
 	}
 
 

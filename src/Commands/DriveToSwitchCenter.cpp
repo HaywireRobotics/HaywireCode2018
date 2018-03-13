@@ -4,6 +4,16 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
+#include <Commands/CloseClaw.h>
+#include <Commands/OpenClaw.h>
+#include <Commands/DriveToSwitchLeft.h>
+#include "../Commands/DriveForward.h"
+#include "../Commands/SwitchHeightCommand.h"
+#include "../Commands/ElevatorToSwitch.h"
+#include "../Commands/HoldHold.h"
+#include "../Commands/DriveLeftTurn.h"
+#include "../Commands/DriveRightTurn.h"
+#include "../Commands/DriveForwardDistance.h"
 
 #include "DriveToSwitchCenter.h"
 
@@ -25,7 +35,10 @@ DriveToSwitchCenter::DriveToSwitchCenter(std::string gameData) {
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 	if (gameData[0] == 'L') {
-		AddSequential(new DriveRightTurn(90));
+		AddSequential(new DriveForward(2.0,0.5));
+		AddSequential(new DriveRightTurn(32.5));
+		AddParallel(new ElevatorToSwitch());
+		AddSequential(new DriveForward(5.0,0.7));
 	}
 	else if (gameData[0] == 'R') {
 

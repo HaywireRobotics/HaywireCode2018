@@ -37,7 +37,7 @@ std::unique_ptr<OI> Robot::oi;
 
 		frc::SmartDashboard::PutData("PushPiston", new CloseClaw());
 		frc::SmartDashboard::PutData("PullPiston", new OpenClaw());
-		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0));
+		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0,0.5));
 		frc::SmartDashboard::PutData("Drive Across Line", new autoDriveAcrossLine());
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
 		frc::SmartDashboard::PutData("Right DriveTurn", new DriveRightTurn(45.0));
