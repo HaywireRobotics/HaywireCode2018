@@ -2,13 +2,13 @@
 #include "../Robot.h"
 #include <iostream>
 
-DriveForward::DriveForward(double seconds) {
+DriveForward::DriveForward(double seconds, double speed) {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(Robot::driveTrainSubsystem.get());
 	time = new Timer();
 	this->seconds = seconds;
-	speed = -0.5;
+	this->speed = speed;
 }
 
 // Called just before this Command runs the first time

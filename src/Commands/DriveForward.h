@@ -7,7 +7,7 @@
 
 class DriveForward : public frc::Command {
 public:
-	DriveForward(double);
+	DriveForward(double, double);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

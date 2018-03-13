@@ -29,12 +29,12 @@ DriveToSwitchRight::DriveToSwitchRight(std::string gameData) {
 	// arm.
 	if(gameData[0] == 'R') {
 		AddParallel(new ElevatorToSwitch());
-		AddSequential(new DriveForward(6.0));
+		AddSequential(new DriveForward(6.0,0.5));
 		AddParallel(new HoldHold());
 		AddSequential(new OpenClaw());
-		AddSequential(new DriveForward(-2.0));
+		AddSequential(new DriveForward(-2.0,0.5));
 	}
 	else if (gameData[0] == 'L') {
-		AddSequential(new DriveForward(4.0));
+		AddSequential(new DriveForward(4.0, 0.5));
 	}
 }
