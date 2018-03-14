@@ -4,21 +4,10 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-#include <Commands/CloseClaw.h>
-#include <Commands/OpenClaw.h>
-#include <Commands/DriveToSwitchLeft.h>
-#include "../Commands/DriveForward.h"
-#include "../Commands/SwitchHeightCommand.h"
-#include "../Commands/ElevatorToSwitch.h"
-#include "../Commands/HoldHold.h"
-#include "../Commands/DriveLeftTurn.h"
-#include "../Commands/DriveRightTurn.h"
-#include "../Commands/DriveForwardDistance.h"
-#include "../Commands/OpenClaw.h"
 
-#include "DriveToSwitchCenter.h"
+#include "LiftAndHold.h"
 
-DriveToSwitchCenter::DriveToSwitchCenter(std::string gameData) {
+LiftAndHold::LiftAndHold() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -35,17 +24,4 @@ DriveToSwitchCenter::DriveToSwitchCenter(std::string gameData) {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	if (gameData[0] == 'L') {
-		AddSequential(new DriveForward(1.0,0.5));
-		AddSequential(new DriveLeftTurn(-32.5));
-		AddParallel(new ElevatorToSwitch());
-		AddSequential(new DriveForward(2.0,0.5));
-		AddSequential(new DriveRightTurn(32.5));
-		AddParallel(new HoldHold());
-		AddSequential(new DriveForward(1.0, 0.5));
-		AddSequential(new OpenClaw());
-	}
-	else if (gameData[0] == 'R') {
-
-	}
 }
