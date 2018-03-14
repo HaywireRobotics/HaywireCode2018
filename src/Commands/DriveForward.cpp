@@ -20,7 +20,7 @@ void DriveForward::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void DriveForward::Execute()
 {
-	if(seconds < 0)
+	if(this->seconds < 0)
 		Robot::driveTrainSubsystem->driveForward(speed);
 	else
 		Robot::driveTrainSubsystem->driveForward(-speed);
@@ -28,14 +28,14 @@ void DriveForward::Execute()
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveForward::IsFinished() {
-	if(seconds < 0)
+	if(this->seconds < 0)
 	{
-		return time->HasPeriodPassed(-seconds);
+		return this->time->HasPeriodPassed(-seconds);
 		Robot::driveTrainSubsystem->SetDrivingBackward(true);
 	}
 	else
 	{
-		return time->HasPeriodPassed(seconds);
+		return this->time->HasPeriodPassed(seconds);
 		Robot::driveTrainSubsystem->SetDrivingBackward(false);
 	}
 }
