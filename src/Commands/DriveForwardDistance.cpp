@@ -15,6 +15,7 @@ DriveForwardDistance::DriveForwardDistance(double distanceTarget) {
 	Requires(Robot::driveTrainSubsystem.get());
 	this->distanceTarget = Robot::driveTrainSubsystem.get()->GetRangeValue()+ distanceTarget;
 	speed = -0.5;
+	this->distanceActual = 0.0;
 }
 
 // Called just before this Command runs the first time
@@ -33,6 +34,9 @@ bool DriveForwardDistance::IsFinished() {
 	if(distanceActual > distanceTarget)
 	{
 		return true;
+	}
+	else {
+		return false;
 	}
 }
 

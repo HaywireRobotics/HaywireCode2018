@@ -20,16 +20,17 @@ OI::OI()
 	 joystickLeft.reset(new frc::Joystick(JoystickLeftPort));
 	 joystickManipulator2.reset(new frc::Joystick(JoystickManipulator2Port));
 
-	 camera = frc::CameraServer::GetInstance()->StartAutomaticCapture();
+	 this->camera = frc::CameraServer::GetInstance()->StartAutomaticCapture();
 	 	//this->camera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture();
 
 	 	//table = NetworkTable::GetTable("CameraVision/");
 
-	 	camera.SetResolution(640, 480);
-	 	camera.SetFPS(30);
-	 	camera.SetExposureManual(3.0);
-	 	camera.SetExposureManual(40.0);
-		camera.SetExposureAuto();
+//	 this->camera.SetResolution(640, 480);
+	 this->camera.SetResolution(320, 240);
+	 this->camera.SetFPS(15);
+//	 this->camera.SetExposureManual(3.0);
+//	 this->camera.SetExposureManual(40.0);
+	 this->camera.SetExposureAuto();
 
 
 }
@@ -56,12 +57,12 @@ OI::OI()
 
 
 	 void OI::SetCameraAuto() {
-	 	camera.SetExposureManual(3.0);
+	 	this->camera.SetExposureManual(3.0);
 	 }
 
 	 void OI::SetCameraTeleop() {
-	 	camera.SetExposureManual(40.0);
-	 	camera.SetExposureAuto();
+	 	this->camera.SetExposureManual(40.0);
+	 	this->camera.SetExposureAuto();
 	 }
 
 	 void OI::GetNetworkTable() {

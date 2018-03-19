@@ -12,6 +12,10 @@ DriveRightTurn::DriveRightTurn(float angle) {
 	this->inputAngle = angle;
 	this->speed = 0.4;
 	this->rampSpeed = 0.0;
+	this->oneQuarterAngle = 0.0;
+	this->threeQuarterAngle = 0.0;
+	this->currentProgress = 0.0;
+	this->beforeAngle = 0.0;
 }
 
 // Called just before this Command runs the first time
@@ -81,7 +85,7 @@ void DriveRightTurn::Execute() {
 		this->startLoop = false;
 	}
 
-/*	this->rampSpeed += 0.05;
+	this->rampSpeed += 0.05;
 	this->rampSpeed = std::min(double(this->rampSpeed), this->speed);
 	Robot::driveTrainSubsystem->TankDrive(this->rampSpeed, -1 * this->rampSpeed * 2);*/
 /*
