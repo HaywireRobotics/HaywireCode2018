@@ -32,6 +32,7 @@ bool DriveForward::IsFinished() {
 	{
 		return this->time->HasPeriodPassed(-seconds);
 		Robot::driveTrainSubsystem->SetDrivingBackward(true);
+		std::cout << "Set Driving Backward to True" << std::endl;
 	}
 	else
 	{

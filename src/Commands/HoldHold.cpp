@@ -2,6 +2,7 @@
 #include "Subsystems/ElevatorSubsystem.h"
 #include "../Robot.h"
 #include "HoldHold.h"
+#include <iostream>
 
 HoldHold::HoldHold() {
 	// Use Requires() here to declare subsystem dependencies
@@ -22,11 +23,13 @@ void HoldHold::Execute() {
 // Make this return true when this Command no longer needs to run execute()
 bool HoldHold::IsFinished() {
 	return Robot::driveTrainSubsystem->GetDrivingBackward();
+	std::cout << "HoldHold isFinished" << std::endl;
 }
 
 // Called once after isFinished returns true
 void HoldHold::End() {
-
+	Robot::elevatorSubsystem.get()->ElevateUp(0.0);
+	std::cout << "HoldHold End" << std::endl;
 }
 
 // Called when another command which requires one or more of the same

@@ -40,11 +40,11 @@ DriveToSwitchCenter::DriveToSwitchCenter(std::string gameData) {
 		AddSequential(new DriveLeftTurn(-32.5));
 
 		AddParallel(new ElevatorToSwitch());
-		AddSequential(new DriveForward(2.0,0.5));
+		AddSequential(new DriveForward(3.5,0.5));
 		AddSequential(new DriveRightTurn(32.5));
 
 		AddParallel(new HoldHold());
-		AddSequential(new DriveForward(1.5, 0.5));
+		AddSequential(new DriveForward(2.0, 0.5));
 		AddSequential(new OpenClaw());
 		AddSequential(new DriveForward(-1.0, 0.5));
 	}
