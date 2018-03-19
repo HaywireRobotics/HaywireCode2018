@@ -16,7 +16,7 @@ void HoldHold::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void HoldHold::Execute() {
-	Robot::elevatorSubsystem.get()->ElevateUp(0.2);
+	Robot::elevatorSubsystem.get()->ElevateUp(0.3);
 }
 
 // Make this return true when this Command no longer needs to run execute()

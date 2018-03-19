@@ -8,15 +8,17 @@
 #include "../Commands/DriveLeftTurn.h"
 #include "../Commands/DriveRightTurn.h"
 #include "../Commands/DriveForwardDistance.h"
+#include "ElevateToSwitchAndHold.h"
 
 DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 
 
 	if (gameData[0] == 'L')
 	{
-		AddParallel(new ElevatorToSwitch());
-		AddSequential(new DriveForward(7.0, 0.5));
-		AddParallel(new HoldHold());
+		AddParallel(new ElevateToSwitchAndHold());
+		AddSequential(new DriveForward(2.3, 0.7));
+		AddSequential(new DriveRightTurn(90.0));
+		AddSequential(new DriveForward(0.5, 0.5));
 		AddSequential(new OpenClaw());
 		AddSequential(new DriveForward(-1.5,0.4));
 	}
