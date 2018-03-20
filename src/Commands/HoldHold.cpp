@@ -17,6 +17,7 @@ void HoldHold::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void HoldHold::Execute() {
+	std::cout << "HOLDING" << std::endl;
 	Robot::elevatorSubsystem.get()->ElevateUp(0.3);
 }
 
@@ -28,7 +29,7 @@ bool HoldHold::IsFinished() {
 
 // Called once after isFinished returns true
 void HoldHold::End() {
-	Robot::elevatorSubsystem.get()->ElevateUp(0.0);
+	Robot::elevatorSubsystem.get()->ElevateUp(-0.2);
 	std::cout << "HoldHold End" << std::endl;
 }
 

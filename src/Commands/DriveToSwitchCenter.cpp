@@ -15,7 +15,7 @@
 #include "../Commands/DriveRightTurn.h"
 #include "../Commands/DriveForwardDistance.h"
 #include "../Commands/OpenClaw.h"
-
+#include "ElevateToSwitchAndHold.h"
 #include "DriveToSwitchCenter.h"
 
 DriveToSwitchCenter::DriveToSwitchCenter(std::string gameData) {
@@ -49,15 +49,16 @@ DriveToSwitchCenter::DriveToSwitchCenter(std::string gameData) {
 		AddSequential(new DriveForward(-1.0, 0.5));
 	}
 	else if (gameData[0] == 'R') {
-		AddSequential(new DriveForward(1.0, 0.5));
-		AddSequential(new DriveRightTurn(32.5));
+		AddSequential(new DriveForward(0.8, 0.5));
+		AddSequential(new DriveRightTurn(40));
 
-		AddParallel(new ElevatorToSwitch());
-		AddSequential(new DriveForward(3.0, 0.5));
-		AddSequential(new DriveLeftTurn(-32.5));
+//		AddParallel(new ElevatorToSwitch());
+		AddParallel(new ElevateToSwitchAndHold());
+		AddSequential(new DriveForward(2.0, 0.5));
+		AddSequential(new DriveLeftTurn(-31.5));
 
-		AddParallel(new HoldHold());
-		AddSequential(new DriveForward(1.5, 0.5));
+//		AddParallel(new HoldHold());
+		AddSequential(new DriveForward(2.0, 0.5));
 		AddSequential(new OpenClaw());
 		AddSequential(new DriveForward(-1.0, 0.5));
 	}

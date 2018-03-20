@@ -17,6 +17,7 @@ private:
 	Timer *time;
 	double speed;
 	double seconds;
+	bool negative;
 
 };
 

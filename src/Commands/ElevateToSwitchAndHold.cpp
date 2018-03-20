@@ -8,9 +8,11 @@
 #include "ElevateToSwitchAndHold.h"
 #include "ElevatorToSwitch.h"
 #include "HoldHold.h"
+#include <iostream>
 
 ElevateToSwitchAndHold::ElevateToSwitchAndHold() {
 
+	std::cout << "ElevateToSwitchAndHold" << std::endl;
 	AddSequential(new ElevatorToSwitch());
 	AddSequential(new HoldHold());
 	// Add Commands here:

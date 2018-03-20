@@ -9,6 +9,10 @@ DriveForward::DriveForward(double seconds, double speed) {
 	time = new Timer();
 	this->seconds = seconds;
 	this->speed = speed;
+	if (seconds < 0)
+		this->negative = true;
+	else
+		this->negative = false;
 }
 
 // Called just before this Command runs the first time
@@ -31,7 +35,7 @@ bool DriveForward::IsFinished() {
 	if(this->seconds < 0)
 	{
 		Robot::driveTrainSubsystem->SetDrivingBackward(true);
-		std::cout << "Set Driving Backward to True" << std::endl;
+//		std::cout << "Set Driving Backward to " + Robot::driveTrainSubsystem->GetDrivingBackward() << std::endl;
 		return this->time->HasPeriodPassed(-seconds);
 	}
 	else

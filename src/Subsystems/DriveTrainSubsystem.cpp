@@ -10,8 +10,7 @@
 #include "../RobotMap.h"
 
 
-DriveTrainSubsystem::DriveTrainSubsystem(RobotType roboTypeIn)
-    : frc::Subsystem("DriveTrainSubsystem") {
+DriveTrainSubsystem::DriveTrainSubsystem(RobotType roboTypeIn): frc::Subsystem("DriveTrainSubsystem") {
 	this->range = new frc::AnalogInput(0);
 	inMagneticSwitch = new frc::DigitalInput(0);
 	this->roboType = roboTypeIn;

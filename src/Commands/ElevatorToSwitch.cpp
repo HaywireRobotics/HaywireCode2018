@@ -26,7 +26,7 @@ bool ElevatorToSwitch::IsFinished() {
 
 // Called once after isFinished returns true
 void ElevatorToSwitch::End() {
-	std::cout<<"STUFF STUFF STUFF";
+//	std::cout<<"STUFF STUFF STUFF";
 	Robot::elevatorSubsystem.get()->StopElevate();
 }
 

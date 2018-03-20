@@ -10,6 +10,7 @@
 #include "../Commands/ElevatorToSwitch.h"
 #include "HoldHold.h"
 #include "ElevateToSwitchAndHold.h"
+#include <iostream>
 
 DriveToSwitchRight::DriveToSwitchRight(std::string gameData) {
 	// Add Commands here:
@@ -30,11 +31,17 @@ DriveToSwitchRight::DriveToSwitchRight(std::string gameData) {
 	// arm.
 	if(gameData[0] == 'R') {
 		AddParallel(new ElevateToSwitchAndHold());
+		std::cout << "DriveForward" << std::endl;
 		AddSequential(new DriveForward(2.3,0.7));
-		AddSequential(new DriveLeftTurn(-90.0));
-		AddSequential(new DriveForward(0.5, 0.5));
+		std::cout << "DriveLeftTurn" << std::endl;
+		AddSequential(new DriveLeftTurn(-75.0));
+		std::cout << "DriveForward" << std::endl;
+		AddSequential(new DriveForward(0.3, 0.5));
+		std::cout << "OpenClaw" << std::endl;
 		AddSequential(new OpenClaw());
+		std::cout << "DriveForward" << std::endl;
 		AddSequential(new DriveForward(-1.5,0.4));
+		std::cout << "DriveToSwitchRight complete" << std::endl;
 	}
 	else if (gameData[0] == 'L') {
 		AddSequential(new DriveForward(4.0, 0.5));

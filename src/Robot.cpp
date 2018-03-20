@@ -96,6 +96,7 @@ std::unique_ptr<OI> Robot::oi;
 
 		//m_autonomousCommand = m_chooser.GetSelected();
 
+		std::cout << "Auto Init" << std::endl;
 		std::string gameData;
 		gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 		frc::SmartDashboard::PutString("GameData", gameData);
