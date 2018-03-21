@@ -52,6 +52,9 @@ std::unique_ptr<OI> Robot::oi;
 		//cameraVisionTable = NetworkTable::GetTable("CameraVision/");
 	}
 
+	void Robot::RobotPeriodic() {
+	}
+
 	/**
 	 * This function is called once each time the robot enters Disabled
 	 * mode.
