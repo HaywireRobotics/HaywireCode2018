@@ -22,8 +22,17 @@ DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 		AddSequential(new OpenClaw());
 		AddSequential(new DriveForward(-1.5,0.4));
 	}
-	else if(gameData[0] == 'R')
+	else if(gameData[1] == 'L')
 	{
+		AddSequential(new DriveForward(4.0, 0.6));
+		AddSequential(new DriveRightTurn(90.0));
+		AddSequential(new DriveForward(1.0, 0.5));
+		AddSequential(new DriveLeftTurn(-90.0));
+		AddSequential(new DriveForward(1.0, 0.5));
+		AddSequential(new OpenClaw());
+		AddSequential(new DriveForward(1.0, 0.4));
+	}
+	else {
 		AddSequential(new DriveForward(4.0, 0.5));
 	}
 
