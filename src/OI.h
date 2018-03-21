@@ -17,6 +17,7 @@ private:
 	std::shared_ptr<frc::Joystick> joystickManipulator2;
 	std::shared_ptr<NetworkTable> table;
 	cs::UsbCamera camera;
+	cs::UsbCamera camera1;
 
 public:
 	OI();

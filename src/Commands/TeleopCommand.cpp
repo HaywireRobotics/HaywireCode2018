@@ -89,7 +89,7 @@ void TeleopCommand::Execute() {
 
 	if (Robot::elevatorSubsystem.get()->movingToPosition == false)
 	{
-		double speed = 0;
+		/*double speed = 0;
 		if (Robot::oi->getJoystickManipulator().get()->GetRawButton(5)) {
 
 			speed = -1* Robot::oi->getJoystickManipulator().get()->GetZ();
@@ -98,7 +98,8 @@ void TeleopCommand::Execute() {
 					speed = Robot::oi->getJoystickManipulator().get()->GetZ();
 				}
 			//Robot::elevatorSubsystem.get()->ElevatorClaw(Robot::oi->getJoystickManipulator().get()->GetY());
-		Robot:: elevatorSubsystem.get()->ElevatorClaw(speed);
+		Robot:: elevatorSubsystem.get()->ElevatorClaw(speed);*/
+		Robot::elevatorSubsystem.get()->ElevatorClaw(Robot::oi->getJoystickManipulator().get()->GetY());
 	}
 	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMClawRotateNeg)) {
 		Robot::elevatorSubsystem.get()->ElevatorClaw(-0.5);

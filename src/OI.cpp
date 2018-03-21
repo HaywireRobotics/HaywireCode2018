@@ -21,16 +21,20 @@ OI::OI()
 	 joystickManipulator2.reset(new frc::Joystick(JoystickManipulator2Port));
 
 	 this->camera = frc::CameraServer::GetInstance()->StartAutomaticCapture();
-	 	//this->camera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture();
+	 this->camera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture();
 
 	 	//table = NetworkTable::GetTable("CameraVision/");
 
-//	 this->camera.SetResolution(640, 480);
-	 this->camera.SetResolution(320, 240);
+	 this->camera.SetResolution(640, 480);
+//	 this->camera.SetResolution(320, 240);
 	 this->camera.SetFPS(15);
 //	 this->camera.SetExposureManual(3.0);
 //	 this->camera.SetExposureManual(40.0);
 	 this->camera.SetExposureAuto();
+
+	 this->camera1.SetResolution(640, 480);
+	 this->camera1.SetFPS(15);
+	 this->camera1.SetExposureAuto();
 
 
 }

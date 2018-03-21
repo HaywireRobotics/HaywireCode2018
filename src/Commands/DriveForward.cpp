@@ -19,6 +19,7 @@ DriveForward::DriveForward(double seconds, double speed) {
 void DriveForward::Initialize() {
 	time->Reset();
 	time->Start();
+	Robot::driveTrainSubsystem->SetDrivingBackward(false);
 }
 
 // Called repeatedly when this Command is scheduled to run
