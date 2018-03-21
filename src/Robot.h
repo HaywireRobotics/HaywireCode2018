@@ -41,6 +41,7 @@ public:
 	frc::LiveWindow* lw = frc::LiveWindow::GetInstance();
 	//static std::string gameData;
 	void RobotInit() override;
+	void RobotPeriodic() override;
 	void DisabledInit() override;
 	void DisabledPeriodic() override;
 	void AutonomousInit() override;
