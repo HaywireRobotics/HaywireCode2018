@@ -1,6 +1,13 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+#include "DriveToScaleLeft.h"
 #include "../Commands/CloseClaw.h"
 #include "../Commands/OpenClaw.h"
-#include "../Commands/DriveToSwitchLeft.h"
 #include "../Commands/DriveForward.h"
 #include "../Commands/SwitchHeightCommand.h"
 #include "../Commands/ElevatorToSwitch.h"
@@ -13,19 +20,9 @@
 #include "../Commands/ElevateToScaleAndHold.h"
 #include <iostream>
 
-DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
+DriveToScaleLeft::DriveToScaleLeft(std::string gameData) {
 
-
-	if (gameData[0] == 'L')
-	{
-		AddParallel(new ElevateToSwitchAndHold());
-		AddSequential(new DriveForward(2.3, 0.7));
-		AddSequential(new DriveRightTurn(90.0));
-		AddSequential(new DriveForward(0.5, 0.5));
-		AddSequential(new OpenClaw());
-		AddSequential(new DriveForward(-1.5,0.4));
-	}
-	else if(gameData[1] == 'L')
+	if(gameData[0] == 'L')
 	{
 		std::cout<<"DriveForward"<<std::endl;
 		AddSequential(new DriveForward(3.2, 0.8));
@@ -46,11 +43,10 @@ DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 		AddSequential(new DriveRightTurn(38.5));
 		AddSequential(new DriveForward(2.0, 0.5));
 	}
-	else {
-		AddSequential(new DriveForward(4.0, 0.5));
-	}
-
-
+	else if (gameData[1] == 'R')
+	{
+		AddSequential(new DriveForward(5.0, 0.5));
+    }
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

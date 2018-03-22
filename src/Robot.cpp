@@ -26,6 +26,8 @@ std::unique_ptr<OI> Robot::oi;
 		a_chooser.AddObject("DriveSwitchLeft", 1);
 		a_chooser.AddObject("DriveSwitchRight", 2);
 		a_chooser.AddObject("DriveSwitchCenter", 3);
+		a_chooser.AddObject("DriveScaleRight", 4);
+		a_chooser.AddObject("DriveScaleLeft", 5);
 /*		a_chooser.AddObject("Center", 1);
 		a_chooser.AddObject("Left", 2);
 		a_chooser.AddObject("Right", 3);*/
@@ -118,6 +120,12 @@ std::unique_ptr<OI> Robot::oi;
 				break;
 			case 3:
 				a_autonomousCommand = new DriveToSwitchCenter(gameData);
+				break;
+			case 4:
+				a_autonomousCommand = new DriveToScaleRight(gameData);
+				break;
+			case 5:
+				a_autonomousCommand = new DriveToScaleLeft(gameData);
 				break;
 		}
 		if(a_autonomousCommand != nullptr)

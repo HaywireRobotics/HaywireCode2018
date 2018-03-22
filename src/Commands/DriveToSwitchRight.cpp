@@ -8,8 +8,9 @@
 #include "DriveToSwitchRight.h"
 #include "../Commands/DriveForward.h"
 #include "../Commands/ElevatorToSwitch.h"
-#include "HoldHold.h"
-#include "ElevateToSwitchAndHold.h"
+#include "../Commands/ElevatorToScale.h"
+#include "../Commands/HoldHold.h"
+#include "../Commands/ElevateToSwitchAndHold.h"
 #include <iostream>
 
 DriveToSwitchRight::DriveToSwitchRight(std::string gameData) {
@@ -43,7 +44,31 @@ DriveToSwitchRight::DriveToSwitchRight(std::string gameData) {
 		AddSequential(new DriveForward(-1.5,0.4));
 		std::cout << "DriveToSwitchRight complete" << std::endl;
 	}
-	else if (gameData[0] == 'L') {
-		AddSequential(new DriveForward(4.0, 0.5));
+
+	else if(gameData[1] == 'R')
+		{
+			std::cout<<"DriveForward"<<std::endl;
+			AddSequential(new DriveForward(3.3, 0.8));
+			std::cout<<"DriveRightTurn"<<std::endl;
+			AddSequential(new DriveLeftTurn(-77.0));
+			std::cout<<"DriveBackward"<<std::endl;
+			AddSequential(new DriveForward(-2.3, 0.5));
+			std::cout<<"Elevator to scale"<<std::endl;
+			AddSequential(new ElevatorToScale());
+			std::cout<<"Hold"<<std::endl;
+			AddParallel(new HoldHold());
+			std::cout<<"Drive Forward"<<std::endl;
+			AddSequential(new DriveForward(1.7, 0.5));
+			std::cout<<"Open Claw"<<std::endl;
+			AddSequential(new OpenClaw());
+			std::cout<<"Drive backward"<<std::endl;
+			AddSequential(new DriveForward(-3.0, 0.45));
+			AddSequential(new DriveLeftTurn(-38.5));
+			AddSequential(new DriveForward(2.0, 0.5));
+		}
+
+	else if (gameData[1] == 'L') {
+		AddSequential(new DriveForward(5.0, 0.5));
 	}
+
 }

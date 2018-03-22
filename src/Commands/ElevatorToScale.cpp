@@ -22,12 +22,12 @@ void ElevatorToScale::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ElevatorToScale::Execute() {
-	Robot::elevatorSubsystem.get()->ElevateUp(0.7);
+	Robot::elevatorSubsystem.get()->ElevateUp(0.8);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ElevatorToScale::IsFinished() {
-	return this->time->HasPeriodPassed(5.0);
+	return this->time->HasPeriodPassed(4.5);
 }
 
 // Called once after isFinished returns true

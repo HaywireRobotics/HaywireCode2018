@@ -8,7 +8,7 @@
 
 autoDriveAcrossLine::autoDriveAcrossLine() {
 
-	AddSequential(new DriveForward(4.0,0.5));
+	AddSequential(new DriveForward(7.0,0.5));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

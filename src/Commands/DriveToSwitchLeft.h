@@ -5,7 +5,7 @@
 
 class DriveToSwitchLeft : public frc::CommandGroup {
 public:
-	DriveToSwitchLeft(std::string);
+	DriveToSwitchLeft(std::string gameData);
 };
 
 #endif  // autoGetPowerSwitchCL_H
