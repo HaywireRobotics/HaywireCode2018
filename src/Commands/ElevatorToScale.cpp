@@ -27,7 +27,7 @@ void ElevatorToScale::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ElevatorToScale::IsFinished() {
-	return this->time->HasPeriodPassed(3.0);
+	return this->time->HasPeriodPassed(5.0);
 }
 
 // Called once after isFinished returns true
