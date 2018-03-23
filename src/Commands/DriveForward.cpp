@@ -51,6 +51,9 @@ void DriveForward::End() {
 	if (this->seconds < 0) {
 		Robot::driveTrainSubsystem->SetDrivingBackward(true);
 	}
+	else {
+		Robot::clawSubsystem->SetDropClaw(true);
+	}
 //	Robot::driveTrainSubsystem->SetDrivingBackward(false);
 	Robot::driveTrainSubsystem->stopRobot();
 }

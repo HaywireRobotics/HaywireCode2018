@@ -17,6 +17,7 @@ std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_uniq
 std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>(robotType);
 std::shared_ptr<ElevatorSubsystem> Robot::elevatorSubsystem = std::make_unique<ElevatorSubsystem>();
 std::shared_ptr<ClimbySubsystem> Robot::climbySubsystem = std::make_unique<ClimbySubsystem>();
+std::shared_ptr<ClawSubsystem> Robot::clawSubsystem = std::make_unique<ClawSubsystem>();
 //std::shared_ptr<CameraSubsystem> Robot::cameraSubsytem = std::make_unique<CameraSubsystem>();
 std::unique_ptr<OI> Robot::oi;
 
