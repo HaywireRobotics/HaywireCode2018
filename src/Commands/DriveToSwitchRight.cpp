@@ -30,42 +30,29 @@ DriveToSwitchRight::DriveToSwitchRight(std::string gameData) {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	if(gameData[0] == 'R') {
+	if(gameData[0] == 'R')
+	{
 		AddParallel(new ElevateToSwitchAndHold());
-		std::cout << "DriveForward" << std::endl;
 		AddSequential(new DriveForward(2.3,0.7));
-		std::cout << "DriveLeftTurn" << std::endl;
 		AddSequential(new DriveLeftTurn(-75.0));
-		std::cout << "DriveForward" << std::endl;
 		AddSequential(new DriveForward(0.3, 0.5));
-		std::cout << "OpenClaw" << std::endl;
 		AddSequential(new OpenClaw());
-		std::cout << "DriveForward" << std::endl;
 		AddSequential(new DriveForward(-1.5,0.4));
-		std::cout << "DriveToSwitchRight complete" << std::endl;
 	}
 
 	else if(gameData[1] == 'R')
-		{
-			std::cout<<"DriveForward"<<std::endl;
-			AddSequential(new DriveForward(3.3, 0.8));
-			std::cout<<"DriveRightTurn"<<std::endl;
+	{
+			AddSequential(new DriveForward(3.1, 0.8));
 			AddSequential(new DriveLeftTurn(-77.0));
-			std::cout<<"DriveBackward"<<std::endl;
 			AddSequential(new DriveForward(-2.3, 0.5));
-			std::cout<<"Elevator to scale"<<std::endl;
 			AddSequential(new ElevatorToScale());
-			std::cout<<"Hold"<<std::endl;
 			AddParallel(new HoldHold());
-			std::cout<<"Drive Forward"<<std::endl;
 			AddSequential(new DriveForward(1.7, 0.5));
-			std::cout<<"Open Claw"<<std::endl;
 			AddSequential(new OpenClaw());
-			std::cout<<"Drive backward"<<std::endl;
 			AddSequential(new DriveForward(-3.0, 0.45));
 			AddSequential(new DriveLeftTurn(-38.5));
 			AddSequential(new DriveForward(2.0, 0.5));
-		}
+	}
 
 	else if (gameData[1] == 'L') {
 		AddSequential(new DriveForward(5.0, 0.5));

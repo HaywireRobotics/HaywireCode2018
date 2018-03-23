@@ -25,29 +25,38 @@ DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 		AddSequential(new OpenClaw());
 		AddSequential(new DriveForward(-1.5,0.4));
 	}
+
 	else if(gameData[1] == 'L')
 	{
-		std::cout<<"DriveForward"<<std::endl;
-		AddSequential(new DriveForward(3.2, 0.8));
-		std::cout<<"DriveRightTurn"<<std::endl;
+		AddSequential(new DriveForward(2.5,0.8));
+	}
+
+	/* Original Scale/Forward/90 degrees
+	else if(gameData[1] == 'L')
+	{
+		AddSequential(new DriveForward(3.2,0.8));
 		AddSequential(new DriveRightTurn(77.0));
-		std::cout<<"DriveBackward"<<std::endl;
-		AddSequential(new DriveForward(-1.8, 0.5));
-		std::cout<<"Elevator to scale"<<std::endl;
+		AddSequential(new DriveForward(-1.6, 0.5));
 		AddSequential(new ElevatorToScale());
-		std::cout<<"Hold"<<std::endl;
 		AddParallel(new HoldHold());
-		std::cout<<"Drive Forward"<<std::endl;
 		AddSequential(new DriveForward(1.5, 0.5));
-		std::cout<<"Open Claw"<<std::endl;
 		AddSequential(new OpenClaw());
-		std::cout<<"Drive backward"<<std::endl;
 		AddSequential(new DriveForward(-2.5, 0.45));
 		AddSequential(new DriveRightTurn(38.5));
 		AddSequential(new DriveForward(2.0, 0.5));
 	}
-	else {
-		AddSequential(new DriveForward(4.0, 0.5));
+	*/
+	else
+	{
+		AddSequential(new DriveForward(2.68, 0.8));
+		AddSequential(new DriveRightTurn(74.0));
+		AddSequential(new DriveForward(2.3, 0.8));
+		AddSequential(new DriveLeftTurn(-79.0));
+		AddSequential(new ElevatorToScale());
+		AddParallel(new HoldHold());
+		AddSequential(new DriveForward(2.0, 0.5));
+		AddSequential(new OpenClaw());
+		AddSequential(new DriveForward(-1.0, 0.45));
 	}
 
 
