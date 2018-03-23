@@ -17,11 +17,12 @@ std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_uniq
 std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>(robotType);
 std::shared_ptr<ElevatorSubsystem> Robot::elevatorSubsystem = std::make_unique<ElevatorSubsystem>();
 std::shared_ptr<ClimbySubsystem> Robot::climbySubsystem = std::make_unique<ClimbySubsystem>();
+std::shared_ptr<ClawSubsystem> Robot::clawSubsystem = std::make_unique<ClawSubsystem>();
 //std::shared_ptr<CameraSubsystem> Robot::cameraSubsytem = std::make_unique<CameraSubsystem>();
 std::unique_ptr<OI> Robot::oi;
 
 	void Robot::RobotInit() {
-		//m_chooser.AddObject("My Auto", &m_myAuto);
+		//Autonomous Options
 		a_chooser.AddObject("DriveAcrossLine", 0);
 		a_chooser.AddObject("DriveSwitchLeft", 1);
 		a_chooser.AddObject("DriveSwitchRight", 2);
@@ -34,9 +35,10 @@ std::unique_ptr<OI> Robot::oi;
 
 
 
-		//w_chooser.AddDefault("Switch", w_chooseSwitch);
+
 		w_chooser.AddObject("Switch", w_chooseSwitch);
 
+		//Command Options
 		frc::SmartDashboard::PutData("PushPiston", new CloseClaw());
 		frc::SmartDashboard::PutData("PullPiston", new OpenClaw());
 		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0,0.5));
@@ -44,14 +46,10 @@ std::unique_ptr<OI> Robot::oi;
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
 		frc::SmartDashboard::PutData("Right DriveTurn", new DriveRightTurn(45.0));
 		frc::SmartDashboard::PutData("Left DriveTurn", new DriveLeftTurn(-45.0));
-		//frc::SmartDashboard::PutData("PDP", new PowerDistributionPanel());
-		//frc::SmartDashboard::PutData("Command Modes", &m_chooser);
 		frc::SmartDashboard::PutData("Auto Modes", &a_chooser);
-		//frc::SmartDashboard::PutData("Angle", Robot::driveTrainSubsystem->gyro);
-		//frc::CameraServer::GetInstance()->StartAutomaticCapture();
 		oi.reset(new OI());
 
-		//cameraVisionTable = NetworkTable::GetTable("CameraVision/");
+
 	}
 
 	void Robot::RobotPeriodic() {

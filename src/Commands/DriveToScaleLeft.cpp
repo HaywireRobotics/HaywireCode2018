@@ -18,27 +18,22 @@
 #include "../Commands/ElevateToSwitchAndHold.h"
 #include "../Commands/ElevatorToScale.h"
 #include "../Commands/ElevateToScaleAndHold.h"
+#include "LiftClaw.h"
 #include <iostream>
 
 DriveToScaleLeft::DriveToScaleLeft(std::string gameData) {
 
 	if(gameData[0] == 'L')
 	{
-		std::cout<<"DriveForward"<<std::endl;
 		AddSequential(new DriveForward(3.2, 0.8));
-		std::cout<<"DriveRightTurn"<<std::endl;
 		AddSequential(new DriveRightTurn(77.0));
-		std::cout<<"DriveBackward"<<std::endl;
 		AddSequential(new DriveForward(-1.8, 0.5));
-		std::cout<<"Elevator to scale"<<std::endl;
 		AddSequential(new ElevatorToScale());
-		std::cout<<"Hold"<<std::endl;
+
 		AddParallel(new HoldHold());
-		std::cout<<"Drive Forward"<<std::endl;
+		AddParallel(new LiftClaw());
 		AddSequential(new DriveForward(1.5, 0.5));
-		std::cout<<"Open Claw"<<std::endl;
 		AddSequential(new OpenClaw());
-		std::cout<<"Drive backward"<<std::endl;
 		AddSequential(new DriveForward(-2.5, 0.45));
 		AddSequential(new DriveRightTurn(38.5));
 		AddSequential(new DriveForward(2.0, 0.5));
