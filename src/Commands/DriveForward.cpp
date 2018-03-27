@@ -20,6 +20,7 @@ void DriveForward::Initialize() {
 	time->Reset();
 	time->Start();
 	Robot::driveTrainSubsystem->SetDrivingBackward(false);
+	Robot::clawSubsystem.get()->SetDropClaw(false);
 }
 
 // Called repeatedly when this Command is scheduled to run

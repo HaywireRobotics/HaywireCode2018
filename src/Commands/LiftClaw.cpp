@@ -7,21 +7,24 @@
 
 #include "LiftClaw.h"
 #include "../Robot.h"
+#include <iostream>
 
 LiftClaw::LiftClaw() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(Robot::clawSubsystem.get());
-	this->power = 0.4;
+	this->power = 0.6;
 }
 
 // Called just before this Command runs the first time
 void LiftClaw::Initialize() {
-
+	std::cout << "LiftClaw init" << std::endl;
+	Robot::clawSubsystem.get()->SetDropClaw(false);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void LiftClaw::Execute() {
+	std::cout << "LiftClaw execute" << std::endl;
 	Robot::clawSubsystem.get()->ElevatorClaw(this->power);
 }
 
@@ -32,6 +35,7 @@ bool LiftClaw::IsFinished() {
 
 // Called once after isFinished returns true
 void LiftClaw::End() {
+	std::cout << "LiftClaw End" << std::endl;
 	Robot::clawSubsystem.get()->ElevatorClaw(0.0);
 }
 
