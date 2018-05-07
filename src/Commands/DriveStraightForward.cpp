@@ -5,33 +5,35 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "PushPiston.h"
-#include "../Subsystems/PneumaticsSubsystem.h"
-#include "../Robot.h"
+#include "DriveStraightForward.h"
 
-PushPiston::PushPiston() {
+DriveStraightForward::DriveStraightForward() {
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(&Robot::chassis);
-	Requires(Robot::pneumaticsSubsystem.get());
+	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void PushPiston::Initialize() {}
+void DriveStraightForward::Initialize() {
+
+}
 
 // Called repeatedly when this Command is scheduled to run
-void PushPiston::Execute() {
-	Robot::pneumaticsSubsystem->SetSole1Close();
-	//Robot::pneumaticsSubsystem->SetSole1Close();
+void DriveStraightForward::Execute() {
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool PushPiston::IsFinished() {
-	return true;
+bool DriveStraightForward::IsFinished() {
+	return false;
 }
 
 // Called once after isFinished returns true
-void PushPiston::End() {}
+void DriveStraightForward::End() {
+
+}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void PushPiston::Interrupted() {}
+void DriveStraightForward::Interrupted() {
+
+}

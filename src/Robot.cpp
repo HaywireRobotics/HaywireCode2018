@@ -6,27 +6,53 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
+#include "Enums.h"
+#include <CameraServer.h>
+#include <Joystick.h>
+#include <iostream>
+
+RobotType robotType = practice;
 
 std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
-std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>();
+std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>(robotType);
 std::shared_ptr<ElevatorSubsystem> Robot::elevatorSubsystem = std::make_unique<ElevatorSubsystem>();
+std::shared_ptr<ClimbySubsystem> Robot::climbySubsystem = std::make_unique<ClimbySubsystem>();
+std::shared_ptr<ClawSubsystem> Robot::clawSubsystem = std::make_unique<ClawSubsystem>();
+//std::shared_ptr<CameraSubsystem> Robot::cameraSubsytem = std::make_unique<CameraSubsystem>();
 std::unique_ptr<OI> Robot::oi;
 
 	void Robot::RobotInit() {
-		m_chooser.AddDefault("Drive Across Line", &m_autoDriveAcrossLine);
-		m_chooser.AddObject("My Auto", &m_myAuto);
-		m_chooser.AddObject("Push Piston", &m_pushPiston);
-		m_chooser.AddObject("Drive Across Line", &m_autoDriveAcrossLine);
-		m_chooser.AddObject("Score switch points CL", &m_autoGetPowerSwitchCL);
+		//Autonomous Options
+		a_chooser.AddObject("DriveAcrossLine", 0);
+		a_chooser.AddObject("DriveSwitchLeft", 1);
+		a_chooser.AddObject("DriveSwitchRight", 2);
+		a_chooser.AddObject("DriveSwitchCenter", 3);
+		a_chooser.AddObject("DriveScaleRight", 4);
+		a_chooser.AddObject("DriveScaleLeft", 5);
+/*		a_chooser.AddObject("Center", 1);
+		a_chooser.AddObject("Left", 2);
+		a_chooser.AddObject("Right", 3);*/
 
 
-		frc::SmartDashboard::PutData("PushPiston", new PushPiston());
-		frc::SmartDashboard::PutData("PullPiston", new PullPiston());
-		frc::SmartDashboard::PutData("DriveForward", new DriveForward(10.0));
+
+
+		w_chooser.AddObject("Switch", w_chooseSwitch);
+
+		//Command Options
+		frc::SmartDashboard::PutData("PushPiston", new CloseClaw());
+		frc::SmartDashboard::PutData("PullPiston", new OpenClaw());
+		frc::SmartDashboard::PutData("DriveForward", new DriveForward(2.0,0.5));
+		frc::SmartDashboard::PutData("Drive Across Line", new autoDriveAcrossLine());
 		frc::SmartDashboard::PutData("Switch Height", new SwitchHeightCommand());
-		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
-		frc::CameraServer::GetInstance()->StartAutomaticCapture();
+		frc::SmartDashboard::PutData("Right DriveTurn", new DriveRightTurn(45.0));
+		frc::SmartDashboard::PutData("Left DriveTurn", new DriveLeftTurn(-45.0));
+		frc::SmartDashboard::PutData("Auto Modes", &a_chooser);
 		oi.reset(new OI());
+
+
+	}
+
+	void Robot::RobotPeriodic() {
 	}
 
 	/**
@@ -36,7 +62,9 @@ std::unique_ptr<OI> Robot::oi;
 	 * when
 	 * the robot is disabled.
 	 */
-	void Robot::DisabledInit() {}
+	void Robot::DisabledInit() {
+		//this function is currently useless
+	}
 
 	void Robot::DisabledPeriodic() {
 		frc::Scheduler::GetInstance()->Run();
@@ -67,13 +95,41 @@ std::unique_ptr<OI> Robot::oi;
 //		else {
 //			m_autonomousCommand = &m_defaultAuto;
 //		}
+		//this->gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 
-		m_autonomousCommand = m_chooser.GetSelected();
+		//m_autonomousCommand = m_chooser.GetSelected();
 
-		if (m_autonomousCommand != nullptr) {
-			m_autonomousCommand->Start();
+		std::cout << "Auto Init" << std::endl;
+		std::string gameData;
+		gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+		frc::SmartDashboard::PutString("GameData", gameData);
+		a_autonomousSelect = a_chooser.GetSelected();
+
+		switch (a_autonomousSelect)
+		{
+			case 0:
+				a_autonomousCommand = new autoDriveAcrossLine();
+				break;
+			case 1 :
+				a_autonomousCommand = new DriveToSwitchLeft(gameData);
+				break;
+			case 2:
+				a_autonomousCommand = new DriveToSwitchRight(gameData);
+				break;
+			case 3:
+				a_autonomousCommand = new DriveToSwitchCenter(gameData);
+				break;
+			case 4:
+				a_autonomousCommand = new DriveToScaleRight(gameData);
+				break;
+			case 5:
+				a_autonomousCommand = new DriveToScaleLeft(gameData);
+				break;
 		}
-//		AddSequential(m_pushPiston);
+		if(a_autonomousCommand != nullptr)
+	    {
+	  		a_autonomousCommand->Start();
+	    }
 	}
 
 	void Robot::AutonomousPeriodic() {
@@ -83,16 +139,18 @@ std::unique_ptr<OI> Robot::oi;
 	void Robot::TeleopInit() {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
+		// continue until interruted by another command, remove
 		// this line or comment it out.
-		if (m_autonomousCommand != nullptr) {
-			m_autonomousCommand->Cancel();
-			m_autonomousCommand = nullptr;
+		if (a_autonomousCommand != nullptr) {
+			a_autonomousCommand->Cancel();
+			a_autonomousCommand = nullptr;
 		}
 	}
 
 	void Robot::TeleopPeriodic() {
 		frc::SmartDashboard::PutNumber(llvm::StringRef("Counter Amount"), Robot::elevatorSubsystem.get()->counter->Get());
+		frc::SmartDashboard::PutNumber(llvm::StringRef("Angle"), Robot::driveTrainSubsystem.get()->GetGyroValue());
+		frc::SmartDashboard::PutNumber("Range", Robot::driveTrainSubsystem.get()->GetRangeValue());
 		frc::Scheduler::GetInstance()->Run();
 	}
 
@@ -101,12 +159,11 @@ std::unique_ptr<OI> Robot::oi;
 	}
 
 	void Robot::TestPeriodic() {
-		//lw->Run();
 	}
 
 	// Have it null by default so that if testing teleop it
 	// doesn't have undefined behavior and potentially crash.
 
 
-
+//This is a macro that is used for creating a main function
 START_ROBOT_CLASS(Robot)

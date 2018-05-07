@@ -10,24 +10,38 @@
 //Pneumatics Constants
 const int Solenoid1OpenPort = 0;
 const int Solenoid1ClosePort = 1;
-
 //Motor Constants
  const int DriveTrain1 = 0;
  const int DriveTrain2 = 1;
- const int DriveTrain3 = 2;
- const int DriveTrain4 = 3;
+ const int DriveTrain3 = 8;
+ const int DriveTrain4 = 9;
 
  const int ElevatorPort0 = 5;
  const int ElevatorPort1 = 6;
+ const int MagySwitchPort0 = 0;
+
  const int ClawPort4 = 4;
+
+ const int ClimbyTapePort = 2;
+ const int ClimbyWinchPort = 3;
 
 //Joystick Constants
  const int JoystickRightPort = 1;
  const int JoystickLeftPort = 0;
  const int JoystickManipulatorPort = 2;
+ const int JoystickManipulator2Port = 3;
 
 //Button Mappings
  const int JMExtendPistonNum = 1;
- const int JMRetractPistonNum = 2;
+ const int JMRetractPistonNum = 3;
+
+ const int JMClawRotatePos = 4;
+ const int JMClawRotateNeg = 5;
+
+ const int JMTapeOut = 6;
+ const int JMTapeIn = 7;
+
+ const int JMWinchIn = 10;
+ const int JMWinchOut = 9;
 
 // const int J

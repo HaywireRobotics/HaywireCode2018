@@ -1,17 +1,14 @@
+#include <Commands/CloseClaw.h>
+#include <Commands/OpenClaw.h>
 #include "autoDriveAcrossLine.h"
 #include "../Commands/DriveForward.h"
-#include "../Commands/PushPiston.h"
-#include "../Commands/PullPiston.h"
+#include "../Commands/ElevatorToSwitch.h"
+#include "../Commands/SwitchHeightCommand.h"
 #include <Timer.h>
 
 autoDriveAcrossLine::autoDriveAcrossLine() {
 
-	//AddSequential(new DriveForward(10.0));
-	AddSequential(new PushPiston());
-    AddSequential(new PullPiston());
-	//AddSequential(new PullPiston());
-
-
+	AddSequential(new DriveForward(7.0,0.5));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

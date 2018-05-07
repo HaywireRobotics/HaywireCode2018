@@ -6,14 +6,15 @@
 /*----------------------------------------------------------------------------*/
 
 #include "DriveTrainSubsystem.h"
-
+#include <Joystick.h>
 #include "../RobotMap.h"
 
 
-DriveTrainSubsystem::DriveTrainSubsystem()
-    : frc::Subsystem("DriveTrainSubsystem") {
-	range = new frc::AnalogInput(0);
+DriveTrainSubsystem::DriveTrainSubsystem(RobotType roboTypeIn): frc::Subsystem("DriveTrainSubsystem") {
+	this->range = new frc::AnalogInput(0);
 	inMagneticSwitch = new frc::DigitalInput(0);
+	this->roboType = roboTypeIn;
+	this->doneDrivingBackward = false;
 }
 
 void DriveTrainSubsystem::InitDefaultCommand() {
@@ -22,9 +23,8 @@ void DriveTrainSubsystem::InitDefaultCommand() {
 	SetDefaultCommand(new TeleopCommand());
 }
 //Public
-void DriveTrainSubsystem::TankDrive(float left, float right) {
-	this->MoveLeft(left);
-	this->MoveRight(right);
+void DriveTrainSubsystem::TankDrive(double left, double right) {
+	myRobot.TankDrive(left, right, false);
 }
 
 void DriveTrainSubsystem::driveForward(double speed)
@@ -33,12 +33,41 @@ void DriveTrainSubsystem::driveForward(double speed)
 }
 void DriveTrainSubsystem::takeJoystickInputs(Joystick *left, Joystick *right)
 {
-	myRobot.TankDrive(left->GetY(),right->GetY(), false);
+	switch (roboType) {
+		case competition:
+			myRobot.TankDrive(-1 * right->GetY(),-1 * left->GetY(), false);
+			break;
+		case practice:
+			myRobot.TankDrive(left->GetY(), right->GetY(), false);
+			break;
+	}
 }
 void DriveTrainSubsystem::stopRobot()
 {
 	myRobot.TankDrive(0,0,false);
 }
+float DriveTrainSubsystem::GetGyroValue() {
+	return gyro.GetAngle();
+}
+void DriveTrainSubsystem::ResetGyro() {
+	gyro.Reset();
+}
+double DriveTrainSubsystem::GetRangeValue(){
+	return this->range->GetVoltage()/0.0098;
+}
+
+RobotType DriveTrainSubsystem::GetRobotType() {
+	return this->roboType;
+}
+
+void DriveTrainSubsystem::SetDrivingBackward(bool input) {
+	this->doneDrivingBackward = input;
+}
+
+bool DriveTrainSubsystem::GetDrivingBackward() {
+	return this->doneDrivingBackward;
+}
+
 //Private
 void DriveTrainSubsystem::MoveLeft(float speed) {
 	this->DriveTrainLeft0.Set(speed);

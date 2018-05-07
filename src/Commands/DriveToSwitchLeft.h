@@ -3,9 +3,9 @@
 
 #include <Commands/CommandGroup.h>
 
-class autoGetPowerSwitchCL : public frc::CommandGroup {
+class DriveToSwitchLeft : public frc::CommandGroup {
 public:
-	autoGetPowerSwitchCL();
+	DriveToSwitchLeft(std::string gameData);
 };
 
 #endif  // autoGetPowerSwitchCL_H

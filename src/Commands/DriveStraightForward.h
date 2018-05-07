@@ -8,14 +8,14 @@
 #pragma once
 
 #include <Commands/Command.h>
-#include <Timer.h>
 
-class PushPiston : public frc::Command {
+class DriveStraightForward : public frc::Command {
 public:
-	PushPiston();
+	DriveStraightForward();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
 };
+

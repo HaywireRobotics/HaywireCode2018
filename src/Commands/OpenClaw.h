@@ -4,9 +4,9 @@
 #include <Commands/Command.h>
 #include <Timer.h>
 
-class PullPiston : public frc::Command {
+class OpenClaw : public frc::Command {
 public:
-	PullPiston();
+	OpenClaw();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

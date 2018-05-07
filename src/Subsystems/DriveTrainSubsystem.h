@@ -10,6 +10,7 @@
 #include <Commands/Subsystem.h>
 #include <VictorSP.h>
 #include "../RobotMap.h"
+#include "../Enums.h"
 #include <RobotDrive.h>
 #include <Joystick.h>
 #include "../Commands/TeleopCommand.h"
@@ -18,29 +19,38 @@
 #include <DigitalInput.h>
 #include <Drive/DifferentialDrive.h>
 #include <SpeedControllerGroup.h>
+#include <PWMVictorSPX.h>
 
 class DriveTrainSubsystem : public frc::Subsystem {
 public:
-	DriveTrainSubsystem();
+	DriveTrainSubsystem(RobotType roboTypeIn);
 	void InitDefaultCommand() override;
 	void takeJoystickInputs(Joystick *left, Joystick *right);
 	void driveForward(double speed);
 	void stopRobot();
-	void TankDrive(float left, float right);
+	void TankDrive(double left, double right);
+	float GetGyroValue();
+	double GetRangeValue();
+	void ResetGyro();
+	void SetDrivingBackward(bool input);
+	bool GetDrivingBackward();
+	RobotType GetRobotType();
 	frc::ADXRS450_Gyro gyro { frc::SPI::Port::kOnboardCS0 };
 	frc::AnalogInput *range;
 	frc::DigitalInput *inMagneticSwitch;
+	bool doneDrivingBackward;
 
 private:
-	frc::VictorSP DriveTrainLeft0 { DriveTrain1 };
-	frc::VictorSP DriveTrainLeft1 { DriveTrain2 };
+	frc::PWMVictorSPX DriveTrainLeft0 { DriveTrain1 };
+	frc::PWMVictorSPX DriveTrainLeft1 { DriveTrain2 };
 	frc::SpeedControllerGroup LeftGroup {DriveTrainLeft0, DriveTrainLeft1};
 
-	frc::VictorSP DriveTrainRight0 { DriveTrain3 };
-	frc::VictorSP DriveTrainRight1 { DriveTrain4 };
+	frc::PWMVictorSPX DriveTrainRight0 { DriveTrain3 };
+	frc::PWMVictorSPX DriveTrainRight1 { DriveTrain4 };
 	frc::SpeedControllerGroup RightGroup {DriveTrainRight0, DriveTrainRight1};
 
 	frc::DifferentialDrive myRobot{LeftGroup, RightGroup};
 	void MoveLeft(float speed);
 	void MoveRight(float speed);
+	RobotType roboType;
 };

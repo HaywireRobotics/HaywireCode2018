@@ -7,7 +7,7 @@
 
 class DriveForward : public frc::Command {
 public:
-	DriveForward(double);
+	DriveForward(double, double);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -15,7 +15,10 @@ public:
 	void Interrupted();
 private:
 	Timer *time;
+	double speed;
 	double seconds;
+	bool negative;
+
 };
 
 #endif  // DriveForward_H
