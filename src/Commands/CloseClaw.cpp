@@ -20,7 +20,7 @@ void CloseClaw::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void CloseClaw::Execute() {
-	Robot::pneumaticsSubsystem->SetSole1Close();
+	Robot::pneumaticsSubsystem.get()->SetSole1Close();
 	//Robot::pneumaticsSubsystem->SetSole1Close();
 }
 

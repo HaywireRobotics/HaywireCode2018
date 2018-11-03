@@ -33,7 +33,8 @@ void DriveRightTurn::Execute() {
 
 	this->rampSpeed -= 0.05;
 	this->rampSpeed = std::max(double(this->rampSpeed), this->speed);
-	Robot::driveTrainSubsystem.get()->TankDrive(this->rampSpeed, -1 * this->rampSpeed*2);
+//	Robot::driveTrainSubsystem.get()->TankDrive(this->rampSpeed, -1 * this->rampSpeed*2);
+	Robot::driveTrainSubsystem.get()->TankDrive(this->rampSpeed * 2, -1 * this->rampSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()

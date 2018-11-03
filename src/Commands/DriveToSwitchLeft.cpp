@@ -19,7 +19,7 @@ DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 	if (gameData[0] == 'L')
 	{
 		AddParallel(new ElevateToSwitchAndHold());
-		AddSequential(new DriveForward(2.3, 0.7));
+		AddSequential(new DriveForward(2.1, 0.7));
 		AddSequential(new DriveRightTurn(90.0));
 		AddSequential(new DriveForward(0.5, 0.5));
 		AddSequential(new OpenClaw());
@@ -35,26 +35,26 @@ DriveToSwitchLeft::DriveToSwitchLeft(std::string gameData) {
 
 	else if(gameData[1] == 'L')
 	{
-		AddSequential(new DriveForward(3.2,0.8));
+		AddSequential(new DriveForward(3.0, 0.8));
 		AddSequential(new DriveRightTurn(77.0));
-		AddSequential(new DriveForward(-1.6, 0.5));
+		AddSequential(new DriveForward(-1.7, 0.5));
 
-		//Commented lines for practice match
-		//AddSequential(new ElevatorToScale());
-		//AddParallel(new HoldHold());
-		//AddSequential(new DriveForward(1.5, 0.5));
-		//AddSequential(new OpenClaw());
-		//AddSequential(new DriveForward(-2.5, 0.45));
-		//AddSequential(new DriveRightTurn(38.5));
-		//AddSequential(new DriveForward(2.0, 0.5));
+//		Commented lines for practice match
+		AddSequential(new ElevatorToScale());
+		AddParallel(new HoldHold());
+		AddSequential(new DriveForward(1.6, 0.5));
+		AddSequential(new OpenClaw());
+		AddSequential(new DriveForward(-2.5, 0.45));
+		AddSequential(new DriveRightTurn(38.5));
+		AddSequential(new DriveForward(2.0, 0.5));
 	}
 
 	else
 	{
-		AddSequential(new DriveForward(2.5, 0.8));
-		AddSequential(new DriveRightTurn(74.0));
-		AddSequential(new DriveForward(2.25, 0.8));
-		AddSequential(new DriveLeftTurn(-87.0));
+		AddSequential(new DriveForward(3.0, 0.6));
+//		AddSequential(new DriveRightTurn(74.0));
+//		AddSequential(new DriveForward(2.25, 0.8));
+//		AddSequential(new DriveLeftTurn(-87.0));
 
 		//Practice Code
 		//AddSequential(new ElevatorToScale());

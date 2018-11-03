@@ -99,7 +99,7 @@ void TeleopCommand::Execute() {
 				}
 			//Robot::elevatorSubsystem.get()->ElevatorClaw(Robot::oi->getJoystickManipulator().get()->GetY());
 		Robot:: elevatorSubsystem.get()->ElevatorClaw(speed);*/
-		Robot::elevatorSubsystem.get()->ElevatorClaw(Robot::oi->getJoystickManipulator().get()->GetY());
+		Robot::elevatorSubsystem.get()->ElevatorClaw(Robot::oi->getJoystickManipulator().get()->GetY() * .66);
 	}
 	else if (Robot::oi->getJoystickManipulator().get()->GetRawButton(JMClawRotateNeg)) {
 		Robot::elevatorSubsystem.get()->ElevatorClaw(-0.5);

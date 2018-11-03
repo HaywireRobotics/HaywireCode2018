@@ -30,14 +30,14 @@ DriveToScaleLeft::DriveToScaleLeft(std::string gameData) {
 		AddSequential(new DriveForward(-1.8, 0.5));
 
 		//Practice
-		//AddSequential(new ElevatorToScale());
-		//AddParallel(new HoldHold());
-		//AddParallel(new LiftClaw());
-		//AddSequential(new DriveForward(1.5, 0.5));
-		//AddSequential(new OpenClaw());
-		//AddSequential(new DriveForward(-2.5, 0.45));
-		//AddSequential(new DriveRightTurn(38.5));
-		//AddSequential(new DriveForward(2.0, 0.5));
+		AddSequential(new ElevatorToScale());
+		AddParallel(new HoldHold());
+		AddParallel(new LiftClaw());
+		AddSequential(new DriveForward(1.5, 0.5));
+		AddSequential(new OpenClaw());
+		AddSequential(new DriveForward(-2.5, 0.45));
+		AddSequential(new DriveRightTurn(38.5));
+		AddSequential(new DriveForward(2.0, 0.5));
 	}
 
 	else if (gameData[1] == 'R')

@@ -42,18 +42,18 @@ DriveToSwitchRight::DriveToSwitchRight(std::string gameData) {
 
 	else if(gameData[1] == 'R')
 	{
-			AddSequential(new DriveForward(3.1, 0.8));
+			AddSequential(new DriveForward(3.2, 0.8));
 			AddSequential(new DriveLeftTurn(-77.0));
 			AddSequential(new DriveForward(-2.3, 0.5));
 
 			//Practice
-			//AddSequential(new ElevatorToScale());
-			//AddParallel(new HoldHold());
-			//AddSequential(new DriveForward(1.7, 0.5));
-			//AddSequential(new OpenClaw());
-			//AddSequential(new DriveForward(-3.0, 0.45));
-			//AddSequential(new DriveLeftTurn(-38.5));
-			//AddSequential(new DriveForward(2.0, 0.5));
+			AddSequential(new ElevatorToScale());
+			AddParallel(new HoldHold());
+			AddSequential(new DriveForward(1.7, 0.5));
+			AddSequential(new OpenClaw());
+			AddSequential(new DriveForward(-3.0, 0.45));
+			AddSequential(new DriveLeftTurn(-38.5));
+			AddSequential(new DriveForward(2.0, 0.5));
 	}
 
 	else if (gameData[1] == 'L') {

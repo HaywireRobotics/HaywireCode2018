@@ -22,13 +22,13 @@ DriveToScaleRight::DriveToScaleRight(std::string gameData) {
 		AddSequential(new DriveForward(-2.3, 0.5));
 
 		//Practice
-	    //AddSequential(new ElevatorToScale());
-		//AddParallel(new HoldHold());
-	    //AddSequential(new DriveForward(1.7, 0.5));
-		//AddSequential(new OpenClaw());
-		//AddSequential(new DriveForward(-3.0, 0.45));
-		//AddSequential(new DriveLeftTurn(-38.5));
-		//AddSequential(new DriveForward(2.0, 0.5));
+	    AddSequential(new ElevatorToScale());
+		AddParallel(new HoldHold());
+	    AddSequential(new DriveForward(1.7, 0.5));
+		AddSequential(new OpenClaw());
+		AddSequential(new DriveForward(-3.0, 0.45));
+		AddSequential(new DriveLeftTurn(-38.5));
+		AddSequential(new DriveForward(2.0, 0.5));
 	}
 
 	else if (gameData[0] == 'R')

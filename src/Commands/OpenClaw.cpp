@@ -14,7 +14,7 @@ void OpenClaw::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void OpenClaw::Execute() {
-	Robot::pneumaticsSubsystem->SetSole1Open();
+	Robot::pneumaticsSubsystem->SetSole1Close();
 }
 
 // Make this return true when this Command no longer needs to run execute()

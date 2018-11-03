@@ -11,7 +11,7 @@
 #include <Joystick.h>
 #include <iostream>
 
-RobotType robotType = practice;
+RobotType robotType = competition;
 
 std::shared_ptr<PneumaticsSubsystem> Robot::pneumaticsSubsystem = std::make_unique<PneumaticsSubsystem>();
 std::shared_ptr<DriveTrainSubsystem> Robot::driveTrainSubsystem = std::make_unique<DriveTrainSubsystem>(robotType);
@@ -49,6 +49,7 @@ std::unique_ptr<OI> Robot::oi;
 		frc::SmartDashboard::PutData("Auto Modes", &a_chooser);
 		oi.reset(new OI());
 
+		Robot::pneumaticsSubsystem.get()->SetSole1Open();
 
 	}
 
@@ -105,6 +106,10 @@ std::unique_ptr<OI> Robot::oi;
 		frc::SmartDashboard::PutString("GameData", gameData);
 		a_autonomousSelect = a_chooser.GetSelected();
 
+		while (gameData.length() <= 0) {
+			std::cout << "Checking for gameData" << std::endl;
+			gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+		}
 		switch (a_autonomousSelect)
 		{
 			case 0:
@@ -133,6 +138,7 @@ std::unique_ptr<OI> Robot::oi;
 	}
 
 	void Robot::AutonomousPeriodic() {
+//		this->gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 		frc::Scheduler::GetInstance()->Run();
 	}
 

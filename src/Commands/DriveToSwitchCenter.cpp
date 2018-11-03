@@ -48,7 +48,7 @@ DriveToSwitchCenter::DriveToSwitchCenter(std::string gameData) {
 		AddSequential(new DriveForward(-1.0, 0.5));
 	}
 	else if (gameData[0] == 'R') {
-		AddSequential(new DriveForward(0.8, 0.5));
+		AddSequential(new DriveForward(0.8, 0.7));
 		AddSequential(new DriveRightTurn(40));
 
 //		AddParallel(new ElevatorToSwitch());

@@ -8,7 +8,7 @@ DriveForward::DriveForward(double seconds, double speed) {
 	Requires(Robot::driveTrainSubsystem.get());
 	time = new Timer();
 	this->seconds = seconds;
-	this->speed = speed;
+	this->speed = -speed;
 	if (seconds < 0)
 		this->negative = true;
 	else
